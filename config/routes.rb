@@ -1,40 +1,20 @@
 Rails.application.routes.draw do
+  
+  # 管理者
   namespace :admin do
-  resources :contacts, only: [:create, :index, :show]
+    resources :contacts, only: [:create, :index, :show]
+    resources :reviews, only: [:edit, :update, :destroy]
+    resources :reviews, only: [:edit, :update, :destroy]
+    resources :labels, only: [:create, :edit, :update, :new, :destroy]
+    resources :categories, only: [:create, :edit, :update, :new, :destroy]
+    resources :artists, only: [:create, :edit, :update, :new, :destroy]
+    resources :orders, only: [:show, :index]
+    resources :arrivals, only: [:new, :create, :index]
+    resources :items, only: [:show, :edit, :new, :create, :update, :index, :destroy]
+    resources :users, only: [:show, :edit, :update, :index, :destroy]
   end
-
-  namespace :admin do
-  resources :reviews, only: [:edit, :update, :destroy]
-  end
-
-  namespace :admin do
-  resources :labels, only: [:create, :edit, :update, :new, :destroy]
-  end
-
-  namespace :admin do
-  resources :categories, only: [:create, :edit, :update, :new, :destroy]
-  end
-
-  namespace :admin do
-  resources :artists, only: [:create, :edit, :update, :new, :destroy]
-  end
-
-  namespace :admin do
-  resources :orders, only: [:show, :index]
-  end
-
-  namespace :admin do
-  resources :arrivals, only: [:new, :create, :index]
-  end
-
-  namespace :admin do
-  resources :items, only: [:show, :edit, :new, :create, :update, :index, :destroy]
-  end
-
-  namespace :admin do
-  resources :users, only: [:show, :edit, :update, :index, :destroy]
-  end
-
+  # ユーザー
+  devise_for :users
   get 'exit' => 'users#exit'
   resources :items, only: [:index, :show]
   root to: 'items#index'
@@ -46,8 +26,5 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy, :index]
   resources :reviews, only: [:new, :create]
   resources :contacts, only: [:create, :new]
-  devise_for :end_users
   resources :users, only: [:edit, :update, :show]
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
