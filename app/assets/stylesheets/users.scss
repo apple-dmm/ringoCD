@@ -1,3 +1,43 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 {
+	display: inline;
+	padding: 0 0 0 110px;
+}
+
+span {
+	font-size: 20px;
+}
+
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.jumbotron {
+	height: 300px;
+	margin: auto;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.row {
+	margin-top: 30px;
+}
+
+.menu {
+	height: 30%;
+	padding: 10px;
+}
+
+.content {
+	width: 100%;
+	margin-bottom: 0;
+}
