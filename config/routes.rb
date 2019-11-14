@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  devise_for :admins
+  #devise_for :admins
   # 管理者
   namespace :admin do
     resources :contacts, only: [:create, :index, :show]
