@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def exit
+  	@user = User.find(params[:id])
   end
 
   def edit
