@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h4 class="side-title">管理者情報</h4>
+			<div class="side-list">
+				<ul>
+					<li class="detail-list"><%= link_to "新規商品の登録", new_admin_item_path %></li>
+					<li class="detail-list"><%= link_to "入荷履歴", admin_arrivals_path %></li>
+					<li class="detail-list"><%= link_to "顧客一覧", admin_users_path %></li>
+					<li class="detail-list"><%= link_to "受注履歴", admin_orders_path %></li>
+					<li class="detail-list"><%= link_to "問合せ一覧", admin_contacts_path %></li>
+				</ul>
+			</div>
+		</div>
