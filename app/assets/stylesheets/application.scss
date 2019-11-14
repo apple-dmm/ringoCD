@@ -12,10 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  */
 
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+
+// ここからheader
 
 .signup{
 	color:#4682B4;
@@ -74,3 +79,4 @@ i{
 	color:#4682B4;
 	text-align:center;
 }
+
