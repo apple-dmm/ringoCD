@@ -1,3 +1,32 @@
-// Place all the styles related to the admin::items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+  padding: 0;
+}
+
+.detail-list{
+  color: #404040;
+  border-left: solid 6px #4682B4;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: whitesmoke;
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+  font-weight: bold;
+}
+
+.registration-items{
+	text-align: center;
+}
+
+.border{
+	width: 80%;
+	height: 2px;
+	background-color:#dadada;
+	margin: 0 auto;
+}
+
+.registration-contents{
+	margin-top: 50px;
+}
+

@@ -69,4 +69,7 @@ gem 'paranoia'
 gem 'ransack'
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'jquery-rails'
+
 gem 'font-awesome-sass'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'

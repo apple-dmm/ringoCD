@@ -11,4 +11,10 @@ class Item < ApplicationRecord
   belongs_to :artist
   belongs_to :category
   belongs_to :label
+
+  attachment :image
+
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :release, presence: true
 end
