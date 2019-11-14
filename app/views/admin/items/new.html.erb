@@ -1,2 +1,83 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<%= render 'admin/sidemenu' %>
+		<div class="col-xs-9">
+			<h3 class="registration-items">新規商品の登録</h3>
+			<div class="border"></div>
+
+			<div class="registration-contents">
+				<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<%= form_for(@item) do |f| %>
+							<table class="table table-striped table-bordered">
+								<tbody>
+									<tr>
+										<div class="field">
+										<th><label class="item-name">商品名</label></th>
+										<th><%= f.text_field :name, autofocus:true, class:"col-xs-10" %></th>
+										</div>
+									</tr>
+									<tr>
+										<div class="field">
+										<th><label class="item-price">価格</label></th>
+										<th><%= f.text_field :price, class:"col-xs-3" %>　円</th>
+										</div>
+									</tr>
+									<tr>
+										<th>サムネイル</th>
+										<th><%= attachment_image_tag @item, :image_id, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %>
+											<%= f.attachment_field :image %></th>
+									</tr>
+									<tr>
+										<th>アーティスト名</th>
+										<th></th>
+									</tr>
+									<tr>
+										<div class="field">
+										<th><label class="item-release">発売日</label></th>
+										<th>
+											<div class="row">
+											<div class="col-xs-6">
+											<div class="form-group">
+											<div class="input-group date" id="date" date-target-input="nearest">
+											<%= f.text_field :release, class:"form-control datetimepicker-input", data: {toggle: "datetimepicker", target: ".datetimepicker-input"}, placeholder: "YYYY/MM/DD" %>
+											</div>
+											</div>
+											</div>
+										<script type="text/javascript">
+										$(function () {
+										  $(".datetimepicker-input").datetimepicker({
+										  	format:'YYYY/MM/DD'
+										  });
+										});
+										</script>
+       									</div>
+										</th>
+										</div>
+									</tr>
+									<tr>
+										<th>レーベル</th>
+										<th></th>
+									</tr>
+									<tr>
+										<th>ジャンル</th>
+										<th></th>
+									</tr>
+									<tr>
+										<div class="field">
+										<th><label class="item-disk">Disk 1</label></th>
+										<th></th>
+										</div>
+									</tr>
+								</tbody>
+							</table>
+							<div class="row">
+								<%= f.submit "登録", class:"col-xs-4 col-xs-offset-4 btn btn-primary" %>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
