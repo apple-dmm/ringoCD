@@ -1,3 +1,55 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p><%= @params %>
+<div class="container">
+  <h2>会員メニュー<span>（<%= @user.email %>さん）</span></h2>
+  <div class="border"></div>
+  	<div class="row  text-center row-eq-height">
+  	  <div class="col-xs-8 col-xs-offset-2">
+  	    <div class="col-xs-6">
+  	      <div class="jumbotron text-center">
+  	        <%= link_to edit_user_path(current_user.id) do %>
+  	          <span class="glyphicon glyphicon-wrench" style="font-size: 60px"></span>
+  	        <% end %>
+  	          <h3 class="menu">会員情報の<br>確認・編集</h3>
+  	            <div class="content">氏名、メールアドレス、<br>パスワード、住所、電話番号<br>の確認、変更ができます。</div>
+          </div>
+  	    </div>
+
+  	    <div class="col-xs-6">
+  	      <div class="jumbotron text-center">
+  	        <%= link_to favorites_path(current_user.id) do %>
+  	          <span class="glyphicon glyphicon-heart" style="font-size: 60px"></span>
+  	        <% end %>
+  	          <h3 class="menu">お気に入り</h3>
+  	            <div class="content">いいねした商品の確認と削除<br>ができます。</div>
+  	      </div>
+        </div>
+      </div>
+    </div>
+
+  	<div class="row  text-center row-eq-height">
+  	  <div class="col-xs-8 col-xs-offset-2">
+  	    <div class="col-xs-6">
+  	      <div class="jumbotron text-center">
+  	        <%= link_to orders_path(current_user.id) do %>
+  	          <span class="glyphicon glyphicon-shopping-cart" style="font-size: 60px"></span>
+  	        <% end %>
+  	          <h3 class="menu">購入履歴一覧</h3>
+  	    	  <div class="content">今まで購入いただいた商品の<br>確認ができます。</div>
+  	      </div>
+        </div>
+
+  	    <div class="col-xs-6">
+  	      <div class="jumbotron text-center">
+  	        <%= link_to contacts_path do %>
+  	          <span class="glyphicon glyphicon-envelope" style="font-size: 60px"></span>
+  	        <% end %>
+  	          <h3 class="menu">お問い合わせ</h3>
+  	            <div class="content">販売者に問合せができます。</div>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
+
+  <div class="row text-center"><%= link_to '退会', exit_path, class: "btn btn-default" %></div>
+  <div class="row"><%= link_to '商品一覧へ', root_path, class: "btn btn-default" %></div>
+
+</div>
