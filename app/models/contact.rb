@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
 	has_many :replies
-	belongs_to :end_user
+	belongs_to :user
 end

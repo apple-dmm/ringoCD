@@ -12,9 +12,72 @@
  *
  *= require_tree .
  *= require_self
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome";
 @import 'bootstrap-datetimepicker';
+
+// ここからheader
+
+.signup{
+	color:#4682B4;
+	padding-top:30px;
+	margin-right:20px;
+}
+.signin{
+	color:#4682B4;
+	padding-top:30px;
+}
+.title{
+    color:#4682B4;
+    font-size:25px;
+}
+.navbar-right{
+	margin-right:80px;
+	padding-top:20px;
+}
+header{
+	margin-bottom:50px;
+	display:block;
+}
+
+body{
+	margin-top:50px;
+}
+i{
+	color:#4682B4;
+}
+.favorite{
+	padding-left:10px;
+}
+.cart{
+	padding-left:10px;
+}
+.contact{
+	padding-left:10px;
+}
+.signout{
+	padding-left:10px;
+}
+.current_user{
+	float:right;
+}
+.admin_user{
+	float:left;
+}
+.admin_signout{
+	float:right;
+}
+
+// ここからfooter
+
+.footer_text{
+	width:100%;
+	color:#4682B4;
+	text-align:center;
+}
+
+
