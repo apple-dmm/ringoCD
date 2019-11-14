@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "item_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "postal_code"
     t.string "address"
@@ -123,6 +127,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "item_id"
     t.integer "valuation"
     t.string "title"
@@ -146,9 +151,20 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_furigana"
+    t.string "first_furigana"
+    t.string "postal_code"
+    t.string "address"
+    t.string "phone_number"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
