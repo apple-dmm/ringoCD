@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   # ユーザー
   devise_for :users
-  get 'exit' => 'users#exit'
+  get 'users/:id/exit' => 'users#exit', as: 'exit'
   resources :items, only: [:index, :show]
   root to: 'items#index'
   resources :cart_items, only: [:create, :destroy, :index, :update]
