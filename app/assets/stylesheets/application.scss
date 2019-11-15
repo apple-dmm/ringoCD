@@ -16,7 +16,7 @@
  @import 'font-awesome';
  */
 
-@import "bootstrap-sprockets";
+@import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
@@ -43,7 +43,9 @@ header{
 	margin-bottom:50px;
 	display:block;
 }
-
+.navbar-right{
+	float:left;
+}
 body{
 	margin-top:50px;
 }
@@ -61,9 +63,10 @@ i{
 }
 .signout{
 	padding-left:10px;
+	margin:0 0 0 auto;
 }
 .current_user{
-	float:right;
+padding-left:480px;
 }
 .admin_user{
 	float:left;
@@ -79,5 +82,4 @@ i{
 	color:#4682B4;
 	text-align:center;
 }
-
 
