@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_104314) do
+ActiveRecord::Schema.define(version: 2019_11_14_090829) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2019_11_13_104314) do
     t.integer "user_id"
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "disks", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "disk_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,10 +149,9 @@ ActiveRecord::Schema.define(version: 2019_11_13_104314) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "item_id"
+    t.integer "disk_id"
     t.string "name"
     t.integer "setlist"
-    t.integer "disk_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
