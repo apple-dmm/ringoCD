@@ -13,7 +13,6 @@ class Admin::ItemsController < ApplicationController
     @disk = @item.disks.build
     @song = @disk.songs.build
 
-    @artist = Artist.where("name like ?", "%#{word}%")
   end
 
   def create
