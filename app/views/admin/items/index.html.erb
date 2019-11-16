@@ -1,2 +1,24 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<%= render 'admin/sidemenu' %>
+		<div class="col-xs-9">
+			<h3 class="registration-items">登録済商品一覧</h3>
+			<div class="border"></div>
+
+			<div class="search-box col-xs-6 col-xs-offset-3">
+
+			<%= search_form_for @q, html: {class: 'attribution'} do |f| %>
+			<%= f.condition_fields do |c| %>
+			<%= c.attribute_fields do |a| %>
+			<%= a.attribute_select associations: [:artist, :category, :label] %>
+			<% end %>
+
+			<%= c.hidden_field :p, value: "cont_all" %>
+
+			<%= c.value_fields do |v| %>
+			<%= v.search_field :value, placeholder: '検索ワードを入力' %>
+			<% end %>
+			<% end %>
+
+			<span class="actions"><%= f.submit "検索", class:"btn btn-success" %></span>
+			<% end %>
+		</div>
+		</div>

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery-ui
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
@@ -20,3 +21,4 @@
 //= require bootstrap-datetimepicker
 
 //= require cocoon
+
