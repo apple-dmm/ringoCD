@@ -33,7 +33,7 @@
         <%= link_to() do %>
         <span class="contact"> お問い合わせ</span>
         <% end %>
-        <%= link_to() do %>
+        <%= link_to(destroy_user_session_path, method: :delete) do %>
         <span class="signout"> サインアウト</span>
         <% end %>
         <!-- 非ログイン時 -->
