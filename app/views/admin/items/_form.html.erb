@@ -19,8 +19,10 @@
 					<%= f.attachment_field :image %></th>
 			</tr>
 			<tr>
-				<th>アーティスト名</th>
-				<th></th>
+				<div class="field">
+				<th><label class="item-name">アーティスト名</label></th>
+				<th><%= f.text_field :name, id: "item_name_field", class:"col-xs-10" %></th>
+				</div>
 			</tr>
 			<tr>
 				<div class="field">
@@ -52,16 +54,14 @@
 			<tr>
 		</tbody>
 	</table>
-				<div id="disks">
-					<%= f.fields_for :disks do |disk| %>
-					<%= render 'disk_fields', f: disk %>
-					<% end %>
-						<div id="links">
-							<%= link_to_add_association 'Diskの追加',f, :disks %>
-						</div>
+		<div id="disks">
+			<%= f.fields_for :disks do |disk| %>
+			<%= render 'disk_fields', f: disk %>
+			<% end %>
+				<div id="links">
+					<%= link_to_add_association 'Diskの追加',f, :disks %>
 				</div>
-			</tr>
-
+		</div>
 	<div class="row">
 		<%= f.submit "登録", class:"col-xs-4 col-xs-offset-4 btn btn-primary" %>
 	</div>
