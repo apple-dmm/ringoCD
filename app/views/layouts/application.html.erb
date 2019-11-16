@@ -4,14 +4,16 @@
     <title>RingoCD</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <% self_css_path = "/assets/"+controller.controller_name  %>
+  <%= stylesheet_link_tag self_css_path, :media => "all" %>
 
     <script src="https://kit.fontawesome.com/b1ddc8e955.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   </head>
 
   <body>
-    <%=%>
     <%= render 'layouts/header' %>
     <%= yield %>
     <%= render 'layouts/footer' %>

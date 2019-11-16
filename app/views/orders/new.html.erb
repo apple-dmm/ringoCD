@@ -1,2 +1,38 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="container">
+	<h2 class="new-title">購入者情報</h2>
+	<div class="border"></div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-1">
+			<table class="new-table">
+					<tr>
+						<td width="50%">名前（姓・名）：</td>
+						<td width="25%"><%= @user.last_name %></td>
+						<td><%= @user.first_name %></td>
+					</tr>
+					<tr>
+						<td width="60%">郵便番号　　　：<br><small>（ハイフンを除く７桁）</small></td>
+						<td width="25%"><%= @user.postal_code %></td>
+					</tr>
+					<tr>
+						<td width="60%">住所　　　　　：</td>
+						<td width="25%"><%= @user.address %></td>
+					</tr>
+					<tr>
+						<td width="60%">電話番号　　　：</td>
+						<td width="25%"><%= @user.phone_number %></td>
+					</tr>
+			</table>
+		</div>
+	</div>
+	<div class="border"></div>
+	<h2 class="new-2title">お支払い方法の選択</h2>
+	<div class="border"></div>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-1 credit">
+			<input type="radio" name="payment" value="0">クレジットカードでのお支払い
+			<h5 class="input">・番号入力</h5>
+			<h5 class="input">・カード名義</h5>
+			<h5 class="input">・セキュリティコード</h5>
+		</div>
+	</div>
+</div>

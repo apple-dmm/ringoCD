@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require jquery-ui/autocomplete
 
@@ -18,7 +17,7 @@
  @import 'font-awesome';
  */
 
-@import "bootstrap-sprockets";
+@import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
@@ -36,16 +35,19 @@
 .title{
     color:#4682B4;
     font-size:25px;
+    margin-top:10px;
 }
 .navbar-right{
-	margin-right:80px;
+	margin-right:0;
 	padding-top:20px;
+}
+.navbar-left{
+	margin-left:20px;
 }
 header{
 	margin-bottom:50px;
 	display:block;
 }
-
 body{
 	margin-top:50px;
 }
@@ -63,9 +65,11 @@ i{
 }
 .signout{
 	padding-left:10px;
+	margin:0 0 0 auto;
 }
 .current_user{
-	float:right;
+padding-left:350px;
+text-decoration:underline;
 }
 .admin_user{
 	float:left;
@@ -81,5 +85,10 @@ i{
 	color:#4682B4;
 	text-align:center;
 }
-
+footer{
+	position: relative;
+    bottom: 0;
+    padding: 30px 0;
+    width:100%;
+}
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>会員メニュー<span>（<%= @user.email %>さん）</span></h2>
+  <h2>会員メニュー<span>（<%= current_user.first_name %>さん）</span></h2>
   <div class="border"></div>
   	<div class="row  text-center row-eq-height">
   	  <div class="col-xs-8 col-xs-offset-2">
@@ -48,8 +48,10 @@
   	    </div>
   	  </div>
   	</div>
-
-  <div class="row text-center"><%= link_to '退会', exit_path, class: "btn btn-default" %></div>
-  <div class="row"><%= link_to '商品一覧へ', root_path, class: "btn btn-default" %></div>
-
+    <div class="row text-center"><%= link_to '退会', exit_path(current_user.id), class: "btn btn-default" %></div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <%= link_to '商品一覧へ', root_path, class: "btn btn-default btn-lg" %>
+      </div>
+    </div>
 </div>
