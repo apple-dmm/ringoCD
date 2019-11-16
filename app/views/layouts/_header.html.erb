@@ -6,33 +6,30 @@
       <span class="col-lg-12 title">りんごCD<i class="fas fa-apple-alt fa-2x"></i></span>
     </nav>
     <nav>
-     <ul class="nav navbar-nav navbar-right col-lg-6">
+     <ul class="nav navbar-nav navbar-right col-lg-5">
         <!-- アドミンでログインした場合 -->
         <% if admin_signed_in? %>
-        <%= link_to() do %>
         <span class="admin_user"> ショップ管理画面<br>管理者　様</span>
-        <% end %>
-        <%= link_to() do %>
+        <%= link_to(destroy_admin_session_path, method: :delete) do %>
         <span class="admin_signout"> サインアウト</span>
         <% end %>
         <!-- エンドユーザーでログインした場合 -->
         <% elsif user_signed_in?%>
-        <%= link_to() do %>
         <span class="current_user"> USERさん</span>
-        <% end %><br>
-        <%= link_to() do %>
+        <br>
+        <%= link_to(user_path(current_user.id)) do %>
         <span class="home"> マイページ</span>
         <% end %>
-        <%= link_to() do %>
+        <%= link_to(favorites_path) do %>
         <span class="favorite"> お気に入り</span>
         <% end %>
-        <%= link_to() do %>
+        <%= link_to(cart_items_path) do %>
         <span class="cart"> カート <i class="fas fa-shopping-cart"></i></span>
         <% end %>
-        <%= link_to() do %>
+        <%= link_to(new_contact_path) do %>
         <span class="contact"> お問い合わせ</span>
         <% end %>
-        <%= link_to() do %>
+        <%= link_to(destroy_user_session_path, method: :delete) do %>
         <span class="signout"> サインアウト</span>
         <% end %>
         <!-- 非ログイン時 -->
