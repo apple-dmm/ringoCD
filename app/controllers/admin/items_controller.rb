@@ -10,24 +10,24 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @song = Song.new
+    @disk = @item.disks.build
+    @song = @disk.songs.build
+
+    @artist = Artist.where("name like ?", "%#{word}%")
   end
 
   def create
     @item = Item.new
     if @item.save
-    redirect_to
     else
-    render new
   end
   end
 
   private
+  #cocoon用記述。_destroyがないと削除できない。
   def item_params
-    params.require(:item).permit(:name, :price, :release)
-  end
-
-  def song_params
-    params.require(:song).permit(:name, :setlist, :disk_num)
+    params.require(:item).permit(:name, :price, :release, 
+      disks_attributes: [:id, :disk_num, :_destroy, 
+        songs_attribute: [:id, :name, :setlist, :_destroy]])
   end
 end
