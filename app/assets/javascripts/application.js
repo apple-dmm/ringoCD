@@ -10,10 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require jquery-ui
 //= require turbolinks
 //= require jquery
+//= require jquery-ui/widgets/autocomplete
 //= require bootstrap-sprockets
 //= require_tree .
 
