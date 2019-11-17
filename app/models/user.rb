@@ -9,8 +9,8 @@ class User < ApplicationRecord
   validates :address, presence: true, length: { maximum: 70 }
   validates :phone_number, presence: true, length: { maximum: 15 }
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  #validates :password, presence: true, length: { minimum: 6 }
+  #validates :password_confirmation, presence: true, length: { minimum: 6 }
 
 
   has_many :contacts

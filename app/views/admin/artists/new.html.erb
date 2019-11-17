@@ -1,2 +1,15 @@
-<h1>Admin::Artists#new</h1>
-<p>Find me in app/views/admin/artists/new.html.erb</p>
+<h2 class="text">歌手名の新規登録</h2>
+<div class="border"></div>
+<div class="blank"></div>
+
+<%= render 'admin/sidemenu' %>
+
+
+  <%= form_for @artist, url: admin_artists_path do |f| %>
+
+  <%= f.label :歌手名 %>
+  <%= f.text_field :name %>
+
+  <%= f.submit '登録する', class: "btn btn-primary" %>
+
+  <% end %>
