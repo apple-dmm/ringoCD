@@ -45,12 +45,11 @@
 	margin-left:20px;
 }
 header{
-	margin-bottom:50px;
+	height: 90px;
+	margin-bottom:20px;
 	display:block;
 }
-body{
-	margin-top:50px;
-}
+
 i{
 	color:#4682B4;
 }
@@ -80,15 +79,13 @@ text-decoration:underline;
 
 // ここからfooter
 
-.footer_text{
-	width:100%;
-	color:#4682B4;
-	text-align:center;
-}
 footer{
-	position: relative;
     bottom: 0;
     padding: 30px 0;
     width:100%;
 }
 
+.footer-text-content{
+	color:#4682B4;
+	text-align:center;
+}

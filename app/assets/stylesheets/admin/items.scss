@@ -46,6 +46,7 @@ ul {
 
 .search-box{
 	margin-top: 35px;
+	margin-bottom: 500px;
 }
 
 .attribution{
@@ -54,4 +55,9 @@ ul {
 	@each $i in $is{
 	option:nth-of-type(#{$i}) {display:none}
 	}
+}
+
+
+.search_field{
+	width: 400px;
 }

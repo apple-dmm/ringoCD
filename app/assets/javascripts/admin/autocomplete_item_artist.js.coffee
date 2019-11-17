@@ -1,5 +1,5 @@
 $ ->
-  $("#item_artist_field").autocomplete
+  $("#item_name_field").autocomplete
     source: (req, res) ->
       $.ajax
         url: "/items/autocomplete_artist/" + encodeURIComponent(req.term) + ".json",

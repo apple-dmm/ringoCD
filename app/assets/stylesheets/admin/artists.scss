@@ -1,3 +1,21 @@
 // Place all the styles related to the admin::artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h2 {
+	display: inline;
+	padding: 0 0 0 115px;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.text{
+  	text-align: center;
+}
+

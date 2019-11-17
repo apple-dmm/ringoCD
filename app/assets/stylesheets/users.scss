@@ -67,3 +67,28 @@ li {
 	margin: 20px;
 }
 
+.address-form td {
+	padding: 10px;
+	width: 500px;
+	border-style: none;
+}
+
+td {
+	white-space: nowrap;
+}
+
+.link-menu {
+	text-decoration: none;
+	color :#444444;
+}
+
+.link-menu:hover {
+	text-decoration: none;
+}
+
+.input-size {
+  	width: 350px;
+  	height: 35px !important;
+  	border-radius: 5px;
+  	border: 1px solid #ccc
+}
