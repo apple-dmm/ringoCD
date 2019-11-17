@@ -1,0 +1,14 @@
+<table class="address-table">
+	<tr>
+		<td width="10%">・宛名　　　　　:</td>
+		<td class="tablemenu"><%= f.text_field :name, class:'col-xs-7 ' %></td>
+	</tr>
+	<tr>
+		<td width="20%">・郵便番号　　　：<br><small>（ハイフンを除く７桁）</small></td>
+		<td class="tablemenu"><%= f.text_field :postal_code, class:'col-xs-9' %></td>
+	</tr>
+	<tr>
+		<td width="20%">・住所　　　　　：</td>
+		<td class="tablemenu"><%= f.text_field :address, class:'col-xs-12' %></td>
+	</tr>
+</table>
