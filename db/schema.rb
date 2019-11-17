@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_090829) do
     t.string "name"
     t.string "postal_code"
     t.string "address"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

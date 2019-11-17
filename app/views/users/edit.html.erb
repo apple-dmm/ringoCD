@@ -1,2 +1,85 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+	<h2>アカウント情報の編集</h2>
+		<div class="border"></div>
+		<%= form_for(@user) do |f| %>
+
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+
+
+				<div class="col-xs-3 col-xs-offset-3">
+       				<%= f.label :名前（姓）, class: "float-left" %><br />
+					<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3">
+					<%= f.label :名前（名）, class: "float-left" %><br />
+					<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3 col-xs-offset-3">
+       				<%= f.label :名前（セイ）, class: "float-left" %><br />
+       				<%= f.text_field :last_furigana, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3">
+       				<%= f.label :名前（メイ）, class: "float-left" %><br />
+       				<%= f.text_field :first_furigana, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :郵便番号（ハイフンを除いた７桁の数字） %><br />
+       				<%= f.text_field :postal_code, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :住所 %><br />
+       				<%= f.text_field :address, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :電話番号 %><br />
+       				<%= f.text_field :phone_number, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :メールアドレス %><br />
+       				<%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :パスワード %>
+       				<% if @minimum_password_length %>
+       				<em>(<%= @minimum_password_length %> characters minimum)</em>
+       				<% end %><br />
+       				<%= f.password_field :password, autocomplete: "new-password", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :パスワード（確認） %><br />
+       				<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-5">
+       				<h3>登録住所一覧</h3>
+
+					<%= render 'form', address: @address,f:f %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row text-center">
+			<div class="space"></div>
+				<%= f.submit "保存する", class: "btn btn-success mx-auto btn-lg" %>
+		</div>
+	    <% end %>
+
+
+ 		<div class="row">
+ 			<div class="col-xs-8 col-xs-offset-2">
+  				<%= link_to 'マイページへ', user_path(current_user.id), class: "btn btn-default btn-lg" %>
+  			</div>
+ 		</div>
+</div>
+
+

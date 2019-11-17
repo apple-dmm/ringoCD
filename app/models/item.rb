@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   attachment :image
 
   has_many :disks, inverse_of: :item
-  #cocoon用コード。親要素のレコード時に、子要素のレコードも同時に行う。allow_destroyで子要素の削除を許可している。
+  #親要素のレコード時に、子要素のレコードも同時に行う。allow_destroyで子要素の削除を許可している。
   accepts_nested_attributes_for :disks, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true

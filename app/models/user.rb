@@ -9,13 +9,14 @@ class User < ApplicationRecord
   validates :address, presence: true, length: { maximum: 70 }
   validates :phone_number, presence: true, length: { maximum: 15 }
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  #validates :password, presence: true, length: { minimum: 6 }
+  #validates :password_confirmation, presence: true, length: { minimum: 6 }
 
 
   has_many :contacts
   has_many :orders
-  has_many :addresses
+  has_many :addresses, inverse_of: :user
+  accepts_nested_attributes_for :addresses, reject_if: :all_blank, allow_destroy: true
   has_many :favorites
   has_many :cart_items
   has_many :reviews
