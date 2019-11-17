@@ -1,2 +1,22 @@
-<h1>Admin::Labels#new</h1>
-<p>Find me in app/views/admin/labels/new.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+
+			<h2 class="text">レーベルの新規登録</h2>
+			<div class="border"></div>
+			<div class="blank"></div>
+
+
+			  <%= form_for @label, url: admin_labels_path do |f| %>
+
+			  <%= f.label :レーベル %>
+			  <%= f.text_field :name %>
+
+			  <%= f.submit '登録する', class: "btn btn-primary" %>
+
+			  <% end %>
+		</div>
+	</div>
+</div>
