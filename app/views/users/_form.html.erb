@@ -1,0 +1,10 @@
+  <div class="field">
+    <%= f.fields_for :addresses do |address| %>
+      <%= render 'address_fields', f: address %>
+    <% end %>
+
+        <div id="links">
+          <%= link_to_add_association '送付先の追加',f, :addresses %>
+        </div>
+
+  </div>
