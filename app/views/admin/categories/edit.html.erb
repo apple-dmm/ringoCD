@@ -1,2 +1,25 @@
-<h1>Admin::Categories#edit</h1>
-<p>Find me in app/views/admin/categories/edit.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+
+			<h2 class="text">ジャンルの編集・削除</h2>
+			<div class="border"></div>
+			<div class="blank"></div>
+
+
+
+			  <%= form_for @category, url: admin_category_path do |f| %>
+
+			  <%= f.label :ジャンル %>
+			  <%= f.text_field :name, autofocus: true %>
+
+			  <%= f.submit '保存する', class: "btn btn-primary" %>
+
+			  <%= link_to '削除する', admin_category_path, method: :delete , class: 'btn btn-primary' %>
+
+			  <% end %>
+		</div>
+	</div>
+</div>

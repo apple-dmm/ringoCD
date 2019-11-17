@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    currect_user
     @user = current_user
     @address = @user.addresses
     @addresses = @user.addresses

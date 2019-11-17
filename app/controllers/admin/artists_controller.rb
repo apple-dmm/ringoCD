@@ -22,7 +22,7 @@ class Admin::ArtistsController < ApplicationController
   	#update_attributesとは?
   	#Hashを引数に渡してデータベースのレコードを複数同時に更新することができるメソッド
     if @artist.update_attributes(artist_params)
-    	redirect_to admin_items_path
+    	redirect_to edit_admin_artist_path
     else
       render 'edit'
   end
@@ -31,7 +31,7 @@ end
   	 def destroy
     Artist.find(params[:id]).destroy
     flash[:success] = "アーティストを削除しました"
-      redirect_to admin_items_path
+      redirect_to new_admin_artist_path
   end
 
   private

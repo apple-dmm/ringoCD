@@ -1,15 +1,21 @@
-<h2 class="text">歌手名の新規登録</h2>
-<div class="border"></div>
-<div class="blank"></div>
-
 <%= render 'admin/sidemenu' %>
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
 
-  <%= form_for @artist, url: admin_artists_path do |f| %>
+			<h2 class="text">歌手名の新規登録</h2>
+			<div class="border"></div>
+			<div class="blank"></div>
 
-  <%= f.label :歌手名 %>
-  <%= f.text_field :name %>
+			  <%= form_for @artist, url: admin_artists_path do |f| %>
 
-  <%= f.submit '登録する', class: "btn btn-primary" %>
+			  <%= f.label :歌手名 %>
+			  <%= f.text_field :name %>
 
-  <% end %>
+			  <%= f.submit '登録する', class: "btn btn-primary" %>
+
+			  <% end %>
+		</div>
+	</div>
+</div>
