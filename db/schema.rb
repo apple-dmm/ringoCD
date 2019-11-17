@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_090829) do
+ActiveRecord::Schema.define(version: 2019_11_17_042657) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_090829) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "address_id"
+    t.integer "order_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -129,6 +131,10 @@ ActiveRecord::Schema.define(version: 2019_11_14_090829) do
     t.integer "delivery_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "card_num"
+    t.string "card_name"
+    t.integer "securitycode"
+    t.integer "order_id"
   end
 
   create_table "replies", force: :cascade do |t|

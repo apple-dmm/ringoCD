@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :cart_items, only: [:create, :destroy, :index, :update]
   resources :orders, only: [:create, :index, :new]
-  get 'orders/:id/confirm' => 'orders#confirm'
+  get 'orders/confirm' => 'orders#confirm', as:'confirm_order'
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
   resources :favorites, only: [:create, :destroy, :index]
