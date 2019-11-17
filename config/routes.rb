@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :arrivals, only: [:new, :create, :index]
     resources :items, only: [:show, :edit, :new, :create, :update, :index, :destroy]
     get 'items/autocomplete_artist/:term' => 'items#autocomplete_artist'
+    get 'items/autocomplete_category/:term' => 'items#autocomplete_category'
+    get 'items/autocomplete_label/:term' => 'items#autocomplete_label'
     resources :users, only: [:show, :edit, :update, :index, :destroy]
   end
   # ユーザー

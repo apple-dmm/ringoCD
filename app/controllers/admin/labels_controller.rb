@@ -30,7 +30,7 @@ class Admin::LabelsController < ApplicationController
 
   	 def destroy
     Label.find(params[:id]).destroy
-    flash[:success] = "アーティストを削除しました"
+    flash[:success] = "レーベルを削除しました"
       redirect_to new_admin_label_path
   end
 
