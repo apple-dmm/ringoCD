@@ -1,2 +1,13 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container">
+	<h2>カート内商品一覧</h2>
+	<div class="border"></div>
+	<div class="row">
+		<% if @cart_items.any? %>
+		<h4 class="cart-message">現在カートには、こちらの商品が入っております。</h4>
+		<% end %>
+
+		<% if @cart_items.nil? %>
+		<h4 class="cart-message">現在お客様のショッピングカートに商品はありません。</h4>
+		<% end %>
+	</div>
+</div>
