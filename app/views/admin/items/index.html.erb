@@ -22,11 +22,11 @@
 
 			<span class="actions"><%= f.submit "検索", class:"btn btn-success" %></span>
 
-			<% if @items.any? %>
-			   <%= render 'admin/items/search-result', @items %>
+			<% if @users.any? %>
+			   <%= render 'admin/items/search-result', @users %>
 			 <% end %>
 
-			 <% if @items.nil? %>
+			 <% if @users.nil? %>
 			 <h6>検索する商品がありません。キーワードを変えてください。</h6>
 			 <% end %>
 
