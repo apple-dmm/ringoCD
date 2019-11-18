@@ -1,2 +1,48 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<h2><%= @user.last_name %>様</h2>
+	<div class="border-admin"></div>
+	<div class="row">
+		<div class="col-xs-6">
+			<%= form_for (@user) do |f| %>
+				<table class="table table-striped table-bordered user_show_table" >
+					<tbody>
+						<tr>
+							<div class="field">
+								<th><label class="item-name">名前（漢字）</label></th>
+								<th><%= f.text_field :last_name %>  <%= f.text_field :first_name %></th>
+							</div>
+						</tr>
+						<tr>
+							<div class="field">
+								<th><label class="item-price">名前（カナ）</label></th>
+								<th><%= f.text_field :last_furigana %>  <%= f.text_field :first_furigana %></th>
+							</div>
+						</tr>
+						<tr>
+							<div class="field">
+								<th><label class="item-name">郵便番号<br><small>(ハイフンを除く７桁)</small></label></th>
+								<th><%= f.text_field :postal_code %></th>
+							</div>
+						</tr>
+						<tr>
+							<th>住所</th>
+							<th><%= f.text_field :address,class:"col-xs-10" %></th>
+						</tr>
+						<tr>
+							<th>電話番号</th>
+							<th><%= f.text_field :phone_number,class:"col-xs-10" %></th>
+						</tr>
+						<tr>
+							<th>メールアドレス</th>
+							<th><%= f.text_field :email,class:"col-xs-10" %></th>
+						</tr>
+					</tbody>
+				</table>
+				<%= link_to "削除する" ,admin_user_path(params[:id]), method: :delete, class:"btn btn-primary col-xs-4 col-xs-offset-1" %>
+				<%= f.submit '保存する', class:'btn btn-success col-xs-4 col-xs-offset-2' %>
+			<% end %>
+		</div>
+	</div>
+</div>

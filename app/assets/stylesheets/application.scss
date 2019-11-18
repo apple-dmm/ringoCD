@@ -21,7 +21,103 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
-// ここからheader
+
+/*ここからUSER*/
+
+
+
+.user-title {
+	display: inline;
+	padding: 0 0 0 115px;
+}
+
+.icon {
+	font-size: 20px;
+}
+
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.jumbotron {
+	height: 300px;
+	margin: auto;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+
+.space{
+    height: 20px;
+    margin: 0 auto;
+}
+
+.blank{
+    height: 200px;
+    margin: 0 auto;
+}
+
+.vacuum{
+	height: 100px;
+	margin: 0 auto;
+}
+
+.text{
+  	text-align: center;
+}
+
+.end_user {
+	margin-top: 30px;
+}
+
+.menu {
+	height: 30%;
+	padding: 10px;
+}
+
+.content {
+	width: 100%;
+	margin-bottom: 0;
+}
+
+li {
+	font-size: 20px;
+	margin: 20px;
+}
+
+.address-form td {
+	padding: 10px;
+	width: 500px;
+	border-style: none;
+}
+
+td {
+	white-space: nowrap;
+}
+
+.link-menu {
+	text-decoration: none;
+	color :#444444;
+}
+
+.link-menu:hover {
+	text-decoration: none;
+}
+
+.input-size {
+  	width: 350px;
+  	height: 35px !important;
+  	border-radius: 5px;
+  	border: 1px solid #ccc
+}
+
+/*ここからheader*/
 
 .signup{
 	color:#4682B4;
@@ -77,7 +173,7 @@ text-decoration:underline;
 	float:right;
 }
 
-// ここからfooter
+/*ここからフッダー*/
 
 footer{
     bottom: 0;
@@ -88,4 +184,263 @@ footer{
 .footer-text-content{
 	color:#4682B4;
 	text-align:center;
+}
+
+
+
+/*サイドメニュー*/
+
+ul {
+  padding: 0;
+}
+
+.detail-list{
+  color: #404040;
+  border-left: solid 6px #4682B4;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: whitesmoke;
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+  font-weight: bold;
+}
+
+
+
+/*item*/
+
+
+
+/*商品登録タイトル*/
+
+.registration-items{
+	text-align: center;
+}
+
+.border{
+	width: 80%;
+	height: 2px;
+	background-color:#dadada;
+	margin: 0 auto;
+}
+
+.registration-contents{
+	margin-top: 50px;
+}
+
+
+#input_plural {
+    margin: 10px 0;
+}
+
+/*数字入力フォームの長さ*/
+
+.number_field{
+	width: 35px;
+}
+
+.search-box{
+	margin-top: 35px;
+	margin-bottom: 500px;
+}
+
+.attribution{
+	$is: 1,6,7,8,9,10,11,12;
+
+	@each $i in $is{
+	option:nth-of-type(#{$i}) {display:none}
+	}
+}
+
+
+.search_field{
+	width: 400px;
+}
+
+
+
+/* user-order */
+
+/*//confirm*/
+
+
+.confirm-title{
+	font-size:30px;
+	text-align:center;
+	margin-top:50px;
+}
+.confirm-body{
+	text-align:center;
+	font-size:15px;
+	display:block;
+	margin-top:40px;
+}
+.box1{
+	margin-top:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:center;
+}
+
+
+
+
+
+/*//index*/
+
+.index-title{
+	padding: 0 0 0 115px;
+	margin-top:50px;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.delivery-status{
+	padding-top:30px;
+	font-size:20px;
+}
+
+#pageTop {
+  text-align: center;
+  border: solid 1px #000000;
+}
+
+#pageTop a {
+  display: block;
+  padding: 0.5em 1em;
+  color:black;
+}
+
+.index-box1{
+	margin:50px 0;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:center;
+}
+
+
+
+
+/*//new*/
+
+
+.new-title{
+	font-size:20px;
+	margin-top:60px;
+	margin-left:60px;
+}
+
+.border {
+    width: 90%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.user_last-name{
+	margin-right:10px;
+}
+.new-table{
+	margin-top:30px;
+	font-size:15px;
+}
+table td{
+	padding:10px;
+}
+
+.new-2title{
+	font-size:20px;
+	margin-top:50px;
+	margin-left:60px;
+}
+
+.credit{
+	margin-top:30px;
+}
+
+.input{
+	margin-bottom:20px;
+	margin-left:10px;
+}
+
+.card-payment{
+	margin:10px 0 10px 30px;
+}
+
+.bank_num{
+	margin:0 0 0 10px;
+	font-size:8px;
+}
+
+.daibiki{
+	margin-top:20px;
+}
+.daibiki_num{
+	margin:0 0 20px 10px;
+	font-size:8px;
+}
+
+.tablemenu{
+	float:left;
+}
+
+.registrated-address{
+	margin-bottom:20px
+}
+
+.sum{
+	margin-top:50px;
+	margin-bottom:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:right;
+}
+
+
+
+
+/* admin_user  */
+
+
+/*   show  */
+
+
+.edit_user{
+	float:right;
+	color:black;
+	margin-right:50px;
+}
+
+.border-admin {
+    width: 70%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 0 0 270px;
+}
+
+.user_table{
+	width:30%;
+}
+
+.admin-usershow-box{
+	margin-top:50px;
+	margin-bottom:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:center;
+}
+
+.user_show_table{
+	margin-top:50px;
+	margin-left:20px;
 }
