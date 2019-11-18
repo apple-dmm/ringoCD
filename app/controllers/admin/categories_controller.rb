@@ -30,7 +30,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
 	Category.find(params[:id]).destroy
-	flash[:success] = "アーティストを削除しました"
+	flash[:success] = "ジャンルを削除しました"
 	redirect_to new_admin_category_path
   end
 
