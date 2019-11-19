@@ -7,6 +7,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @disks = Disk.where(item_id: @item.id)
+    songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
+    binding.pry
   end
 
   def edit
