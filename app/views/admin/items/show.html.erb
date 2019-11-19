@@ -1,2 +1,81 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<%= render 'admin/sidemenu' %>
+		<div class="col-xs-9">
+			<div class="admin-item-detail-title">
+				<p class="admin-item-detail">
+					<h3 style="display:inline;">商品の詳細</h3>
+					<span class="admin-item-detail-id">商品ID  <%= @item.id %></span>
+				</p>
+			</div>
+			<div class="border"></div>
+
+			<div class="admin-item-detail-content">
+				<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<div class="before-songlist">
+							<div class="show-head">
+							<div class="sales-status-box">
+								<span class="sales-status"><%= @item.status %></span>
+							</div>
+
+							<div class="admin-item-edit">
+								<div class="admin-iteminfo-edit">
+									<%= link_to "商品を編集する", edit_admin_item_path, class:"glyphicon glyphicon-pencil" %>
+								</div>
+								<div class="admin-input-arrival">
+									<%= link_to "入荷情報を入力する", edit_admin_item_path, class:"glyphicon glyphicon-pencil" %>
+								</div>
+							</div>
+							</div>
+
+							<div class="samuneiru-position">
+								<%= attachment_image_tag @item, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
+							</div>
+
+							<div class="admin-item-names">
+								<span class="admin-item-name"><%= @item.name %></span><br>
+								<span class="admin-item-artist"><%= @item.artist.name %></span><br>
+								<span class="admin-item-release">発売日　<%= @item.release.strftime("%Y年%m月%d日") %></span><br>
+								<span class="admin-item-label"><%= @item.label.name %></span><br>
+							</div>
+
+							<div class="admin-item-total-stock-box clearfix">
+								<div class="category-name-box">
+									<span class="category-name"><%= @item.category.name %></span>
+								</div>
+								<div class="stock-quantity-box">
+									<span class="stock-quantity">在庫有</span>
+								</div>
+								<div class="admin-item-price">
+									<span class="admin-item-price-text"><%= @item.price %> 円<span class="admin-item-price-tax">（税抜）</span></span>
+								</div>
+
+								<div class="stock-quantity-detail">
+									<!-- 在庫数が変わるように随時変更 -->
+									<span class="stock-quantity-detail-text">在庫数：10点</span>
+								</div>
+							</div>
+							</div>
+
+						<div class="border"></div>
+							<h4 class="songlist-index">収録曲一覧</h4>
+							<% @disks.each do |disk| %>
+							<table class="table table-hover">
+								
+								<caption>Disk<%= disk.disk_num %></caption>
+								<% disk.songs.each do |song| %>
+								<tbody>
+									<tr>
+										<td><%= song.setlist %></td>
+										<td><%= song.name %></td>
+									</tr>
+									<% end %>
+								</tbody>
+								<% end %>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
