@@ -1,2 +1,60 @@
-<h1>Admin::Arrivals#index</h1>
-<p>Find me in app/views/admin/arrivals/index.html.erb</p>
+<%= render 'admin/sidemenu' %>
+	<div class="col-xs-9">
+		<h3 class="registration-items">入荷履歴</h3>
+		<div class="border"></div>
+
+			<div class="arrival-items-index">
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1">
+					<table class="table table-striped table-bodered">
+						<thead>
+							<tr>
+								<th>入荷日</th>
+								<th colspan="2" class="colspan">商品名</th>
+								<th>歌手名</th>
+								<th>価格（税抜）</th>
+								<th>入荷数</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @arrivals.each do |arrival| %>
+							<tr>
+								<th><%=	arrival.arrival_date.strftime("%Y年%m月%d日") %></th>
+								<th><%= attachment_image_tag arrival.item, :image_id, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg",size: "50x50" %></th>
+								<th><%= link_to arrival.item.name, edit_admin_item_path(arrival.item.id) %></th>
+								<th><%= arrival.item.artist.name %></th>
+								<th><%= arrival.item.price %>円</th>
+								<th><%= arrival.arrival_quantity %></th>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1">
+					<%= paginate @arrivals, class: "paginate" %>
+					<p id="pageTop"><a href="#">ページトップへ</a></p>
+						<script type='text/javascript'>
+							$(function(){
+							$('a[href^="#"]').click(function() {
+								var speed = 400;
+								var href= $(this).attr("href");
+  								var target = $(href == "#" || href == "" ? 'html' : href);
+  								var position = target.offset().top;
+  								$('body,html').animate({scrollTop:position}, speed, 'swing');
+  								return false;
+  							});
+							});
+						</script>
+				</div>
+			</div>
+	</div>
+
+
+
+
+
+
+

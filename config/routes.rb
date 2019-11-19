@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:create, :edit, :update, :new, :destroy]
     resources :artists, only: [:create, :edit, :update, :new, :destroy]
     resources :orders, only: [:show, :index]
-    resources :arrivals, only: [:new, :create, :index]
+    resources :arrivals, only: [:new, :create, :index, :edit]
     resources :items, only: [:show, :edit, :new, :create, :update, :index, :destroy]
     get 'items/autocomplete_artist/:term' => 'items#autocomplete_artist'
     get 'items/autocomplete_category/:term' => 'items#autocomplete_category'

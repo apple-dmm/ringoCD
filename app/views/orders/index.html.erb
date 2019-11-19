@@ -12,9 +12,19 @@
    </div>
 	<div class="row">
 		<%= link_to(user_path(current_user.id)) do %>
+		<script>
+      $(function(){
+        $('a[href^="#"]').click(function() {
+          var speed = 400;
+          var href= $(this).attr("href");
+          var target = $(href == "#" || href == "" ? 'html' : href);
+          var position = target.offset().top;
+          $('body,html').animate({scrollTop:position}, speed, 'swing');
+          return false;
+        });
+      });
+    </script>
 		<div class="col-xs-2 col-xs-offset-3 index-box1">マイページへ</div>
 		<% end %>
 	</div>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/pagetop.js"></script>
 </div>
