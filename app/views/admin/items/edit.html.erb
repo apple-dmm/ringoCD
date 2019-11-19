@@ -1,2 +1,19 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<%= render 'admin/sidemenu' %>
+		<div class="col-xs-9">
+			<h3 class="edit-items">登録済商品の編集</h3>
+			<div class="border"></div>
+				<div class="admin-item-delete-test">
+					<%= link_to "登録商品を削除する", admin_item_path(params[:id]), method: :delete, class:"glyphicon glyphicon-pencil", data: {confirm: "本当に削除しますか？"} %>
+				</div>
+
+			<div class="edit-contents">
+				<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<%= render 'form_edit', item: @item %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

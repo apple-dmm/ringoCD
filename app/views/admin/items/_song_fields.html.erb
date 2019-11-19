@@ -1,8 +1,9 @@
 <div class="nested-fields form-inline">
 	<div class="form-group">
 		<label class="song-setlist">No.</label>
-		<%= f.number_field :setlist, value:"1", min:"1", max:"99", class:"number_field" %>
+		<%= f.number_field :setlist, min:"1", max:"99", class:"number_field" %>
 		<label class="song-setlist">曲名</label>
-		<%= f.text_field :name %>
+		<%= f.text_field :name, class:"song-setlist_field" %>
+		<%= link_to_remove_association "削除", f %>
 	</div>
 </div>
