@@ -1,9 +1,8 @@
 class Admin::UsersController < ApplicationController
   def index
-  	@user = User.all
   	@q = User.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
-    @users = @q.result(distinct: true).page(params[:page]).per(30)
+    @user_result = @q.result(distinct: true).page(params[:page]).per(30)
   end
 
   def show
