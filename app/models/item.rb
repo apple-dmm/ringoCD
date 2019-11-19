@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_many :favorites
   has_many :item_orders
   has_many :reviews
-  belongs_to :cart_item
+  has_many :cart_item
   belongs_to :artist
   belongs_to :category
   belongs_to :label

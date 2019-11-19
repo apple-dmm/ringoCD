@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :categories, only: [:create, :edit, :update, :new, :destroy]
     resources :artists, only: [:create, :edit, :update, :new, :destroy]
     resources :orders, only: [:show, :index]
-    resources :arrivals, only: [:new, :create, :index]
+    resources :arrivals, only: [:new, :create, :index, :edit]
     resources :items, only: [:show, :edit, :new, :create, :update, :index, :destroy]
     get 'items/autocomplete_artist/:term' => 'items#autocomplete_artist'
+    get 'items/autocomplete_category/:term' => 'items#autocomplete_category'
+    get 'items/autocomplete_label/:term' => 'items#autocomplete_label'
     resources :users, only: [:show, :edit, :update, :index, :destroy]
   end
   # ユーザー
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :cart_items, only: [:create, :destroy, :index, :update]
   resources :orders, only: [:create, :index, :new]
-  get 'orders/:id/confirm' => 'orders#confirm'
+  get 'orders/confirm' => 'orders#confirm', as:'confirm_order'
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
   resources :favorites, only: [:create, :destroy, :index]

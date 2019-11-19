@@ -1,2 +1,61 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h2 class="admin-index-title">顧客一覧</h2>
+			<div class="border"></div>
+			<div class="search-box col-xs-10 col-xs-offset-1">
+
+				<%= search_form_for @q, url: admin_users_path, html: {class: 'user_sereach'} do |f| %>
+				<%= f.condition_fields do |c| %>
+				<%= c.attribute_fields do |a| %>
+				<%= a.attribute_select associations:[:email] %>
+				<% end %>
+				<%= c.hidden_field :p, value: "cont_all" %>
+
+				<%= c.value_fields do |v| %>
+				<%= v.search_field :value, class:"search_field", placeholder: '検索ワードを入力' %>
+				<% end %>
+				<% end %>
+
+				<span class="actions"><%= f.submit "検索", class:"btn btn-success" %></span>
+			 	<% end %>
+
+
+			 	<% if @user_result.any? %>
+				<h5 class="search-result">検索結果<%= @user_result.count %>件</h5>
+
+
+				<table class='col-xs-12 table table-hover table-inverse'>
+  					<thead>
+    					<tr>
+      						<th><b>ID</b></th>
+      						<th><b>顧客名</b></th>
+      						<th><b>住所</b></th>
+      						<th><b>メールアドレス</b></th>
+    					</tr>
+  					</thead>
+  					<% @user_result.each do |user| %>
+  					<tbody>
+    					<tr>
+      						<td><%= user.id %></td>
+      						<td><%= link_to user.last_name ,admin_user_path(user) %></td>
+      						<td><%= user.address %></td>
+      						<td><%= user.email %></td>
+    					</tr>
+    					<% end %>
+  					</tbody>
+				</table>
+				<% else %>
+			 		<h6>検索する商品がありません。キーワードを変えてください。</h6>
+			 	<% end %>
+			</div>
+		</div>
+	</div>
+   <div class="row">
+	<div class="col-xs-6 col-xs-offset-3">
+	 <p id="pageTop"><a href="#">ページのトップへ戻る</a></p>
+	</div>
+   </div>
+</div>

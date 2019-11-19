@@ -25,14 +25,93 @@
 		</div>
 	</div>
 	<div class="border"></div>
+
 	<h2 class="new-2title">お支払い方法の選択</h2>
 	<div class="border"></div>
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-1 credit">
-			<input type="radio" name="payment" value="0">クレジットカードでのお支払い
-			<h5 class="input">・番号入力</h5>
-			<h5 class="input">・カード名義</h5>
-			<h5 class="input">・セキュリティコード</h5>
+			<input type="radio" name="payment" value="0"> クレジットカードでのお支払い
+			<%= form_for (@order) do |f| %>
+				<table class="credit-table">
+					<tr>
+						<td width="10%"><%= f.label :card_num, "・カード番号" %></td>
+						<td class="creditmenu"><%= f.text_field :card_num, class:'col-xs-12 ' %></td>
+					</tr>
+					<tr>
+						<td width="20%"><%= f.label :card_name, "・カード名義" %></td></td>
+						<td class="creditmenu"><%= f.text_field :card_name, class:'col-xs-9' %></td>
+					</tr>
+					<tr>
+						<td width="50%"><%= f.label :securitycode, "・セキュリティコード" %></td>
+						<td class="creditmenu"><%= f.text_field :securitycode, class:'col-xs-4' %></td>
+					</tr>
+				</table>
+			<div class="card-payment">
+				<input type="radio" name="credit" value="0"> 一括払い
+			</div>
+			<div class="card-payment">
+				<input type="radio" name="credit" value="1"> 分割払い
+			</div>
+			<div class="card-payment">
+				<input type="radio" name="credit" value="2"> リボ払い
+			</div>
+			<div class="bank-payment">
+				<input type="radio" name="payment" value="1"> 銀行でのお支払い
+				<h6 class="bank_num">代金のお支払い後に商品が発送されます。なお、お支払いの際に必要となるお支払い番号は、<br>出荷準備に入り次第発行されます。</h6>
+			</div>
+			<div class="daibiki">
+				<input type="radio" name="payment" value="2"> 代引きでのお支払い
+				<h6 class="daibiki_num">代引き手数料がかかります。</h6>
+			</div>
 		</div>
+	</div>
+	<div class="border"></div>
+
+	<h2 class="new-2title">お届け先住所変更</h2>
+	<div class="border"></div>
+	<div class="row">
+		<div class="col-xs-11 col-xs-offset-1 credit">
+			<input type="radio" name="address" value="0" required > 登録先の住所とは別の住所を使う
+			<%= f.fields_for :address do |i| %>
+			<table class="address-table">
+				<tr>
+					<td width="10%"><%= i.label :name, "・宛名　　　　：" %></td>
+					<td class="tablemenu"><%= i.text_field :name, class:'col-xs-7 ' %></td>
+				</tr>
+				<tr>
+					<td width="20%"><%= i.label :postal_code, "・郵便番号　　：" %><br><small>（ハイフンを除く７桁）</small></td>
+					<td class="tablemenu"><%= i.text_field :postal_code, class:'col-xs-9' %></td>
+				</tr>
+				<tr>
+					<td width="20%"><%= i.label :address, "・住所　　　　：" %></td>
+					<td class="tablemenu"><%= i.text_field :address, class:'col-xs-12' %></td>
+				</tr>
+			</table>
+			<% end %>
+			<h7>＊以前登録した住所を使う。</h7>
+			<div class="registrated-address">
+				<input type="radio" name="address" value="1"> @address.address
+			</div>
+		</div>
+	</div>
+	<div class="border"></div>
+
+	<h2 class="new-2title">合計金額</h2>
+	<div class="border"></div>
+	<div class="col-xs-6 col-xs-offset-5 sum ">計</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				<%= f.submit '購入する', class:'btn btn-success col-xs-12' %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<%= link_to(cart_items_path) do %>
+		<div class="col-xs-2 col-xs-offset-3 box1">カートへ戻る</div>
+		<% end %>
+		<%= link_to(items_path) do %>
+		<div class="col-xs-2 col-xs-offset-2 box1">商品一覧へ</div>
+		<% end %>
 	</div>
 </div>
