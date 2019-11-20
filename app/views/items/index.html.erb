@@ -23,30 +23,19 @@
 
 
     <% if @items.any? %>
-	<h5 class="search-result">検索結果<%= @item.count %>件</h5>
+	<h5 class="search-result">検索結果<%= @items.count %>件</h5>
 
 
-      <table border="1" width="350" height="250">
 
 		 <% @items.each do |item| %>
 
 		 <tbody>
 				<tr>
 					<td>
-						<%= item.id %>
-						<%= link_to @item.image.id, item_path(@item) %>
-					    <%=link_to @item.name, item_path(@item) %>
-					    <%= link_to @item.artist.name, item_path(@item) %>
-					    <%= item.price %>
-						<%= item.arrival_quantity %>
+
 					</td>
 					<td>
-						<%= item.id %>
-						<%= link_to @item.image.id, item_path(@item) %>
-					    <%=link_to @item.name, item_path(@item) %>
-					    <%= link_to @item.artist.name, item_path(@item) %>
-					    <%= item.price %>
-						<%= item.arrival_quantity %>
+
 					</td>
 				</tr>
 			 <% end %>
@@ -71,27 +60,15 @@
             <div class="pic7"></div>
         </div>
 
-      <table border="1" width="350" height="250">
 
 	    <% @items.each do |item| %>
 
 		 <tbody>
 				<tr>
 					<td>
-						<%= item.id %>
-						<%= link_to @item.image.id, item_path(@item) %>
-					    <%=link_to @item.name, item_path(@item) %>
-					    <%= link_to @item.artist.name, item_path(@item) %>
-					    <%= item.price %>
-						<%= item.arrival_quantity %>
 					</td>
 					<td>
-						<%= item.id %>
-						<%= link_to @item.image.id, item_path(@item) %>
-					    <%=link_to @item.name, item_path(@item) %>
-					    <%= link_to @item.artist.name, item_path(@item) %>
-					    <%= item.price %>
-						<%= item.arrival_quantity %>
+
 					</td>
 				</tr>
 			 <% end %>
