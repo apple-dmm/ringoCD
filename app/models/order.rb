@@ -6,4 +6,5 @@ class Order < ApplicationRecord
   has_many :addresses
   belongs_to :user
   accepts_nested_attributes_for :addresses
+acts_as_paranoid
 end

@@ -11,8 +11,7 @@
 	</div>
    </div>
 	<div class="row">
-		<%= link_to(user_path(current_user.id)) do %>
-		<script>
+	<script>
       $(function(){
         $('a[href^="#"]').click(function() {
           var speed = 400;
@@ -24,6 +23,7 @@
         });
       });
     </script>
+    	<%= link_to(user_path(current_user)) do %>
 		<div class="col-xs-2 col-xs-offset-3 index-box1">マイページへ</div>
 		<% end %>
 	</div>
