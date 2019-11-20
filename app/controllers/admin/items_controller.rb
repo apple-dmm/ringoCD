@@ -10,10 +10,12 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
-    binding.pry
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @disk = @item.disks.build
+    @song = @disk.songs.build
   end
 
   def new
@@ -70,11 +72,34 @@ class Admin::ItemsController < ApplicationController
   end
   end
 
+  def update
+    @artist = Artist.find_by(name: params[:item][:artist_id])
+    @label = Label.find_by(name: params[:item][:label_id])
+    @category = Category.find_by(name: params[:item][:category_id])
+
+    @item = Item.find(params[:id])
+    @item.artist_id = @artist.id
+    @item.label_id = @label.id
+    @item.category_id = @category.id
+    if @item.update(item_params)
+      redirect_to admin_item_path(params[:id])
+    else
+      puts @item.errors.full_messages
+      render 'edit'
+  end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to admin_items_path
+  end
+
 
   private
   #cocoon用記述。_destroyがないと削除できない。
   def item_params
-    params.require(:item).permit(:name, :price, :release, :image, :artist_id, :label_id, :category_id, 
+    params.require(:item).permit(:name, :price, :release, :image, 
       disks_attributes: [:id, :disk_num, :_destroy,
         songs_attributes: [:id, :name, :setlist, :_destroy]])
   end

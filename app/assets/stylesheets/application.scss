@@ -12,6 +12,8 @@
  *
  *= require_self
  *= require jquery-ui/autocomplete
+ *= require_tree .
+
 
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
@@ -173,7 +175,42 @@ text-decoration:underline;
 	float:right;
 }
 
+
+.theTarget{
+	height: 500px !important;
+}
+
+.pic1{
+	background-image: image-url("ringo.jpeg");
+	background-position: center 40%;
+}
+.pic2{
+	background-image: image-url("oral.jpeg");
+	background-position: center 10%;
+}
+.pic3{
+	background-image: image-url("blackpink.jpeg");
+	background-position: center 25%;
+}
+.pic4{
+	background-image: image-url("dog.jpeg");
+	background-position: center 62%;
+}
+.pic5{
+	background-image: image-url("ric.jpg");
+	background-position: center 22%;
+}
+.pic6{
+	background-image: image-url("zoc.jpeg");
+	background-position: center;
+}
+.pic7{
+	background-image: image-url("utikubi.jpeg");
+	background-position: center 53%;
+}
+
 /*ここからフッダー*/
+
 
 footer{
     bottom: 0;
@@ -238,6 +275,10 @@ ul {
 
 .number_field{
 	width: 35px;
+}
+
+.song-setlist_field{
+	width: 350px;
 }
 
 .search-box{
@@ -567,6 +608,7 @@ table td{
 }
 
 
+
 /* ここからReview */
 
 
@@ -594,3 +636,40 @@ table td{
 .review-height{
 	height:100px;
 }
+
+.edit-items{
+	text-align: center;
+}
+
+.edit-contents{
+	margin-top: 8px;
+}
+
+.admin-item-delete-test{
+	margin-top: 30px;
+	text-align: right;
+	margin-right: 100px;
+}
+
+/* arrivals  */
+
+
+/*   edit  */
+
+.arrival-item {
+	margin-top: 30px;
+}
+
+.must-field {
+	color: #E36363;
+}
+
+
+
+/*   index  */
+
+.arrival-items-index {
+	margin-top: 30px;
+}
+
+

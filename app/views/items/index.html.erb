@@ -1,2 +1,118 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+
+　　<div class="search-box-user-index col-xs-6 col-xs-offset-3">
+
+		<%= search_form_for @q, html: {class: 'attribution'} do |f| %>
+		<%= f.condition_fields do |c| %>
+		<%= c.attribute_fields do |a| %>
+		<%= a.attribute_select associations: [:artist, :category, :label] %>
+		<% end %>
+
+		<%= c.hidden_field :p, value: "cont_all" %>
+
+		<%= c.value_fields do |v| %>
+		<%= v.search_field :value, placeholder: '検索ワードを入力' %>
+		<% end %>
+		<% end %>
+
+		<span class="actions">
+			<%= f.submit "検索", class:"btn btn-success" %>
+		</span>
+
+		<% end %>
+　　</div>
+
+
+    <% if @items.any? %>
+	<h5 class="search-result">検索結果<%= @item.count %>件</h5>
+
+
+      <table border="1" width="350" height="250">
+
+		 <% @items.each do |item| %>
+
+		 <tbody>
+				<tr>
+					<td>
+						<%= item.id %>
+						<%= link_to @item.image.id, item_path(@item) %>
+					    <%=link_to @item.name, item_path(@item) %>
+					    <%= link_to @item.artist.name, item_path(@item) %>
+					    <%= item.price %>
+						<%= item.arrival_quantity %>
+					</td>
+					<td>
+						<%= item.id %>
+						<%= link_to @item.image.id, item_path(@item) %>
+					    <%=link_to @item.name, item_path(@item) %>
+					    <%= link_to @item.artist.name, item_path(@item) %>
+					    <%= item.price %>
+						<%= item.arrival_quantity %>
+					</td>
+				</tr>
+			 <% end %>
+	     </tbody>
+	  </table>
+
+			 <% else %>
+
+			 <h6>検索する商品がありません。キーワードを変えてください。
+			 </h6>
+			 <% end %>
+
+　　　　　<!--商品の検索前-->
+
+        <div class="theTarget">
+            <div class="pic1"></div>
+            <div class="pic2"></div>
+            <div class="pic3"></div>
+            <div class="pic4"></div>
+            <div class="pic5"></div>
+            <div class="pic6"></div>
+            <div class="pic7"></div>
+        </div>
+
+      <table border="1" width="350" height="250">
+
+	    <% @items.each do |item| %>
+
+		 <tbody>
+				<tr>
+					<td>
+						<%= item.id %>
+						<%= link_to @item.image.id, item_path(@item) %>
+					    <%=link_to @item.name, item_path(@item) %>
+					    <%= link_to @item.artist.name, item_path(@item) %>
+					    <%= item.price %>
+						<%= item.arrival_quantity %>
+					</td>
+					<td>
+						<%= item.id %>
+						<%= link_to @item.image.id, item_path(@item) %>
+					    <%=link_to @item.name, item_path(@item) %>
+					    <%= link_to @item.artist.name, item_path(@item) %>
+					    <%= item.price %>
+						<%= item.arrival_quantity %>
+					</td>
+				</tr>
+			 <% end %>
+	     </tbody>
+	  </table>
+
+  <div class="row">
+				<div class="col-xs-10 col-xs-offset-1">
+					<%= paginate @items, class: "paginate" %>
+					<p id="pageTop"><a href="#">ページトップへ</a></p>
+						<script type='text/javascript'>
+							$(function(){
+							$('a[href^="#"]').click(function() {
+								var speed = 400;
+								var href= $(this).attr("href");
+  								var target = $(href == "#" || href == "" ? 'html' : href);
+  								var position = target.offset().top;
+  								$('body,html').animate({scrollTop:position}, speed, 'swing');
+  								return false;
+  							});
+							});
+						</script>
+				</div>
+			</div>
