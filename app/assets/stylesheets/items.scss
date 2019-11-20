@@ -1,4 +1,135 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*user：item show*/
+
+.item-detail-title{
+	margin-left: 120px;
+}
+
+.border-item-show{
+	width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.user-samuneiru-position{
+	margin-left: 50px;
+	float: left;
+}
+
+.user-item-detail{
+	margin-top: 20px;
+}
+
+.user-item-names{
+	margin-top: 5px;
+	margin-left: 100px;
+}
+
+.user-item-name{
+	font-size: 22px;
+}
+
+.user-item-artists{
+	margin-top: 7px;
+	margin-left: 100px;
+}
+
+.user-item-artist{
+	font-size: 15px;
+}
+
+.user-item-releases{
+	margin-top: 7px;
+	margin-left: 100px;
+}
+
+.user-item-release{
+	font-size: 15px;
+}
+
+.user-item-labels{
+	margin-top: 7px;
+	margin-left: 100px;
+}
+
+.user-item-label{
+	font-size: 15px;
+}
+
+
+.user-item-total-stock-box{
+	margin-top: 13px;
+	margin-left:100px;
+	border: solid 2px #DDDDDD;
+	width: 80%;
+	height: 80px;
+	background-color: #EEEEEE;
+}
+
+.user-category-name-box{
+	margin-top: 5px;
+	margin-left:10px;
+	border: solid 2px #A9A9A9;
+	width: 60px;
+	height: 20px;
+	text-align: center;
+	line-height: 17px;
+	background-color: #D3D3D3;
+	font-size: 12px;
+	float: left;
+}
+
+.user-stock-quantity-box{
+	margin-top: 5px;
+	margin-left:10px;
+	border: solid 2px #A9A9A9;
+	width: 60px;
+	height: 20px;
+	text-align: center;
+	line-height: 17px;
+	background-color: #D3D3D3;
+	font-size: 12px;
+	float: left;
+}
+
+.user-item-price{
+	margin-top: 35px;
+	float: left;
+}
+
+.user-item-price-text{
+	font-size: 25px;
+	color: #B22222;
+}
+
+.user-item-price-tax{
+	color: black;
+	font-size: 15px;
+}
+
+.user-item-quantity-position{
+	margin-left: 300px;
+}
+
+.user-item-quantity{
+	margin-top: 38px;
+}
+
+.user-number-field{
+	height: 30px;
+	width:40px;
+}
+
+.user-cart-in{
+	margin-left: 15px;
+}
+
+.border-item-show-bottom{
+	width: 90%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+	margin-bottom: 45px;
+}
 

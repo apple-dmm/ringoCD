@@ -20,7 +20,7 @@
 							<% @arrivals.each do |arrival| %>
 							<tr>
 								<th><%=	arrival.arrival_date.strftime("%Y年%m月%d日") %></th>
-								<th><%= attachment_image_tag arrival.item, :image_id, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg",size: "50x50" %></th>
+								<th><%= attachment_image_tag arrival.item, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg",size: "50x50" %></th>
 								<th><%= link_to arrival.item.name, edit_admin_item_path(arrival.item.id) %></th>
 								<th><%= arrival.item.artist.name %></th>
 								<th><%= arrival.item.price %>円</th>
