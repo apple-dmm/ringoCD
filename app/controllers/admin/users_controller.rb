@@ -13,6 +13,12 @@ class Admin::UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
+  end
+
   private
   #cocoon用記述。_destroyがないと削除できない。
   def user_params
