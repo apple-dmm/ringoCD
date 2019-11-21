@@ -1,3 +1,36 @@
-// Place all the styles related to the contacts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.contact-confirm-box{
+	width: 95%;
+	height: 50px;
+	border: solid 1px;
+	margin-top: 75px;
+	margin-bottom: 60px;
+	text-align: center;
+	line-height: 50px;
+	margin-left: 15px;
+}
+
+.contact-confirm-text{
+	font-size: 15px;
+}
+
+.contact-title-box{
+	height: 50px;
+	width: 30px;
+}
+
+.contact-title-box-content{
+	width: 210px;
+}
+
+.contact-body-box{
+	height: 200px;
+	width: 30px;
+}
+
+.contact-body-box-content{
+	width: 400px;
+}
+
+.contact-height{
+	height: 150px;
+}
