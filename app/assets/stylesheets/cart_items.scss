@@ -15,10 +15,112 @@
 	text-align: center;
 }
 
-.item-box{
-	width: 40%;
+.cart-item-body{
+	width: 50%;
 }
 
 .item-box-name{
 	margin-top: 20px;
+}
+
+.item-box-name{
+	margin-top: 20px;
+}
+
+.item-box-name-text{
+	font-size: 15px;
+}
+
+.item-box-artist{
+	margin-top: 3px;
+}
+
+.item-box-artist-text{
+	font-size: 13px;
+}
+
+.cart-item-price{
+	margin-top: 10px;
+	font-size: 15px;
+}
+
+.cart-item-body-quantity{
+	width: 80px;
+}
+
+.cart-item-quantity{
+	text-align: center;
+	margin-top: 40px;
+}
+
+.cart-item-body-stock{
+	width: 50px;
+}
+
+.cart-item-stock-status{
+	font-size: 12px;
+	text-align: center;
+	margin-top: 40px;
+	margin-left: 10px;
+	border: solid 2px #808080;
+	border-radius: 5px 5px 5px 5px;
+	background-color: gray;
+	width: 55px;
+	color: white;
+	height: 25px;
+	line-height: 22px;
+}
+
+.cart-item-total{
+	margin-top: 41px;
+	margin-left: 25px;
+	font-size: 16px;
+}
+
+.cart-item-body-total{
+	width: 120px;
+}
+
+.cart-item-delete{
+	margin-top: 35px;
+	margin-left: 30px;
+}
+
+.total-box{
+	width: 100%;
+	border: solid 1px #444444;
+	height: 50px;
+	background-color: #F5F5F5;
+	line-height: 25px;
+	margin-bottom: 40px;
+}
+
+.total-item-box{
+	margin-left: 120px;
+	height: 50px;
+	line-height: 50px;
+}
+
+.total-item-text{
+	font-size: 18px;
+}
+
+.total-price-box{
+	height: 50px;
+	line-height: 49px;
+}
+
+.total-price-text{
+	font-size: 22px;
+}
+
+.back-to-index{
+	font-size: 15px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+}
+
+.nil-cart-message{
+	margin-bottom: 100px;
 }
