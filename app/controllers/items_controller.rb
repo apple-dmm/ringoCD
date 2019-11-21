@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     @q.build_condition if @q.conditions.empty?
     @items = @q.result(distinct: true).page(params[:page]).per(30)
      #@items = Item.all
-
+  end
 
 
   private
