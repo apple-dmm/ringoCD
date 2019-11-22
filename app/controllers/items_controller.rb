@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
 
     @cart_item = CartItem.new
     @user = User.find(current_user.id)
+
+    @reviews = Review.where(item_id: @item.id)
   end
 
   def create
