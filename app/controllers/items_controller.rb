@@ -24,8 +24,7 @@ class ItemsController < ApplicationController
     @items = @q.result(distinct: true).page(params[:page]).per(30)
 
      #@items = Item.all
-   end
-
+  end
 
 
   private
