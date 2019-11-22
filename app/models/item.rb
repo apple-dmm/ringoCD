@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :arrivals
   has_many :favorites
   has_many :item_orders
+  has_many :orders, through: :item_orders
   has_many :reviews
   has_many :cart_item
   belongs_to :artist
