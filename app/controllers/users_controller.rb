@@ -27,11 +27,15 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def mypage
+    @user = User.find(params[:id])
+  end
+
   private
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_furigana,
-      :first_furigana, :postal_code, :address, :phone_number, :email,
-      addresses_attributes: [:id, :name, :address, :_destroy ])
+      :first_furigana, :postal_code, :residence, :phone_number, :email,
+      addresses_attributes: [:id, :name, :address, :postal_code, :_destroy ])
   end
   def password_params
     params.require(:user).permit(:password,:password_confirmation)

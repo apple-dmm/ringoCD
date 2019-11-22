@@ -79,3 +79,5 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
 gem 'cocoon'
+
+gem 'payjp'
