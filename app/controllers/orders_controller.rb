@@ -13,9 +13,8 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.all
     @order_pay = Payjp::Charge.new
   end
-  
 
-  
+
 
   def confirm
   end
@@ -34,6 +33,7 @@ class OrdersController < ApplicationController
       @item_order.item_id = cart_item.item.id
   end
       if @order.save
+        @cart_items.destroy_all
          redirect_to order_complete_path
       else
         @user = current_user
