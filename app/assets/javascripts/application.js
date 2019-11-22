@@ -18,6 +18,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require cocoon
+//= require_tree .
 
 /*!
  * jQuery Raty - A Star Rating Plugin

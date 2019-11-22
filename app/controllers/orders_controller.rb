@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       @addresses = @user.addresses
       @user.addresses.build(name: params[:order][:name], postal_code: params[:order][:postal_code], address: params[:order][:order_address])
-      
+
       @cart_items.each do |cart_item|
       @item_order = @order.item_orders.build
       @item_order.item_id = cart_item.item.id
@@ -57,6 +57,7 @@ class OrdersController < ApplicationController
         render :new
       end
     end
+  end
 
   private
   def order_params

@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_11_22_061815) do
-
-ActiveRecord::Schema.define(version: 2019_11_21_143512) do
-
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -128,13 +124,12 @@ ActiveRecord::Schema.define(version: 2019_11_21_143512) do
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.string "postal_code"
-    t.string "order_address"
+    t.string "address"
     t.integer "payment", default: 0
     t.integer "status", default: 0
     t.integer "total"
     t.integer "delivery_status", default: 0
     t.integer "delivery_fee"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "card_num"
@@ -183,7 +178,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_143512) do
     t.string "last_furigana"
     t.string "first_furigana"
     t.string "postal_code"
-    t.string "residence"
+    t.string "address"
     t.string "phone_number"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
