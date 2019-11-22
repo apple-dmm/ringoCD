@@ -13,9 +13,8 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.all
     @order_pay = Payjp::Charge.new
   end
-  
 
-  
+
 
   def confirm
   end
@@ -28,12 +27,13 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       @addresses = @user.addresses
       @user.addresses.build(name: params[:order][:name], postal_code: params[:order][:postal_code], address: params[:order][:order_address])
-      
+
       @cart_items.each do |cart_item|
       @item_order = @order.item_orders.build
       @item_order.item_id = cart_item.item.id
   end
       if @order.save
+        @cart_items.destroy_all
          redirect_to order_complete_path
       else
         @user = current_user
@@ -57,6 +57,7 @@ class OrdersController < ApplicationController
         render :new
       end
     end
+  end
 
   private
   def order_params
