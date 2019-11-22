@@ -67,7 +67,6 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to new_admin_item_path
     else
-      puts @item.errors.full_messages
       render 'new'
   end
   end
