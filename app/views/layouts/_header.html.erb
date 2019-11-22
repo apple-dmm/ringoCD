@@ -17,7 +17,7 @@
         <% elsif user_signed_in?%>
         <span class="current_user">  Userさん</span>
         <br>
-        <%= link_to(user_path(current_user.id)) do %>
+        <%= link_to(mypage_path(current_user.id)) do %>
         <span class="home"> マイページ</span>
         <% end %>
         <%= link_to(favorites_path) do %>

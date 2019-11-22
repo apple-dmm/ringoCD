@@ -22,11 +22,15 @@ class ItemsController < ApplicationController
   	@q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @items = @q.result(distinct: true).page(params[:page]).per(30)
+
+     #@items = Item.all
   end
+
 
   private
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :user_id, :item_id)
+
 
   end
 

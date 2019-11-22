@@ -21,4 +21,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :release, presence: true
+
+  def include_tax_price
+    (price * 1.1).round(0) 
+  end
 end
