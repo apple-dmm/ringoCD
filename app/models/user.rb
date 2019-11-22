@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :last_furigana, presence: true, length: { maximum: 20 }
   validates :first_furigana, presence: true, length: { maximum: 20 }
   validates :postal_code, presence: true, length: { maximum: 7 }
-  validates :address, presence: true, length: { maximum: 70 }
+  validates :residence, presence: true, length: { maximum: 70 }
   validates :phone_number, presence: true, length: { maximum: 15 }
   validates :email, presence: true
   #validates :password, presence: true, length: { minimum: 6 }

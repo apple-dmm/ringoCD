@@ -5,12 +5,17 @@
 				<table class="address-form">
 					<tr>
 						<td><%= f.label :宛名 %></td>
-						<td><%= f.text_field :name, class:'input-size' %></td>
+						<td><%= f.text_field :name, class:'col-auto form-control-lg' %></td>
 						<td><%= link_to_remove_association '削除', f %></td>
 					</tr>
 					<tr>
+						<td><%= f.label :郵便番号 %></td>
+						<td><%= f.text_field :postal_code, class:'col-auto form-control-lg' %></td>
+						<td></td>
+					</tr>
+					<tr>
 						<td><%= f.label :住所 %></td>
-						<td><%= f.text_field :address, class:'input-size' %></td>
+						<td><%= f.text_field :address, class:'col-auto form-control-lg' %></td>
 						<td></td>
 					</tr>
 				</table>
