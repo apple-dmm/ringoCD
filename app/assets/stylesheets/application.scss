@@ -301,6 +301,7 @@ ul {
 
 
 
+
 /* user-order */
 
 .pay {
@@ -453,8 +454,6 @@ table td{
     border: solid 1px #000000;
     text-align:right;
 }
-
-
 
 
 /* admin_user  */
@@ -679,6 +678,26 @@ table td{
 	margin-top: 30px;
 }
 
+
+
+/*  label */
+
+
+.label-artist-category {
+	display: inline;
+	padding: 0 0 0 115px;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.label-artist-category-text{
+  	text-align: center;
+}
 
 
 /*admin contact show画面*/

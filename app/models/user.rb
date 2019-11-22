@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :addresses, inverse_of: :user
   accepts_nested_attributes_for :addresses, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :orders, reject_if: :all_blank, allow_destroy: true
   has_many :favorites
   has_many :cart_items
   has_many :reviews
