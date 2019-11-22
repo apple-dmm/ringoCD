@@ -18,7 +18,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require cocoon
-//= require_tree .
+
 
 
 $("document").ready(function() {
@@ -26,8 +26,7 @@ $("document").ready(function() {
     $(".theTarget").skippr({
         transition : 'fade',
          speed : 500,
-
-    $(".theTarget").skippr();
+    }
 });
 
 

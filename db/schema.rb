@@ -124,12 +124,13 @@ ActiveRecord::Schema.define(version: 2019_11_21_143512) do
     t.integer "user_id"
     t.string "name"
     t.string "postal_code"
-    t.string "address"
+    t.string "order_address"
     t.integer "payment", default: 0
     t.integer "status", default: 0
     t.integer "total"
     t.integer "delivery_status", default: 0
     t.integer "delivery_fee"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "card_num"
@@ -177,7 +178,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_143512) do
     t.string "last_furigana"
     t.string "first_furigana"
     t.string "postal_code"
-    t.string "address"
+    t.string "residence"
     t.string "phone_number"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false

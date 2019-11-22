@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   # ユーザー
   devise_for :users
   get 'users/:id/exit' => 'users#exit', as: 'exit'
+  get 'users/:id/mypage' => 'users#mypage', as: 'mypage'
   resources :items, only: [:index, :show]
   root to: 'items#index'
   resources :cart_items, only: [:create, :destroy, :index, :update]
   resources :orders, only: [:create, :index, :new]
-  get 'orders/confirm' => 'orders#confirm', as:'confirm_order'
+  get 'orders/complete' => 'orders#complete', as:'order_complete'
+  post 'orders/pay' => 'orders#pay', as:'order_pay'
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
   resources :favorites, only: [:create, :destroy, :index]
