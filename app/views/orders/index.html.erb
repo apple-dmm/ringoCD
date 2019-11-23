@@ -21,7 +21,7 @@
 				<span class="item-box-name-text"><%= item_order.order.delivery_status %></span>
 			</div>
 			<div class="order-box-artist">
-				<span class="item-box-artist-text"><%= item_order.created_at %></span>
+				<span class="item-box-artist-text"><%= item_order.created_at.strftime("%Y年%m月%d日") %></span>
 			</div>
 			<div class="order-box-artist">
 				<span class="item-box-artist-text"><%= item_order.order.order_address %></span>
@@ -31,6 +31,14 @@
 			</div>
 			<div class="order-box-artist">
 				<span class="item-box-artist-text"><%= item_order.order.payment %></span>
+			</div>
+			<div class="order-box-artist">
+				<span class="item-box-artist-text"><%= item_order.order.total %></span>
+			</div>
+			<div>
+				<%= link_to(new_review_path(item_order.item)) do %>
+				<div class="col-xs-2 col-xs-offset-3 index-box1">レビューを投稿する</div>
+				<% end %>
 			</div>
 			</div>
 	</div>

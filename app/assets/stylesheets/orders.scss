@@ -162,3 +162,48 @@ table td{
 .new-order-index-box{
 	margin-top:50px;
 }
+
+.order-sum-box{
+	width: 60%;
+	border: solid 1px #444444;
+	height: 50px;
+	background-color: #F5F5F5;
+	line-height: 25px;
+	margin-top:400px;
+	margin-bottom: 40px;
+	margin-left:250px;
+}
+
+.order-samuneiru-box{
+	float:left;
+}
+
+.order-box-name-text{
+	font-size:16px;
+	font-weight:bold;
+	padding:0 60px 10px 30px;
+}
+
+.order-box-artist-text{
+	font-size:12px;
+	padding:0 0 0 30px;
+}
+
+.order-box-quantity{
+	padding:0 50px 0 50px;
+	font-size:16px;
+}
+
+.order-box-price{
+	padding-left:50px;
+	font-size:13px;
+}
+
+.order-box-totalprice{
+	font-size:18px;
+	margin-right:0;
+}
+
+.delivery-fee{
+	text-align:center;
+}

@@ -6,6 +6,7 @@ class Order < ApplicationRecord
 
   has_many :items,through: :item_orders
   belongs_to :user
+  belongs_to :address,optional: true
   accepts_nested_attributes_for :item_orders, allow_destroy: true
 acts_as_paranoid
 end
