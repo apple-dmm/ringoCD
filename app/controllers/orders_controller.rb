@@ -12,6 +12,12 @@ class OrdersController < ApplicationController
   	@addresses = @user.addresses
     @cart_items = CartItem.all
     @order_pay = Payjp::Charge.new
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      item = Item.where(id: cart_item.item_id)
+      @total_price = @total_price + cart_item.item.include_tax_price * cart_item.quantity
+  end
+  @total_quantity = @cart_items.sum(:quantity)
   end
 
 
@@ -27,7 +33,12 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       @addresses = @user.addresses
       @user.addresses.build(name: params[:order][:name], postal_code: params[:order][:postal_code], address: params[:order][:order_address])
-
+     if @order.address == 1
+        @order.order_address = @user.address
+        @order.postal_code = @user.postal_code
+        @order.name = @user.last_name
+    else
+     end
       @cart_items.each do |cart_item|
       @item_order = @order.item_orders.build
       @item_order.item_id = cart_item.item.id
@@ -62,6 +73,6 @@ class OrdersController < ApplicationController
   private
   def order_params
 
-    params.require(:order).permit(:name,:postal_code, :order_address,:card_num, :card_name, :securitycode, user_attributes:[:id,:last_name, :postal_code, :address, :deleted_at],item_order_attributes:[:id,:item_id,:quantity,:price])
+    params.require(:order).permit(:name,:delivery_fee,:total,:postal_code, :order_address,:card_num, :card_name, :securitycode,:payment,:order_address, address_attributes:[:id,:name,:address, :postal_code,:deleted_at],item_order_attributes:[:id,:item_id,:quantity,:price])
   end
 end
