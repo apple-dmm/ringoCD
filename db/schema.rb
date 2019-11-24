@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_11_23_033649) do
   
   create_table "addresses", force: :cascade do |t|
@@ -135,6 +136,8 @@ ActiveRecord::Schema.define(version: 2019_11_23_033649) do
     t.integer "card_num"
     t.string "card_name"
     t.integer "securitycode"
+    t.datetime "deleted_at"
+    t.string "order_address"
     t.string "name"
   end
 

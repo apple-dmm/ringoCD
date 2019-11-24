@@ -85,7 +85,7 @@ def create
 
   private
   def order_params
-
     params.require(:order).permit(:name,:delivery_fee,:total,:postal_code,:card_num, :card_name, :securitycode,:payment,:order_address, address_attributes:[:id,:name,:address, :postal_code,:deleted_at],item_order_attributes:[:id,:item_id,:quantity,:price])
+
   end
 end
