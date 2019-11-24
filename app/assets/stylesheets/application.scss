@@ -136,8 +136,9 @@ td {
     margin-top:10px;
 }
 .navbar-right{
-	margin-right:0;
+	margin-right:20px;
 	padding-top:20px;
+	white-space: nowrap;
 }
 .navbar-left{
 	margin-left:20px;
@@ -146,6 +147,11 @@ header{
 	height: 90px;
 	margin-bottom:20px;
 	display:block;
+}
+
+.header-menu{
+	float: right;
+	margin: 10px, 0;
 }
 
 i{
@@ -165,8 +171,8 @@ i{
 	margin:0 0 0 auto;
 }
 .current_user{
-padding-left:350px;
-text-decoration:underline;
+	float: right;
+	text-decoration:underline;
 }
 .admin_user{
 	float:left;

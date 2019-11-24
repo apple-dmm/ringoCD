@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-  	@review = Review.new(review_params)
+    item = Item.find(params[:id])
+    @review = item.reviews.create(review_params)
   	@review.user_id = current_user.id
   	if @review.save
   		redirect_to orders_path
@@ -16,7 +17,7 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-  	params.require(:review).permit(:title, :body, :rate,:item_id)
+  	params.require(:review).permit(:title, :body, :rate, :user_id)
   end
 
 end
