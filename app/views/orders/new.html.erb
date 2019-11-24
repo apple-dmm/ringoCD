@@ -37,7 +37,7 @@
 					<h6 class="bank_num">代金のお支払い後に商品が発送されます。なお、お支払いの際に必要となるお支払い番号は、<br>出荷準備に入り次第発行されます。</h6>
 				</div>
 				<div class="daibiki">
-					<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)' %>代引きでのお支払い</label>
+					<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)', required: true %>代引きでのお支払い</label>
 					<h6 class="daibiki_num">代引き手数料がかかります。</h6>
 				</div>
 				<div class="credit">
