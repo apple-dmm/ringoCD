@@ -3,9 +3,6 @@ $("document").ready(function() {
 
 
 
-    $(".theTarget").skippr();
-});
-
 // オプションを指定してSkipprの実行
 $(".theTarget").skippr({
     // スライドショーの変化（"fade" or "slide"）
@@ -32,5 +29,7 @@ $(".theTarget").skippr({
 
 
 });
+
+
 
 
