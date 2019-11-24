@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
   has_many :item_orders
 
-  has_many :items,through: :item_orders
+  has_many :items, through: :item_orders
   belongs_to :user
   accepts_nested_attributes_for :item_orders, allow_destroy: true
 acts_as_paranoid
