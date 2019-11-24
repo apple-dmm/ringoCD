@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-1">
 			<%= form_for (@order) do |f| %>
-			<%= f.hidden_field :total, :value => @total_price  %>
+			<%= f.hidden_field :total, :value => @total_price+500  %>
 			<table class="new-table">
 					<tr>
 						<td width="50%">名前（姓・名）：</td>
@@ -32,16 +32,16 @@
 		<div class="border"></div>
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-1 credit">
-				<div class="credit">
-					<label><%= f.radio_button :payment, "クレジット",:onchange => 'entryChange1(this)' %>クレジットカードでのお支払い</label>
-				</div>
 				<div class="bank-payment">
 					<label><%= f.radio_button :payment, "銀行振込" ,:onchange => 'entryChange1(this)' %>銀行でのお支払い</label>
 					<h6 class="bank_num">代金のお支払い後に商品が発送されます。なお、お支払いの際に必要となるお支払い番号は、<br>出荷準備に入り次第発行されます。</h6>
 				</div>
 				<div class="daibiki">
-					<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)',:required=>'required' %>代引きでのお支払い</label>
+					<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)' %>代引きでのお支払い</label>
 					<h6 class="daibiki_num">代引き手数料がかかります。</h6>
+				</div>
+				<div class="credit">
+					<label><%= f.radio_button :payment, "クレジット",:onchange => 'entryChange1(this)' %>クレジットカードでのお支払い</label>
 				</div>
 			</div>
 		</div>
@@ -54,7 +54,7 @@
 			<div class="col-xs-11 col-xs-offset-1 credit">
 					<table class="address-table">
 						<tr>
-							<td><label><%= i.radio_button :address, "登録" ,:required=>'required' %>登録先の住所と別の住所を使う</label></td>
+							<td><%= radio_button_tag("add_address", 1) %>登録先の住所と別の住所を使う</td>
 						</tr>
 						<tr>
 							<td width="10%"><%= i.label :name, "・宛名　　　　：" %></td>
@@ -67,7 +67,7 @@
 							<td></td>
 						</tr>
 						<tr>
-							<td width="20%"><%= i.label :order_address, "・住所　　　　：" %></td>
+							<td width="20%"><%= i.label :address, "・住所　　　　：" %></td>
 							<td class="tablemenu"><%= i.text_field :order_address, class:'col-xs-12' %></td>
 							<td></td>
 						</tr>
@@ -76,7 +76,7 @@
 				<div class="registrated-address">
 					<table>
 						<tr>
-							<td><label><%= i.radio_button :address, "@user.address" %>登録先の住所を使う</label></td>
+							<td><%= radio_button_tag("add_address", 0) %>登録先の住所を使う</td>
 							<td><%= @user.last_name %>  <%= @user.first_name %></td>
 							<td>様</td>
 						</tr>
@@ -107,14 +107,11 @@
 	<div class="border"></div>
 	<% @cart_items.each do |cart_item| %>
 	<div class="new-order-index-box col-xs-6 col-xs-offset-1">
-			<%= i.fields_for :item_order do |o| %>
-			<%= o.hidden_field :quantity, :value => cart_item.quantity  %>
-			<%= o.hidden_field :price, :value => cart_item.item.price  %>
 			<table class="order-cart-item-table">
 						<tr>
 							<td>
 								<div class="order-samuneiru-in-box">
-								<%= link_to(item_path(cart_item)) do %>
+								<%= link_to(item_path(cart_item.item)) do %>
 								<%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
 								<% end %>
 								</div>
@@ -145,8 +142,8 @@
 	</div>
 	<% end %>
 	<% end %>
-	<% end %>
 	<div class="delivery-fee col-xs-3 col-xs-offset-5">送料：５００円（税込）</div>
+						<%= f.hidden_field :delivery_fee, :value => 500  %>
 						<div class="order-sum-box">
 						<div class="col-xs-4 ">
 						<div class="total-item-box">
@@ -163,7 +160,6 @@
 
 				<div class="row">
 					<div id="first-button">
-						<%= f.hidden_field :delivery_fee, :value => 500  %>
 
 					<div class="col-xs-4 col-xs-offset-4">
 					<%= f.submit '購入する', class:'btn btn-success col-xs-12', name:"order_button" %>
