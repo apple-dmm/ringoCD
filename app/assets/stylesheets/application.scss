@@ -301,7 +301,15 @@ ul {
 
 
 
+
 /* user-order */
+
+.pay {
+	display:none;
+}
+.temp {
+	display:none;
+}
 
 /*//confirm*/
 
@@ -446,8 +454,6 @@ table td{
     border: solid 1px #000000;
     text-align:right;
 }
-
-
 
 
 /* admin_user  */
@@ -673,3 +679,198 @@ table td{
 }
 
 
+
+/*  label */
+
+
+.label-artist-category {
+	display: inline;
+	padding: 0 0 0 115px;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.label-artist-category-text{
+  	text-align: center;
+}
+
+
+/*admin contact show画面*/
+
+.admin-contact-user-id-position{
+	margin-top: 50px;
+}
+
+.admin-contact-user-id-text{
+	font-size: 18px;
+}
+
+.admin-contact-user-id-box{
+	width:60px;
+	height: 35px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+	line-height: 32px;
+	text-align: center;
+}
+
+.admin-contact-user-id{
+	font-size: 16px;
+}
+
+.admin-contact-user-name-position{
+	margin-top: 50px;
+	margin-left: 10px;
+}
+
+.admin-contact-user-name-text{
+	font-size: 18px;
+}
+
+.admin-contact-user-name-box{
+	width: 180px;
+	height: 35px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+	line-height: 32px;
+}
+
+.admin-contact-user-name{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.admin-contact-user-email-position{
+	margin-top: 50px;
+}
+
+.admin-contact-user-email-text{
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+.admin-contact-user-email-box{
+	width: 250px;
+	height: 35px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+	line-height: 32px;
+}
+
+.admin-contact-user-email{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.admin-contact-title-position{
+	margin-top: 40px;
+
+}
+
+.admin-contact-title-text{
+	margin-left: 15px;
+	font-size: 18px;
+}
+
+.admin-contact-title-box{
+	width: 250px;
+	height: 35px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+	line-height: 32px;
+	margin-left: 5px;
+}
+
+.admin-contact-title{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.admin-contact-time-position{
+	margin-top: 40px;
+}
+
+.admin-contact-time-text{
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+.admin-contact-time-box{
+	width: 250px;
+	height: 35px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+	line-height: 32px;
+}
+
+.admin-contact-time{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.admin-contact-body-position{
+	margin-top: 40px;
+	margin-left: 140px;
+}
+
+.admin-contact-body-text{
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+.admin-contact-body-box{
+	width: 580px;
+	height: 200px;
+	border: solid 1px #444444;
+	margin-top: 5px;
+}
+
+.admin-contact-body{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.border-between-contact-reply{
+	width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.reply-title-text{
+	font-size: 18px;
+}
+
+.reply-title-box{
+	width: 300px;
+}
+
+.reply-body-position{
+	margin-top: 30px;
+}
+
+.reply-body-text{
+	font-size: 18px;
+}
+
+.reply-body-box{
+	width: 580px;
+	height: 200px;
+	margin-bottom: 50px;
+}
+
+.back-to-contact-index{
+	border: solid 1px;
+	color: black;
+	width: 150px;
+	height: 45px;
+	margin-top: 30px;
+	line-height: 45px;
+}

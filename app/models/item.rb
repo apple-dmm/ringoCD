@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :favorites
   has_many :favorited_users, through: :favorites, source: :user
   has_many :item_orders
+  has_many :orders, through: :item_orders
   has_many :reviews
   has_many :cart_item
   belongs_to :artist
@@ -25,4 +26,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :release, presence: true
+
+  def include_tax_price
+    (price * 1.1).round(0) 
+  end
 end

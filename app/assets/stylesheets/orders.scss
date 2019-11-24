@@ -1,4 +1,209 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* 購入ボタンの表示 */
 
+#first-button {
+  display: block;
+}
+#second-button {
+  display: none;
+}
+
+/* user-order */
+
+/*//confirm*/
+
+
+.confirm-title{
+	font-size:30px;
+	text-align:center;
+	margin-top:50px;
+}
+.confirm-body{
+	text-align:center;
+	font-size:15px;
+	display:block;
+	margin-top:40px;
+}
+.box1{
+	margin-top:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:center;
+}
+
+
+
+
+
+/*//index*/
+
+.index-title{
+	padding: 0 0 0 115px;
+	margin-top:50px;
+}
+
+.border {
+    width: 80%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.delivery-status{
+	padding-top:30px;
+	font-size:20px;
+}
+
+#pageTop {
+  text-align: center;
+  border: solid 1px #000000;
+}
+
+#pageTop a {
+  display: block;
+  padding: 0.5em 1em;
+  color:black;
+}
+
+.index-box1{
+	margin-top:50px;
+	margin-bottom:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:center;
+}
+
+
+
+
+/*//new*/
+
+
+.oshiharai{
+	font-size:20px;
+	margin-top:50px;
+	margin-left:60px;
+}
+
+.new-title{
+	font-size:20px;
+	margin-top:60px;
+	margin-left:60px;
+}
+
+.border {
+    width: 90%;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
+}
+
+.user_last-name{
+	margin-right:10px;
+}
+.new-table{
+	margin-top:30px;
+	font-size:15px;
+}
+table td{
+	padding:10px;
+}
+
+.new-2title{
+	font-size:20px;
+	margin-top:50px;
+	margin-left:60px;
+}
+
+.credit{
+	margin-top:30px;
+}
+
+.input{
+	margin-bottom:20px;
+	margin-left:10px;
+}
+
+.card-payment{
+	margin:10px 0 10px 30px;
+}
+
+.bank_num{
+	margin:0 0 0 10px;
+	font-size:8px;
+}
+
+.daibiki{
+	margin-top:20px;
+}
+.daibiki_num{
+	margin:0 0 20px 10px;
+	font-size:8px;
+}
+
+.tablemenu{
+	float:left;
+}
+
+.registrated-address{
+	margin-bottom:20px
+}
+
+.sum{
+	margin-top:50px;
+	margin-bottom:50px;
+	color:black;
+	padding: 0.5em 1em;
+    border: solid 1px #000000;
+    text-align:right;
+}
+
+.new-order-index-box{
+	margin-top:50px;
+}
+
+.order-sum-box{
+	width: 60%;
+	border: solid 1px #444444;
+	height: 50px;
+	background-color: #F5F5F5;
+	line-height: 25px;
+	margin-top:400px;
+	margin-bottom: 40px;
+	margin-left:250px;
+}
+
+.order-samuneiru-box{
+	float:left;
+}
+
+.order-box-name-text{
+	font-size:16px;
+	font-weight:bold;
+	padding:0 60px 10px 30px;
+}
+
+.order-box-artist-text{
+	font-size:12px;
+	padding:0 0 0 30px;
+}
+
+.order-box-quantity{
+	padding:0 50px 0 50px;
+	font-size:16px;
+}
+
+.order-box-price{
+	padding-left:50px;
+	font-size:13px;
+}
+
+.order-box-totalprice{
+	font-size:18px;
+	margin-right:0;
+}
+
+.delivery-fee{
+	text-align:center;
+}

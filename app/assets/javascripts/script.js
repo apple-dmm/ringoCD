@@ -1,7 +1,7 @@
 $("document").ready(function() {
 
-    $(".theTarget").skippr();
-});
+
+
 
 // オプションを指定してSkipprの実行
 $(".theTarget").skippr({
@@ -27,7 +27,9 @@ $(".theTarget").skippr({
     // 1枚目のスライド表示時に戻る矢印を表示するかどうか（falseで非表示）
     hidePrevious : false
 
+
 });
+
 
 
 

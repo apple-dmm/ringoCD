@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
 
     @cart_item = CartItem.new
+    @user = User.find(current_user.id)
+    @reviews = Review.where(item_id: @item.id)
   end
 
   def create
@@ -25,9 +27,9 @@ class ItemsController < ApplicationController
   	@q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @items = @q.result(distinct: true).page(params[:page]).per(30)
+
     end
-
-
+  end
 
 
   private
