@@ -5,12 +5,6 @@ class Admin::OrdersController < ApplicationController
 
    	@total_quantity = 0
 
-  	params[:q] = { not_aceepted: 0}
-  	params[:q] = { aceepted: 1}
-  	params[:q] = { shipping_preparation: 0}
-  	params[:q] = { shipped: 0}
-  	params[:q] = { deliveried: 0}
-
   end
 
   def update
