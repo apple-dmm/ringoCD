@@ -6,8 +6,95 @@
 			</div>
 			<div class="border-item-show"></div>
 
+
+
+<% if user_signed_in? %>
+
 			<div class="item-detail-content">
 				<div class="row">
+
+						<div class="col-xs-10 col-xs-offset-1">
+
+							<div class="before-songlist">
+
+							<div class="col-xs-3">
+							<div class="user-samuneiru-position">
+
+
+								<%= attachment_image_tag @item, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
+							</div>
+							</div>
+
+							<div class="col-xs-9">
+							<div class="user-item-detail">
+							<div class="user-item-names">
+								<span class="user-item-name"><%= @item.name %></span>
+							</div>
+							<div class="user-item-artists">
+								<span class="user-item-artist"><%= @item.artist.name %></span>
+							</div>
+							<div class="user-item-releases">
+								<span class="user-item-release">発売日　<%= @item.release.strftime("%Y年%m月%d日") %></span>
+							</div>
+							<div class="user-item-labels">
+								<span class="user-item-label"><%= @item.label.name %></span><br>
+							</div>
+
+
+							<div class="user-item-total-stock-box">
+								<div class="user-category-name-box">
+									<span class="user-category-name"><%= @item.category.name %></span>
+								</div>
+								<div class="user-stock-quantity-box">
+									<span class="user-stock-quantity">在庫有</span>
+								</div>
+
+
+									<% if @favorite.favorited_by?(current_user,@item) %>
+								  <li>
+								    <%= link_to item_favorite_path(@item.id), method: :delete do %>
+								      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+
+								    <% end %>
+								  </li>
+								    <% else %>
+								  <li>
+								    <%= link_to item_favorites_path(@item.id), method: :post do %>
+								      <i class="fa fa-heart-o" aria-hidden="true"></i>
+
+								    <% end %>
+								  </li>
+								<% end %>
+
+
+								<div class="user-item-price">
+									<span class="user-item-price-text"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
+								</div>
+
+								<div class="user-item-quantity">
+									<%= form_for (@cart_item), url: cart_items_path do |f| %>
+
+									<%= f.hidden_field :user_id, :value => @user.id %>
+									<%= f.hidden_field :item_id, :value => @item.id %>
+
+									<div class="field">
+										<div class="user-item-quantity-position">
+										<span class="user-item-quantity-text">数量</span>
+									<%= f.number_field :quantity, min:"1", class:"user-number-field" %>
+									<%= f.submit "カートに入れる", class:"user-cart-in" %>
+										</div>
+									</div>
+									<% end %>
+								</div>
+							</div>
+							</div>
+							</div>
+							</div>
+
+
+
+<% else %>
+
 						<div class="col-xs-10 col-xs-offset-1">
 							<div class="before-songlist">
 
@@ -40,29 +127,19 @@
 								<div class="user-stock-quantity-box">
 									<span class="user-stock-quantity">在庫有</span>
 								</div>
+
 								<div class="user-item-price">
 									<span class="user-item-price-text"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
 								</div>
 
-								<div class="user-item-quantity">
-									<%= form_for (@cart_item), url: cart_items_path do |f| %>
-
-									<%= f.hidden_field :user_id, :value => @user.id %>
-									<%= f.hidden_field :item_id, :value => @item.id %>
-
-									<div class="field">
-										<div class="user-item-quantity-position">
-										<span class="user-item-quantity-text">数量</span>
-									<%= f.number_field :quantity, min:"1", class:"user-number-field" %>
-									<%= f.submit "カートに入れる", class:"user-cart-in" %>
-										</div>
-									</div>
-									<% end %>
 								</div>
 							</div>
 							</div>
 							</div>
 							</div>
+<% end %>
+
+
 
 						<div class="col-xs-12">
 						<div class="border-item-show-bottom"></div>
@@ -76,7 +153,7 @@
 										<td><%= song.setlist %></td>
 										<td><%= song.name %></td>
 									</tr>
-									<% end %>
+								 <% end %>
 								</tbody>
 								<% end %>
 							</table>
