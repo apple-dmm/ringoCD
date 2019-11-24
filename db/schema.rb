@@ -10,19 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_11_22_061815) do
-=======
-ActiveRecord::Schema.define(version: 2019_11_22_085014) do
->>>>>>> 0eac4ee6b527c23f51ca547d0410d5a2096a5843
+ActiveRecord::Schema.define(version: 2019_11_22_083010) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
     t.string "postal_code"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
-    t.integer "user_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -126,10 +122,6 @@ ActiveRecord::Schema.define(version: 2019_11_22_085014) do
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.string "postal_code"
-<<<<<<< HEAD
-    t.string "address"
-=======
->>>>>>> 0eac4ee6b527c23f51ca547d0410d5a2096a5843
     t.integer "payment", default: 0
     t.integer "status", default: 0
     t.integer "total"
@@ -184,10 +176,6 @@ ActiveRecord::Schema.define(version: 2019_11_22_085014) do
     t.string "last_furigana"
     t.string "first_furigana"
     t.string "postal_code"
-<<<<<<< HEAD
-    t.string "address"
-=======
->>>>>>> 0eac4ee6b527c23f51ca547d0410d5a2096a5843
     t.string "phone_number"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
