@@ -25,11 +25,12 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy, :index, :update]
   resources :orders, only: [:create, :index, :new]
   get 'orders/complete' => 'orders#complete', as:'order_complete'
+  get 'reviews/new/:id' => 'reviews#new', as:'new_review'
   post 'orders/pay' => 'orders#pay', as:'order_pay'
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
   resources :favorites, only: [:create, :destroy, :index]
-  resources :reviews, only: [:new, :create]
+  resources :reviews, only: [:create]
   resources :contacts, only: [:create, :new]
   resources :users, only: [:edit, :update, :show]
 end

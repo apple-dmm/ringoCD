@@ -8,7 +8,7 @@
 			<tbody>
 				<tr>
 					<div>
-						<%= f.hidden_field :item_id %>
+						<%= f.hidden_field :item_id,:value => params[:id] %>
 						<th class="review-valuation"><%= f.label :rate, '評価 ' %></th>
 						<th class=""><span id="star"></span><%= f.hidden_field :rate, id: :review_star %></th>
 					</div>
