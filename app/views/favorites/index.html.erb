@@ -1,2 +1,139 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<h2>お気に入り</h2>
+<div class="border"></div>
+
+
+<h4 class="change-place">お気に入りアイテム: <%= @favorites.count %>件</h4>
+
+<div class="border"></div>
+
+	<%= paginate @favorites %>
+
+
+ <div class="container">
+   <div class="row">
+     <div class=" col-xs-offset-1">
+
+ <%= form_tag(destroy_all_path, method: :delete) do %>
+<table border="0" width="500" height="300">
+    <% @favorites.each_slice(2) do |favorite1, favorite2| %>
+
+		<tbody>
+				<tr>
+						<td>
+
+
+					        <div class="sample01">
+
+								          <div class="sampleImg">
+
+
+
+										<% if favorite1 != nil%>
+										<%= check_box_tag 'favorites[]', favorite1.id %>
+									       <%= link_to item_path(favorite1.id) do %>
+									          <%= attachment_image_tag favorite1.item, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+										   <span class="size">
+									           <%=link_to favorite1.item.name, item_path(favorite1.id) %>
+									       </span>
+
+						                               <br>
+											   <%= link_to favorite1.item.artist.name, item_path(favorite1.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= favorite1.item.price %>円</div>
+
+												  <div>在庫あり</div>
+												   <%= form_for(@cart_item) do |f| %>
+
+	                                                <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+				        							<%= f.hidden_field :user_id, :value => current_user.id %>
+				        							<%= f.hidden_field :item_id, :value => favorite1.item_id %>
+
+	                                                 <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1 %>
+	                                                 <% end %>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+
+
+					    <td>
+
+						    <div class="sample01">
+
+						          <div class="sampleImg">
+
+
+									    <% if favorite2 != nil %>
+									    <%= check_box_tag 'favorites[]', favorite2.id %>
+										  <%= link_to item_path(favorite2.id) do %>
+										    <%= attachment_image_tag favorite2.item, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
+
+					                 <% end %>
+				                  </div>
+
+
+                                      <p>
+										      <span class="size">
+										          <%=link_to favorite2.item.name, item_path(favorite2.id) %>
+										      </span>
+
+		                                               <br>
+		                                             <%= link_to favorite2.item.artist.name, item_path(favorite2.id) %>
+							                          <br><br>
+
+
+					                                     <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= favorite2.item.price %>円</div>
+
+						                                 <div>在庫あり</div>
+						             <%= form_for(@cart_item) do |f| %>
+
+
+                                                              <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+
+						                                      <%= f.hidden_field :user_id, :value => current_user.id %>
+						        							  <%= f.hidden_field :item_id, :value => favorite1.item_id %>
+                                                              <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1 %>
+                                                              <% end %>
+	                                                          <% end %>
+
+
+					                  </p>
+				        </td>
+				</tr>
+	    </tbody>
+	<% end %>
+</table>
+
+    <%= paginate @favorites %>
+
+
+
+
+
+     <div class="change-position">
+    <%= submit_tag "チェックしたアイテムを削除" %>
+    </div>
+
+<% end %>
+	  <br><br>
+									<div class="border"></div>
+
+									<br><br>
+
+
+												<div class="position-fix">
+												 <%= link_to "マイページへ", user_path(current_user.id), class: 'btn btn-default btn-lg sasasa' %>
+												 <%= link_to "商品一覧へ", items_path, class: 'btn btn-default btn-lg' %>
+												</div>
+
