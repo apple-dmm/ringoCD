@@ -3,7 +3,9 @@
 <div class="row">
 <header>
     <nav class='nav navbar-nav navbar-left' >
+      <%= link_to(root_path) do %>
       <span class="col-lg-12 title">りんごCD<i class="fas fa-apple-alt fa-2x"></i></span>
+      <% end %>
     </nav>
     <nav>
      <ul class="nav navbar-nav navbar-right col-lg-5">
@@ -15,8 +17,9 @@
         <% end %>
         <!-- エンドユーザーでログインした場合 -->
         <% elsif user_signed_in?%>
-        <span class="current_user">  Userさん</span>
+        <span class="current_user"><%= current_user.first_name %>さん</span>
         <br>
+        <div class="header-menu">
         <%= link_to(mypage_path(current_user.id)) do %>
         <span class="home"> マイページ</span>
         <% end %>
@@ -31,6 +34,7 @@
         <% end %>
         <%= link_to(destroy_user_session_path, method: :delete) do %>
         <span class="signout"> サインアウト</span>
+      </div>
         <% end %>
         <!-- 非ログイン時 -->
       <% else %>

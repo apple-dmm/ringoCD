@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :contacts, only: [:create, :index, :show]
     resources :reviews, only: [:edit, :update, :destroy]
-    resources :reviews, only: [:edit, :update, :destroy]
     resources :labels, only: [:create, :edit, :update, :new, :destroy]
     resources :categories, only: [:create, :edit, :update, :new, :destroy]
     resources :artists, only: [:create, :edit, :update, :new, :destroy]
@@ -29,7 +28,8 @@ Rails.application.routes.draw do
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
   resources :favorites, only: [:create, :destroy, :index]
-  resources :reviews, only: [:new, :create]
+  get 'reviews/:id/new' => 'reviews#new', as: 'reviews_new'
+  post 'reviews/:id' => 'reviews#create', as: 'reviews_create'
   resources :contacts, only: [:create, :new]
   resources :users, only: [:edit, :update, :show]
 end
