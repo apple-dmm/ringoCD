@@ -18,6 +18,10 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require cocoon
+//= require_tree .
+
+
+
 
 /*!
  * jQuery Raty - A Star Rating Plugin
@@ -782,3 +786,21 @@
     targetType:   'hint'
   };
 })(jQuery);
+
+
+
+
+
+    $(function() {
+  $('#check_all').on('click', function() {
+    $('.check').prop('checked', this.checked);
+  });
+
+  $('.check').on('click', function() {
+    if ($('#favorite-checkbox :checked').length == $('#favorite-checkbox :input').length){
+      $('#check_all').prop('checked', 'checked');
+    }else{
+      $('#check_all').prop('checked', false);
+    }
+  });
+});
