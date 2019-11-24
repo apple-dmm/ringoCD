@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   has_many :arrivals
   has_many :favorites
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :item_orders
   has_many :orders, through: :item_orders
   has_many :reviews
@@ -11,6 +12,10 @@ class Item < ApplicationRecord
   belongs_to :artist
   belongs_to :category
   belongs_to :label
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   attachment :image
 

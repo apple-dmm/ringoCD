@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :orders
   has_many :addresses, inverse_of: :user
   accepts_nested_attributes_for :addresses, reject_if: :all_blank, allow_destroy: true
+  has_many :favorites, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :favorited_items, through: :favorites, source: :item
   accepts_nested_attributes_for :orders, reject_if: :all_blank, allow_destroy: true
   has_many :favorites
   has_many :cart_items
@@ -25,5 +28,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 acts_as_paranoid
 #acts_as_paranoidとは? データを論理削除するためのプラグイン
-
+ def already_favorited?(item)
+    self.favorites.exists?(item_id: item.id)
+  end
 end
