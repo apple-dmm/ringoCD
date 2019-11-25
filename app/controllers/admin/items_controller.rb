@@ -1,27 +1,43 @@
 class Admin::ItemsController < ApplicationController
 
   def index
+    if admin_signed_in?
     @q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @item_result = @q.result(distinct: true).page(params[:page]).per(30)
+  else
+    redirect_to root_path
+  end
   end
 
   def show
+    if admin_signed_in?
     @item = Item.find(params[:id])
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
+  else
+    redirect_to root_path
+  end
   end
 
   def edit
+    if admin_signed_in?
     @item = Item.find(params[:id])
     @disk = @item.disks.build
     @song = @disk.songs.build
+  else
+    redirect_to root_path
+  end
   end
 
   def new
+    if admin_signed_in?
     @item = Item.new
     @disk = @item.disks.build
     @song = @disk.songs.build
+  else
+    redirect_to root_path
+  end
 
   end
 
