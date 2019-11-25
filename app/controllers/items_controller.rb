@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def show
+    if user_signed_in?
     @item = Item.find(params[:id])
     @favorite = Favorite.new
     @user = current_user
@@ -12,15 +13,15 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
     @user = User.find(current_user.id)
     @reviews = Review.where(item_id: @item.id)
-  end
 
-  def create
-    @cart_item = CartItem.new(cart_item_params)
-    if @cart_item.save
-      redirect_to cart_items_path
-    else
-      render 'show'
-    end
+  else
+    @item = Item.find(params[:id])
+
+    @item.price = @item.price*1.1
+    @disks = Disk.where(item_id: @item.id)
+    songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
+    @reviews = Review.where(item_id: @item.id)
+  end
   end
 
   def index
