@@ -1,7 +1,11 @@
 class Admin::CategoriesController < ApplicationController
 
   def new
+    if admin_signed_in?
   	@category = Category.new
+  else
+    redirect_to root_path
+  end
   end
 
   def create
@@ -14,7 +18,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
+    if admin_signed_in?
   	@category = Category.find(params[:id])
+  else
+    redirect_to root_path
+  end
   end
 
   def update

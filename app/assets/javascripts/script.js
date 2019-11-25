@@ -1,4 +1,7 @@
 $("document").ready(function() {
+    $(".theTarget").skippr() ;
+});
+
 
     $(".theTarget").skippr() ;
  });

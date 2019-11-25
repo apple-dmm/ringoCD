@@ -1,7 +1,11 @@
 class Admin::ArtistsController < ApplicationController
 
   def new
+    if admin_signed_in?
   	@artist = Artist.new
+    else
+    redirect_to root_path
+    end
   end
 
   def create
@@ -14,7 +18,11 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def edit
+    if admin_signed_in?
   	@artist = Artist.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def update

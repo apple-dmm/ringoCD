@@ -1,7 +1,11 @@
 class Admin::ContactsController < ApplicationController
   def show
+    if admin_signed_in?
   	@contact = Contact.find(params[:id])
   	@reply = Reply.new
+  else
+    redirect_to root_path
+  end
   end
 
   def create
@@ -17,9 +21,13 @@ class Admin::ContactsController < ApplicationController
   end
 
   def index
+    if admin_signed_in?
   	@q = Contact.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @contacts = @q.result(distinct: true).page(params[:page]).per(30)
+  else
+    redirect_to root_path
+  end
   end
 
 
