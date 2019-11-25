@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   post 'orders/pay' => 'orders#pay', as:'order_pay'
   resources :addresses, only: [:create, :update, :destroy]
   resources :credits, only: [:create]
-  resources :favorites, only: [:create, :destroy, :index]
   get 'reviews/:id/new' => 'reviews#new', as: 'reviews_new'
   post 'reviews/:id' => 'reviews#create', as: 'reviews_create'
   resources :contacts, only: [:create, :new]
