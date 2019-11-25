@@ -8,12 +8,12 @@
           <table border="1" style="border-collapse: collapse">
               <tr>
                 <th>名前（姓・名）</th>
-                <td><%= @user.last_name %></td>
+                <td style="border-right-style: hidden;"><%= @user.last_name %></td>
                 <td><%= @user.first_name %></td>
               </tr>
               <tr>
                 <th>名前（カナ）</th>
-                <td><%= @user.last_furigana %></td>
+                <td style="border-right-style: hidden;"><%= @user.last_furigana %></td>
                 <td><%= @user.first_furigana %></td>
               </tr>
               <tr>
@@ -31,10 +31,6 @@
               <tr>
                 <th>メールアドレス</th>
                 <td colspan="3"><%= @user.email %></td>
-              </tr>
-              <tr>
-                <th>パスワード</th>
-                <td colspan="3"><%= @user.password %></td>
               </tr>
           </table>
         </div>

@@ -10,12 +10,3 @@ Admin.create!(
    email: 'admin@admin',
    password: 'adminadmin'
    )
-
-# coding: utf-8
-
-Reviews.create!(
-   user_id: '1',
-   item_id: '1',
-   title: 'あああ',
-   body: 'かかか'
-   )

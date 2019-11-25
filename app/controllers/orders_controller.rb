@@ -34,7 +34,6 @@ def create
       @order.user_id = current_user.id
       @addresses = @user.addresses
       @user.addresses.build(name: params[:order][:name], postal_code: params[:order][:postal_code], address: params[:order][:order_address])
-
     else
       Payjp.api_key = 'sk_test_46e2a7941c4d2d62892e6ee9' # 秘密鍵 環境変数化しましょう
       charge = Payjp::Charge.create(
