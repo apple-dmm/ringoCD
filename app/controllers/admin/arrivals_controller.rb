@@ -4,7 +4,7 @@ class Admin::ArrivalsController < ApplicationController
     @arrival = Arrival.new(arrival_params)
     if @arrival.save
       flash[:success] = "入荷情報の登録に成功しました。"
-      redirect_to edit_admin_item_path(@item.id)
+      redirect_to admin_arrivals_path
     else
       puts @arrival.errors.full_messages
       render "edit"

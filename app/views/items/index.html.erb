@@ -1,8 +1,6 @@
 
-　　<div class="search-box-user-index col-xs-6 col-xs-offset-4">
+　　<div class="search-box-user-index col-xs-8 col-xs-offset-2">
 
-
-		<div class="change-size">
 
 			<%= search_form_for @q, html: {class: 'attribution'} do |f| %>
 		<%= f.condition_fields do |c| %>
@@ -13,7 +11,7 @@
 		<%= c.hidden_field :p, value: "cont_all" %>
 
 		<%= c.value_fields do |v| %>
-		<%= v.search_field :value, placeholder: '検索ワードを入力' %>
+		<%= v.search_field :value, placeholder: '検索ワードを入力', class:"search-box-length" %>
 		<% end %>
 		<% end %>
 
@@ -22,7 +20,6 @@
 		</span>
 
 		<% end %>
-　　</div>
 </div>
 
 
@@ -76,9 +73,9 @@
 
 
 			        <p>
-			<span class="size">
+			
            <%=link_to item1.name, item_path(item1.id) %>
-            </span>
+            
 
 
 
@@ -108,9 +105,9 @@
 						<% end %>
 
                      <p>
-                     	<span class="size">
+                     	
            <%=link_to item2.name, item_path(item2.id) %>
-                        </span>
+                        
 
                          <br>
  <%= link_to item2.artist.name, item_path(item2.id) %>

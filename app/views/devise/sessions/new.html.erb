@@ -1,33 +1,41 @@
-<h2 class="text">ログイン</h2>
-<div class="border"></div>
-<div class="blank"></div>
-
-
 <div class="container">
-  <div class="row blue">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h2 class="text">ログイン</h2>
+      <div class="border-login"></div>
 
-  <div class="col-xs-6 col-xs-offset-3">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-auto form-control form-control-lg w-100" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="col-xs-6 col-xs-offset-3">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "col-auto form-control form-control-lg w-100" %>
-  </div>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-auto form-control form-control-lg w-100 box-for-login" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <%= f.label :パスワード %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class:"col-auto form-control form-control-lg w-100" %>
+        </div>
+      </div>
+    </div>
 
 
 
-  <div class="actions col-xs-2 col-xs-offset-5">
-    <div class="space"></div>
-    <%= f.submit "ログイン", class: "btn btn-success btn-lg" %>
- </div>
-</div>
-</div>
-<% end %>
+        <div class="actions col-xs-1 col-xs-offset-5">
+          <div class="login-button-space">
+          <%= f.submit "ログイン", class: "btn btn-success btn-lg" %>
+          </div>
+       </div>
+      </div>
+      </div>
+      <% end %>
 
-<div class="space"></div>
+      <div class="col-xs-6 col-xs-offset-3">
+        <div class="login-button-bottom-space">
+        新規登録の方は<%= link_to "こちら", new_user_registration_path  %>
+        </div>
+        </div>
 
-<div class="col-xs-6 col-xs-offset-5">新規登録の方は<%= link_to "こちら", new_user_registration_path  %></div>
-<%= render "devise/shared/links" %>
+      <%= render "devise/shared/links" %>

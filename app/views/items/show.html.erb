@@ -120,7 +120,7 @@
 							</div>
 
 
-							<div class="user-item-total-stock-box">
+							<div class="user-item-total-stock-box-before">
 								<div class="user-category-name-box">
 									<span class="user-category-name"><%= @item.category.name %></span>
 								</div>
@@ -129,7 +129,7 @@
 								</div>
 
 								<div class="user-item-price">
-									<span class="user-item-price-text"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
+									<span class="user-item-price-text-before"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
 								</div>
 
 								</div>
@@ -141,8 +141,8 @@
 
 
 
-						<div class="col-xs-12">
-						<div class="border-item-show-bottom"></div>
+						<div class="col-xs-10 col-xs-offset-1">
+						
 							<h4 class="songlist-index">収録曲一覧</h4>
 							<% @disks.each do |disk| %>
 							<table class="table table-hover">
@@ -150,13 +150,16 @@
 								<% disk.songs.each do |song| %>
 								<tbody>
 									<tr>
-										<td><%= song.setlist %></td>
+										<td width="50px"><%= song.setlist %></td>
 										<td><%= song.name %></td>
 									</tr>
-								 <% end %>
 								</tbody>
 								<% end %>
 							</table>
+							 <% end %>
+							 <div class="back-to-item-index">
+							 <%= link_to "< 商品一覧へ", root_path %>
+							</div>
 						</div>
 					</div>
 					</div>

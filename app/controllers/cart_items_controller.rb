@@ -16,7 +16,7 @@ class CartItemsController < ApplicationController
   	if !@cart_items.nil?
 		@cart_items.quantity = @cart_items.quantity + params[:cart_item][:quantity].to_i
 		@cart_items.save
-		redirect_to item_path(params[:cart_item][:item_id])
+		redirect_to cart_items_path
   	elsif @cart_items.nil?
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.save

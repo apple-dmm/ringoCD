@@ -125,12 +125,26 @@
 	margin-left: 15px;
 }
 
-.border-item-show-bottom{
-	width: 90%;
-    height: 2px;
-    background-color:#dadada;
-    margin: 0 auto;
-	margin-bottom: 45px;
+.user-item-price-text-before{
+	margin-left: 40px;
+	font-size: 25px;
+	color: #B22222;
+}
+
+.user-item-total-stock-box-before{
+	margin-top: 13px;
+	margin-left:100px;
+	height: 80px;
+}
+
+.back-to-item-index{
+	margin-top: 50px;
+}
+
+/*user：item index*/
+
+.search-box-length{
+	width: 700px;
 }
 
 .sample01 {
@@ -150,13 +164,4 @@
 .sampleImg {
     float: left;
     margin: 0 10px 5px 0;
-}
-
-span {
-	font-size: 20px;
-}
-
-.change-size {
-	  width: 600px;
-   font-size: 20px;
 }

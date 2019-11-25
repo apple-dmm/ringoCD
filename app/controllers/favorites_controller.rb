@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
       def index
        @favorites = Favorite.where(user_id: current_user.id)
        @cart_item = CartItem.new
-       @favorites = Favorite.page(params[:page]).per(7)
+       @favorites = Favorite.page(params[:page]).per(2)
       end
 
       def create
