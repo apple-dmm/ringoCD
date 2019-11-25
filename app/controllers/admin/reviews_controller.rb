@@ -1,7 +1,11 @@
 class Admin::ReviewsController < ApplicationController
 
   def edit
+    if admin_signed_in?
   	@review = Review.find(params[:id])
+  else
+    redirect_to root_path
+  end
   end
 
   def update

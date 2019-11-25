@@ -1,2 +1,87 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<%= render 'admin/sidemenu' %>
+	<div class="col-xs-9">
+		<h3 class="edit-items">受注履歴一覧（<%= @user.last_name %>　様）</h3>
+		<div class="border"></div>
+
+		<% @orders.each do |order| %>
+
+		<div class="admin-order-index">
+
+			<div class="admin-order-id-box">
+				<div class="row">
+				<div class="col-xs-3">
+				<span class="admin-order-id">受注ID: <%= order.id %></span>
+				</div>
+			</div>
+
+				<div class="admin-order-box-head">
+					<div class="row">
+						<div class="col-xs-4">
+						<span class="admin-order-date-text">受注日: <%= order.created_at.strftime("%Y年%m月%d日") %></span>
+						</div>
+
+						<div class="col-xs-4 col-xs-offset-1">
+						<span class="admin-order-total-price">合計金額: <%= order.total %>(送料<%= order.delivery_fee %>円)</span>
+						</div>
+
+						<div class="col-xs-2">
+						<div class="admin-order-delivery-status-box">
+						<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+						</div>
+						</div>
+
+						</div>
+					</div>
+
+				<div class="admin-order-box">
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-1">
+							<div class="admin-order-user-info">
+								<div class="admin-order-user">
+									<span class="admin-order-user-id">ID: <%= order.user_id %></span><br>
+									<span class="admin-order-user-name">購入者: <%= order.user.last_name %><%= order.user.first_name %></span>
+								</div>
+								<div class="admin-order-address">
+									<span class="admin-order-order-address">〒 <%= order.postal_code %><br>
+										住所:<%= order.order_address %></span>
+								</div>
+							</div>
+						</div>
+						
+						<% order.item_orders.each do |item_order| %>
+						<div class="row">
+						<div class="col-xs-4 col-xs-offset-1">
+						</div>
+						<div class="col-xs-2">
+								<div class="admin-order-samuneiru-position">
+								<%= attachment_image_tag item_order.item, :image, :fill, 160, 160, format: 'jpg', fallback: "no_image.jpg" %>
+								</div>
+							</div>
+
+							<div class="col-xs-4">
+								<div class="admin-order-item-info">
+								<div class="admin-order-item-name">
+									<span class="admin-order-item-name-text"><%= item_order.item.name %></span>
+								</div>
+								<div class="admin-order-artist-name">
+									<span class="admin-order-artist-name-text"><%= item_order.item.artist.name %></span>
+								</div>
+								<div class="admin-order-item-quantity">
+									<span class="admin-order-item-quantity-text">数量: <%= item_order.quantity %>点   単価: <%= item_order.item.price %>円</span>
+								</div>
+								<div class="admin-order-item-total">
+									<span class="admin-order-item-total-text">小計: <%= item_order.item.price.to_i * item_order.quantity.to_i %>円</span>
+								</div>
+							</div>
+							</div>
+						</div>
+						<% end %>
+
+
+						</div>
+						</div>
+						</div>
+						<% end %>
+
+						<%= link_to "顧客詳細へ", admin_user_path(@user.id) %>
+	</div>

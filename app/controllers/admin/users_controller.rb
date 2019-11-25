@@ -1,16 +1,28 @@
 class Admin::UsersController < ApplicationController
   def index
+    if admin_signed_in?
   	@q = User.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @user_result = @q.result(distinct: true).page(params[:page]).per(30)
+  else
+    redirect_to root_path
+  end
   end
 
   def show
+    if admin_signed_in?
   	@user = User.find(params[:id])
+  else
+    redirect_to root_path
+  end
   end
 
   def edit
+    if admin_signed_in?
   	@user = User.find(params[:id])
+  else
+    redirect_to root_path
+  end
   end
 
   def destroy
