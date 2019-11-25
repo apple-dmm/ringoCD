@@ -18,19 +18,23 @@
 					</tr>
 					<tr>
 						<div class="field">
-							<td class="contact-body-box"><%= f.label :body, '内容 ' %></td>
-							<td class="contact-body-box-content"><%= f.text_area :body,class:"col-xs-8 contact-height" %>
-								<small>＊全角２００文字以内</small></td>
+							<td rowspan="2" class="contact-body-box"><%= f.label :body, '内容 ' %></td>
+							<td class="contact-body-box-content"><%= f.text_area :body,class:"col-xs-8 contact-height" %></td>
 						</div>
+					</tr>
+					<tr>
+						<td style="border-top-style: hidden;" class="contact-info"><small>＊全角２００文字以内</small></td>
 					</tr>
 				</tbody>
 			</table>
 			<%= f.submit '送信', class:'btn btn-success col-xs-4 col-xs-offset-4' %>
 			<% end %>
 		</div>
-			<%= link_to(user_path(current_user)) do %>
-			<div class="col-xs-2 col-xs-offset-3 index-box1">マイページへ戻る</div>
+		<div class="col-xs-9 col-xs-offset-1 back">
+			<%= link_to(mypage_path(current_user)) do %>
+			<div class="btn btn-default btn-lg">マイページへ戻る</div>
 			<% end %>
+		</div>
 	</div>
 </div>
 

@@ -18,7 +18,7 @@
 					</tr>
 					<tr>
 						<td width="60%">住所　　　　　：</td>
-						<td width="25%"><%= @user.address %></td>
+						<td width="25%"><%= @user.residence %></td>
 					</tr>
 					<tr>
 						<td width="60%">電話番号　　　：</td>
@@ -54,7 +54,7 @@
 						<%= i.hidden_field :first_furigana, :value => @user.first_furigana   %>
 						<%= i.hidden_field :password, :value => @user.password   %>
 						<%= i.hidden_field :postal_code, :value => @user.postal_code   %>
-						<%= i.hidden_field :address, :value => @user.address   %>
+						<%= i.hidden_field :address, :value => @user.residence   %>
 						<%= i.hidden_field :phone_number, :value => @user.phone_number   %>
 						<%= i.hidden_field :email, :value => @user.email   %>
 			</table>

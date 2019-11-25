@@ -668,12 +668,12 @@ table td{
 
 /*   edit  */
 
-.arrival-item {
+.arrival-list {
 	margin-top: 30px;
 }
 
-.must-field {
-	color: #E36363;
+.arrival-list td {
+	text-align: center;
 }
 
 
@@ -682,6 +682,10 @@ table td{
 
 .arrival-items-index {
 	margin-top: 30px;
+}
+
+.back-btn {
+	margin-top: 50px;
 }
 
 
