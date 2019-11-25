@@ -1,9 +1,14 @@
 class Admin::OrdersController < ApplicationController
   def index
+    if admin_signed_in?
   	@q = Order.ransack(params[:q])
     @order_results = @q.result(distinct: true).page(params[:page]).per(30)
 
    	@total_quantity = 0
+
+   else
+    redirect_to root_path
+  end
 
   end
 
@@ -19,8 +24,12 @@ class Admin::OrdersController < ApplicationController
 
 
   def show
+    if admin_signed_in?
     @user = User.find(params[:id])
   	@orders = Order.where(user_id: @user.id).page(params[:page]).per(30)
+  else
+    redirect_to root_path
+  end
   end
 
   private

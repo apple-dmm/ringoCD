@@ -1,7 +1,11 @@
 class Admin::LabelsController < ApplicationController
 
   def new
+    if admin_signed_in?
   	@label = Label.new
+  else
+    redirect_to root_path
+  end
   end
 
   def create
