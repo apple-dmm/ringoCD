@@ -19,7 +19,8 @@ class Admin::OrdersController < ApplicationController
 
 
   def show
-  	@order = Order.find(params[:id])
+    @user = User.find(params[:id])
+  	@orders = Order.where(user_id: @user.id).page(params[:page]).per(30)
   end
 
   private
