@@ -9,9 +9,6 @@
 
 				<%= search_form_for @q, url: admin_users_path, html: {class: 'user_sereach'} do |f| %>
 				<%= f.condition_fields do |c| %>
-				<%= c.attribute_fields do |a| %>
-				<%= a.attribute_select associations:[:email] %>
-				<% end %>
 				<%= c.hidden_field :p, value: "cont_all" %>
 
 				<%= c.value_fields do |v| %>
@@ -23,8 +20,9 @@
 			 	<% end %>
 
 
+
 			 	<% if @user_result.any? %>
-				<h5 class="search-result">検索結果<%= @user_result.count %>件</h5>
+				<h5 class="search-result"></h5>
 
 
 				<table class='col-xs-12 table table-hover table-inverse'>
@@ -40,7 +38,10 @@
   					<tbody>
     					<tr>
       						<td><%= user.id %></td>
-      						<td><%= link_to user.last_name ,admin_user_path(user) %></td>
+      						<td><%= link_to(admin_user_path(user)) do %>
+									<div><%= user.last_name %>  <%= user.first_name %></div>
+								<% end %>
+							</td>
       						<td><%= user.residence %></td>
       						<td><%= user.email %></td>
     					</tr>
