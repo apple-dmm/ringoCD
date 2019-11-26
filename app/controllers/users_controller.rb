@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user.update(user_params)
       flash[:notice] = "アカウント情報の更新に成功しました。"
-      redirect_to user_path(user.id)
+      redirect_to mypage_path(user.id)
     else
       render "edit"
     end
