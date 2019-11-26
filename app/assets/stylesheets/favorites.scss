@@ -2,45 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.change-place {
-	text-align: center;
+.favorites-title {
+    width: 900px;
+    margin: 0 auto;
+    font-size: 30px;
 }
 
-
-.sample01 {
-    width: 600px;
-    padding: 10px;
-    margin-bottom: 30px;
-    overflow: hidden;
-    zoom: 1;
+.favorite-count {
+	width: 54%;
+     margin: 0 auto;
 }
 
-.sample01 p {
-    overflow: hidden;
-    zoom: 1;
-    text-align: left;
-}
-
-.sampleImg {
-    float: left;
-    margin: 0 10px 5px 0;
+.favorites-border{
+    width: 1000px;
+    height: 2px;
+    background-color:#dadada;
+    margin: 0 auto;
 }
 
 .quantity-number-field{
 	width: 37px;
 }
 
-.position-fix {
-    width: 400px;
+.next-page {
+    width: 360px;
     margin: 0 auto;
+    margin-left: 360px;
 }
 
-.sasasa{
-    margin-right: 20px;
-}
 
 .change-position {
-     width: 300px;
+    margin-left: 385px;
+  }
+
+.favorites-page {
+     width: 82%;
     margin: 0 auto;
+    text-align: right;
+}
+
+.text-size {
+     font-size: 20px;
+}
+
+.checkbox-size {
+    transform: scale(1.5);
+    margin-left: 55px;
+    margin-bottom: 20px;
+}
+
+.favorite-index-tr{
+  vertical-align: initial;
+  padding: initial;
+  height: 550px;
 }
