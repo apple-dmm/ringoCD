@@ -1,11 +1,11 @@
 
-　　<div class="search-box-user-index col-xs-8 col-xs-offset-2">
+　　<div class="search-box-user-index col-xs-8 col-xs-offset-3">
 
 
 			<%= search_form_for @q, html: {class: 'attribution'} do |f| %>
 		<%= f.condition_fields do |c| %>
 		<%= c.attribute_fields do |a| %>
-		<%= a.attribute_select associations: [:artist, :category, :label] %>
+
 		<% end %>
 
 		<%= c.hidden_field :p, value: "cont_all" %>
@@ -22,17 +22,7 @@
 		<% end %>
 </div>
 
-
-    <% if @items.any? %>
-	<h5 class="search-result">検索結果<%= @items.count %>件</h5>
-
-
-			 <% else %>
-
-			 <h6>検索する商品がありません。キーワードを変えてください。
-			 </h6>
-			 <% end %>
-
+<br><br><br>
 
 
         <div class="theTarget">
@@ -41,97 +31,167 @@
             <div class="pic3"></div>
             <div class="pic4"></div>
             <div class="pic5"></div>
-            <div class="pic6"></div>
-            <div class="pic7"></div>
         </div>
         <br><br><br>
 
+
+
   <div class="container">
    <div class="row">
-    <div class=" col-xs-offset-1">
+     <div class="col-xs-8 col-xs-offset-1">
 
+<table>
+    <% @items.each_slice(4) do |item1, item2, item3, item4| %>
 
-      <table border="0" width="500" height="300">
+		<tbody>
+				<tr class="item-index-tr">
+						<td class="item-index-td">
 
+										<% if item1 != nil%>
 
-	    <% @items.each_slice(2) do |item1, item2| %>
-
-		 <tbody>
-				<tr>
-					<td>
-
-
-					<div class="sample01">
-
-
-						<div class="sampleImg">
-							<% if item1 != nil%>
-						<%= link_to item_path(item1.id) do %>
-						<%= attachment_image_tag item1, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
-					    </div>
-						<% end %>
-
-
-			        <p>
-			
-           <%=link_to item1.name, item_path(item1.id) %>
-            
+									       <%= link_to item_path(item1.id) do %>
+									          <%= attachment_image_tag item1, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
 
 
 
-                        <br>
-					    <%= link_to item1.artist.name, item_path(item1.id) %>
-					    <br><br>
-					    <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item1.price %>円</div>
+			                            <p>
+										    <div class="text-size">
+									           <%=link_to item1.name, item_path(item1.id) %>
+									        </div>
 
-						<div>在庫あり</div>
-					</p>
-					<% end %>
-				    </div>
+						                               <br>
+											   <%= link_to item1.artist.name, item_path(item1.id) %>
+											           <br><br>
 
-					</td>
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item1.price %>円</div>
+
+												  <div>在庫あり</div>
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
 
 
-					<td>
-
-						<div class="sample01">
+					    <td class="item-index-td">
 
 
-						<div class="sampleImg">
-							 <% if item2 != nil %>
-						<%= link_to item_path(item2.id) do %>
-						<%= attachment_image_tag item2, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
-					    </div>
-						<% end %>
+									    <% if item2 != nil %>
 
-                     <p>
-                     	
-           <%=link_to item2.name, item_path(item2.id) %>
-                        
+									   
+										  <%= link_to item_path(item2.id) do %>
+										    <%= attachment_image_tag item2, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
 
-                         <br>
- <%= link_to item2.artist.name, item_path(item2.id) %>
-					    <br><br>
-					    <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item2.price %>円</div>
+					                 <% end %>
+				                  </div>
 
-						<div>在庫あり</div>
-					</p>
-				    </div>
-				   </td>
 
-					</td>
+                                      <p>
+										      <div class="text-size">
+										          <%=link_to item2.name, item_path(item2.id) %>
+										      </div>
 
+		                                               <br>
+		                                             <%= link_to item2.artist.name, item_path(item2.id) %>
+							                          <br><br>
+
+
+					                                     <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item2.price %>円</div>
+
+
+	                                                          <% end %>
+
+
+					                  </p>
+				        </td>
+
+				        <td class="item-index-td">
+
+										<% if item3 != nil%>
+
+									       <%= link_to item_path(item3.id) do %>
+
+									          <%= attachment_image_tag item3, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+
+									          <div class="text-size">
+									          	<%=link_to item3.name, item_path(item3.id) %>
+									          </div>
+
+
+						                               <br>
+											   <%= link_to item3.artist.name, item_path(item3.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item3.price %>円</div>
+
+												  <div>在庫あり</div>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+
+					    <td class="item-index-td">
+
+
+										<% if item4 != nil%>
+
+
+									       <%= link_to item_path(item4.id) do %>
+									          <%= attachment_image_tag item4, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+										   <div class="text-size">
+									           <%=link_to item4.name, item_path(item4.id) %>
+									       </div>
+
+
+						                               <br>
+											   <%= link_to item4.artist.name, item_path(item4.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item4.price %>円</div>
+
+												  <div>在庫あり</div>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
 				</tr>
-				<% end %>
-			 <% end %>
-	     </tbody>
-	  </table>
-    </div>
+
+	    </tbody>
+
+	<% end %>
+
+</table>
+
+
 	  <br><br>
 
 
-  <div class="row">
-				<div class="col-xs-10 col-xs-offset-1">
+                  <div class="page-top col-xs-8 col-xs-offset-2">
+
 					<%= paginate @items, class: "paginate" %>
 					<p id="pageTop"><a href="#">ページトップへ</a></p>
 						<script type='text/javascript'>
@@ -147,4 +207,3 @@
 							});
 						</script>
 				</div>
-			</div>
