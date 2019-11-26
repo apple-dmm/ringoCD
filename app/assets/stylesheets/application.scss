@@ -314,82 +314,9 @@ ul {
 	display:none;
 }
 
-/*//confirm*/
-
-
-.confirm-title{
-	font-size:30px;
-	text-align:center;
-	margin-top:50px;
-}
-.confirm-body{
-	text-align:center;
-	font-size:15px;
-	display:block;
-	margin-top:40px;
-}
-.box1{
-	margin-top:50px;
-	color:black;
-	padding: 0.5em 1em;
-    border: solid 1px #000000;
-    text-align:center;
-}
 
 
 
-
-
-/*//index*/
-
-.index-title{
-	padding: 0 0 0 115px;
-	margin-top:50px;
-}
-
-.border {
-    width: 80%;
-    height: 2px;
-    background-color:#dadada;
-    margin: 0 auto;
-}
-
-.delivery-status{
-	padding-top:30px;
-	font-size:20px;
-}
-
-#pageTop {
-  text-align: center;
-  border: solid 1px #000000;
-}
-
-#pageTop a {
-  display: block;
-  padding: 0.5em 1em;
-  color:black;
-}
-
-.index-box1{
-	margin-top:50px;
-	margin-bottom:50px;
-	color:black;
-	padding: 0.5em 1em;
-    border: solid 1px #000000;
-    text-align:center;
-}
-
-
-
-
-/*//new*/
-
-
-.new-title{
-	font-size:20px;
-	margin-top:60px;
-	margin-left:60px;
-}
 
 .border {
     width: 90%;
@@ -438,25 +365,16 @@ ul {
 	font-size:8px;
 }
 
-.tablemenu{
-	float:left;
-}
-
-.registrated-address{
-	margin-bottom:20px
-}
-
-.sum{
-	margin-top:50px;
-	margin-bottom:50px;
-	color:black;
-	padding: 0.5em 1em;
-    border: solid 1px #000000;
-    text-align:right;
-}
-
-
 /* admin_user  */
+
+
+/*   index    */
+
+.admin-index-title{
+	margin-left: 50px;
+}
+
+
 
 
 /*   show  */
@@ -482,15 +400,15 @@ ul {
 .admin-usershow-box{
 	margin-top:50px;
 	margin-bottom:50px;
-	color:black;
+	color:white;
 	padding: 0.5em 1em;
-    border: solid 1px #000000;
     text-align:center;
+    border-radius: 10px;
+    background-color:#f0ad4e;
 }
 
 .user_show_table{
 	margin-top:50px;
-	margin-left:20px;
 }
 
 
@@ -643,6 +561,10 @@ ul {
 	height:100px;
 }
 
+.admin-review-title{
+	margin-left: 50px;
+}
+
 .edit-items{
 	text-align: center;
 }
@@ -689,7 +611,8 @@ ul {
 
 .label-artist-category {
 	display: inline;
-	padding: 0 0 0 115px;
+	text-align: center;
+	margin-left: 260px;
 }
 
 .border {
@@ -701,6 +624,10 @@ ul {
 
 .label-artist-category-text{
   	text-align: center;
+}
+
+.label-artist-category-box{
+	margin-top: 100px;
 }
 
 

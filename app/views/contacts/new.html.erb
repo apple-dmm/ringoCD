@@ -2,7 +2,7 @@
 	<h2 class="index-title">お問い合わせ</h2>
 	<div class="border"></div>
 	<div calss="row">
-		<div class="col-xs-8 col-xs-offset-2">
+		<div class="col-xs-6 col-xs-offset-3">
 			<div class="contact-confirm-box">
 				<span class="contact-confirm-text">以下の内容でよろしければ、「送信」ボタンを押してください。</span>
 			</div>
@@ -19,7 +19,7 @@
 					<tr>
 						<div class="field">
 							<td rowspan="2" class="contact-body-box"><%= f.label :body, '内容 ' %></td>
-							<td class="contact-body-box-content"><%= f.text_area :body,class:"col-xs-8 contact-height" %></td>
+							<td class="contact-body-box-content"><%= f.text_area :body,class:"col-xs-12 contact-height" %></td>
 						</div>
 					</tr>
 					<tr>
@@ -27,12 +27,12 @@
 					</tr>
 				</tbody>
 			</table>
-			<%= f.submit '送信', class:'btn btn-success col-xs-4 col-xs-offset-4' %>
+			<%= f.submit '送信', class:'btn btn-primary col-xs-4 col-xs-offset-4' %>
 			<% end %>
 		</div>
-		<div class="col-xs-9 col-xs-offset-1 back">
+		<div class="col-xs-2 col-xs-offset-2 back">
 			<%= link_to(mypage_path(current_user)) do %>
-			<div class="btn btn-default btn-lg">マイページへ戻る</div>
+			<div><マイページへ戻る</div>
 			<% end %>
 		</div>
 	</div>
