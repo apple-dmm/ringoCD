@@ -17,6 +17,12 @@
 	float: left;
 }
 
+.favorite-item-show{
+	position: relative;
+	font-size: 30px;
+	margin-left: 370px;
+}
+
 .user-item-detail{
 	margin-top: 20px;
 }
@@ -123,6 +129,12 @@
 
 .user-cart-in{
 	margin-left: 15px;
+}
+
+.no-stock-text{
+	color: #B22222;
+	font-size: 22px;
+	margin-left: 35px;
 }
 
 .user-item-price-text-before{

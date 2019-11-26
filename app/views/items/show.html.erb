@@ -28,7 +28,17 @@
 							<div class="col-xs-9">
 							<div class="user-item-detail">
 							<div class="user-item-names">
-								<span class="user-item-name"><%= @item.name %></span>
+								<span class="user-item-name"><%= @item.name %>
+							<% if @favorite.favorited_by?(current_user,@item) %>
+						    <%= link_to item_favorite_path(@item.id), method: :delete do %>
+						      <i class="fa fa-heart favorite-item-show" aria-hidden="true" style="color: red;"></i>
+						 <% end %>
+						 <% else %>
+							<%= link_to item_favorites_path(@item.id), method: :post do %>
+							  <i class="fa fa-heart-o favorite-item-show" aria-hidden="true"></i>
+						 <% end %>
+						 <% end %>
+						 </span>
 							</div>
 							<div class="user-item-artists">
 								<span class="user-item-artist"><%= @item.artist.name %></span>
@@ -46,32 +56,19 @@
 									<span class="user-category-name"><%= @item.category.name %></span>
 								</div>
 								<div class="user-stock-quantity-box">
+									<% if @total_arrival-@total_order >= 1 %>
 									<span class="user-stock-quantity">在庫有</span>
+									<% else %>
+									<span class="stock-quantity">在庫無</span>
+									<% end %>
 								</div>
 
-
-									<% if @favorite.favorited_by?(current_user,@item) %>
-								  <li>
-								    <%= link_to item_favorite_path(@item.id), method: :delete do %>
-								      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-
-								    <% end %>
-								  </li>
-								    <% else %>
-								  <li>
-								    <%= link_to item_favorites_path(@item.id), method: :post do %>
-								      <i class="fa fa-heart-o" aria-hidden="true"></i>
-
-								    <% end %>
-								  </li>
-								<% end %>
-
-
 								<div class="user-item-price">
-									<span class="user-item-price-text"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
+									<span class="user-item-price-text"><%= @item.include_tax_price %> 円<span class="user-item-price-tax">（税込）</span></span>
 								</div>
 
 								<div class="user-item-quantity">
+									<% if @total_arrival-@total_order >= 1 %>
 									<%= form_for (@cart_item), url: cart_items_path do |f| %>
 
 									<%= f.hidden_field :user_id, :value => @user.id %>
@@ -80,16 +77,25 @@
 									<div class="field">
 										<div class="user-item-quantity-position">
 										<span class="user-item-quantity-text">数量</span>
-									<%= f.number_field :quantity, min:"1", class:"user-number-field" %>
+									<%= f.number_field :quantity, min:"1", max:@total_arrival-@total_order, class:"user-number-field" %>
 									<%= f.submit "カートに入れる", class:"user-cart-in" %>
 										</div>
 									</div>
+									<% end %>
+									<% else %>
+									<span class="no-stock-text">【入荷待ち】</span>
 									<% end %>
 								</div>
 							</div>
 							</div>
 							</div>
 							</div>
+							<% @reviews.each do |review| %>
+
+							<% end %>
+						</div>
+					</div>
+				</div>
 
 
 
@@ -125,11 +131,15 @@
 									<span class="user-category-name"><%= @item.category.name %></span>
 								</div>
 								<div class="user-stock-quantity-box">
+									<% if @total_arrival-@total_order >= 1 %>
 									<span class="user-stock-quantity">在庫有</span>
+									<% else %>
+									<span class="stock-quantity">在庫無</span>
+									<% end %>
 								</div>
 
 								<div class="user-item-price">
-									<span class="user-item-price-text-before"><%= @item.price %> 円<span class="user-item-price-tax">（税込）</span></span>
+									<span class="user-item-price-text-before"><%= @item.include_tax_price %> 円<span class="user-item-price-tax">（税込）</span></span>
 								</div>
 
 								</div>
@@ -137,10 +147,12 @@
 							</div>
 							</div>
 							</div>
+						</div>
 <% end %>
 
 
-
+				<div class="item-detail-content">
+					<div class="row">
 						<div class="col-xs-10 col-xs-offset-1">
 
 							<h4 class="songlist-index">収録曲一覧</h4>
@@ -162,8 +174,6 @@
 							</div>
 						</div>
 					</div>
-					</div>
 				</div>
-			</div>
-		</div>
 	</div>
+</div>

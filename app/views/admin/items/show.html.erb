@@ -43,15 +43,18 @@
 									<span class="category-name"><%= @item.category.name %></span>
 								</div>
 								<div class="stock-quantity-box">
+									<% if @total_arrival-@total_order >= 1 %>
 									<span class="stock-quantity">在庫有</span>
+									<% else %>
+									<span class="stock-quantity">在庫無</span>
+									<% end %>
 								</div>
 								<div class="admin-item-price">
 									<span class="admin-item-price-text"><%= @item.price %> 円<span class="admin-item-price-tax">（税抜）</span></span>
 								</div>
 
 								<div class="stock-quantity-detail">
-									<!-- 在庫数が変わるように随時変更 -->
-									<span class="stock-quantity-detail-text">在庫数：10点</span>
+									<span class="stock-quantity-detail-text">在庫数：<%= @total_arrival-@total_order %>点</span>
 								</div>
 							</div>
 							</div>
@@ -71,7 +74,9 @@
 								</tbody>
 								<% end %>
 							</table>
-						</div>
+							 <div class="back-to-item-index">
+							 <%= link_to "< 商品一覧へ", admin_items_path %>
+							</div>
 					</div>
 				</div>
 			</div>
