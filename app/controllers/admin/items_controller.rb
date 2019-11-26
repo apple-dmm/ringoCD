@@ -5,6 +5,23 @@ class Admin::ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @item_result = @q.result(distinct: true).page(params[:page]).per(30)
+
+    @total_arrival = 0
+    @total_order = 0
+    @items = Item.all
+      @items.each do |item|
+        @arrivals = Arrival.where(item_id: item.id)
+        @item_orders = ItemOrder.where(item_id: item.id)
+          @item_orders.each do |item_order|
+            @total_order = @total_order + item_order.quantity
+          end
+          @arrivals.each do |arrival|
+            @total_arrival = @total_arrival + arrival.arrival_quantity
+          end
+      if @total_arrival - @total_order >= 1
+        item.update_attributes(status: 0)
+      end
+    end
   else
     redirect_to root_path
   end
@@ -15,6 +32,21 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
+
+    @arrivals = Arrival.where(item_id: @item.id)
+    @item_orders = ItemOrder.where(item_id: @item.id)
+    @total_arrival = 0
+    @total_order = 0
+      @arrivals.each do |arrival|
+        @total_arrival = @total_arrival + arrival.arrival_quantity
+      end
+      @item_orders.each do |item_order|
+        @total_order = @total_order + item_order.quantity
+      end
+    if @total_arrival - @total_order >= 1
+      @item.update_attributes(status: 0)
+    end
+
   else
     redirect_to root_path
   end
@@ -99,7 +131,6 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(params[:id])
     else
-      puts @item.errors.full_messages
       render 'edit'
   end
   end
@@ -114,7 +145,7 @@ class Admin::ItemsController < ApplicationController
   private
   #cocoon用記述。_destroyがないと削除できない。
   def item_params
-    params.require(:item).permit(:name, :price, :release, :image, 
+    params.require(:item).permit(:name, :price, :release, :image, :sales_status,
       disks_attributes: [:id, :disk_num, :_destroy,
         songs_attributes: [:id, :name, :setlist, :_destroy]])
   end

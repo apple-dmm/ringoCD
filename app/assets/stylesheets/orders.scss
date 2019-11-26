@@ -33,10 +33,9 @@
 }
 .box1{
 	margin-top:50px;
-	color:black;
 	padding: 0.5em 1em;
-    border: solid 1px #000000;
     text-align:center;
+    font-size: 16px;
 }
 
 
@@ -74,10 +73,9 @@
 .index-box1{
 	margin-top:50px;
 	margin-bottom:50px;
-	color:black;
 	padding: 0.5em 1em;
-    border: solid 1px #000000;
     text-align:center;
+    font-size: 16px;
 }
 
 .ordered-index{
@@ -103,7 +101,7 @@
 	border: solid 1px white;
 	padding:10px 5px;
 	color:white;
-	background-color:#00CC00;
+	background-color:#f0ad4e;
 	border-radius:10px;
 	margin-left:20px;
 }
@@ -230,9 +228,6 @@ table td{
 	float:left;
 }
 
-.registrated-address{
-}
-
 .sum{
 	margin-top:50px;
 	margin-bottom:50px;
@@ -247,14 +242,13 @@ table td{
 }
 
 .order-sum-box{
-	width: 60%;
+	width: 80%;
 	border: solid 1px #444444;
 	height: 50px;
 	background-color: #F5F5F5;
 	line-height: 25px;
-	margin-top:400px;
+	margin-top:100px;
 	margin-bottom: 40px;
-	margin-left:250px;
 }
 
 .order-samuneiru-box{
@@ -289,7 +283,6 @@ table td{
 
 .delivery-fee{
 	text-align:center;
+	margin-top: 50px;
 }
 
-.order-address-box{
-}

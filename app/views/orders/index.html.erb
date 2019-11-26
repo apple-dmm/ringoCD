@@ -15,8 +15,7 @@
 						</td>
 						<td width="25%">&nbsp;</td>
 						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>
+						<td width="30%">
 							<div class="order-box-artist">
 								<span class="order-address">送付先： <%= order.order_address %></span>
 							</div>
@@ -57,6 +56,7 @@
 									<%= item_order.item.include_tax_price*item_order.quantity.to_i %>円(税込)
 								</div>
 							</td>
+							<td>&nbsp;</td>
 							<td>
 								<div>
 									<%= link_to(new_review_path(item_order.item_id)) do %>
@@ -76,16 +76,16 @@
 									支払い方法：　<%= order.payment %>
 								</div>
 							</td>
-							<td width="25%">&nbsp;</td>
-							<td>
+							<td>&nbsp;</td>
+							<td width="20%">
 								<div class="item-order-delivery_fee">
 									送料： <%= order.delivery_fee %>円
 								</div>
 							</td>
-							<td width="25%">&nbsp;</td>
-							<td>
+							<td>&nbsp;</td>
+							<td width="25%">
 								<div class="item-order-total">
-									<b>合計金額(税込)<%= order.total %>円</b>
+									<b>合計金額(税込)<br><%= order.total %>円</b>
 								</div>
 							</td>
 						</tr>
@@ -109,7 +109,9 @@
 	        });
 	      });
 	    </script>
+	    <div class="row">
 	    <%= link_to(user_path(current_user)) do %>
-			<div class="col-xs-2 col-xs-offset-3 index-box1">マイページへ</div>
+			<div class="col-xs-3 col-xs-offset-1 index-box1"><マイページへ</div>
 		<% end %>
+		</div>
 </div>

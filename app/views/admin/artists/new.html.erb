@@ -7,7 +7,7 @@
 			<h2 class="text">歌手名の新規登録</h2>
 			<div class="border"></div>
 			<div class="blank"></div>
-
+			<div class="col-xs-5 col-xs-offset-3 label-artist-category-box">
 			  <%= form_for @artist, url: admin_artists_path do |f| %>
 
 			  <%= f.label :歌手名 %>
@@ -16,6 +16,7 @@
 			  <%= f.submit '登録する', class: "btn btn-primary" %>
 
 			  <% end %>
+			</div>
 		</div>
 	</div>
 </div>

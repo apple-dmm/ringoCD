@@ -1,45 +1,39 @@
 
-<h2>お気に入り</h2>
-<div class="border"></div>
+<div class="favorites-title">お気に入り</div>
+<div class="favorites-border"></div>
+<br>
 
+<div class="favorite-count">お気に入りアイテム: <%= @favorites.count %>件</div>
 
-<h4 class="change-place">お気に入りアイテム: <%= @favorites.count %>件</h4>
-
-<div class="border"></div>
-
-	<%= paginate @favorites %>
+<br><br>
 
 
  <div class="container">
    <div class="row">
-     <div class=" col-xs-offset-1">
+     <div class="col-xs-5 col-xs-offset-1">
 
-<table border="0" width="500" height="300">
-    <% @favorites.each_slice(2) do |favorite1, favorite2| %>
+<table>
+    <% @favorites.each_slice(4) do |favorite1, favorite2, favorite3, favorite4| %>
 
 		<tbody>
-				<tr>
+				<tr class="favorite-index-tr">
 						<td>
 
-
-					        <div class="sample01">
-
-								          <div class="sampleImg">
-
-
-
 										<% if favorite1 != nil%>
-										<%= check_box_tag 'favorites[]', favorite1.id, false, {id: favorite1.id, form: "formtag"}%>
+
+										<div class="checkbox-size">
+											<%= check_box_tag 'favorites[]', favorite1.id, false, {id: favorite1.id, form: "formtag"}%>
+									    </div>
 									       <%= link_to item_path(favorite1.id) do %>
-									          <%= attachment_image_tag favorite1.item, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
+									          <%= attachment_image_tag favorite1.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
 					                    <% end %>
-					                     </div>
+
 
 
 			                            <p>
-										   <span class="size">
+										    <div class="text-size">
 									           <%=link_to favorite1.item.name, item_path(favorite1.id) %>
-									       </span>
+									        </div>
 
 						                               <br>
 											   <%= link_to favorite1.item.artist.name, item_path(favorite1.id) %>
@@ -50,11 +44,13 @@
 												  <div>在庫あり</div>
 												   <%= form_for @cart_item, url: cart_items_path do |f| %>
 
+												    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+
 				        							<%= f.hidden_field :user_id, :value => current_user.id %>
 				        							<%= f.hidden_field :item_id, :value => favorite1.item_id %>
 
 	                                                 <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1 %>
-	                                                 <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+
 
 	                                                 <% end %>
 
@@ -70,24 +66,23 @@
 
 					    <td>
 
-						    <div class="sample01">
-
-						          <div class="sampleImg">
-
 
 									    <% if favorite2 != nil %>
-				<%= check_box_tag 'favorites[]', favorite2.id, false, {id: favorite2.id, form: "formtag"} %>
+
+									    <div class="checkbox-size">
+				                          <%= check_box_tag 'favorites[]', favorite2.id, false, {id: favorite2.id, form: "formtag"} %>
+				                        </div>
 										  <%= link_to item_path(favorite2.id) do %>
-										    <%= attachment_image_tag favorite2.item, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg" %>
+										    <%= attachment_image_tag favorite2.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
 
 					                 <% end %>
 				                  </div>
 
 
                                       <p>
-										      <span class="size">
+										      <div class="text-size">
 										          <%=link_to favorite2.item.name, item_path(favorite2.id) %>
-										      </span>
+										      </div>
 
 		                                               <br>
 		                                             <%= link_to favorite2.item.artist.name, item_path(favorite2.id) %>
@@ -111,34 +106,134 @@
 
 					                  </p>
 				        </td>
+
+				        <td>
+
+										<% if favorite3 != nil%>
+
+										<div class="checkbox-size">
+										<%= check_box_tag 'favorites[]', favorite3.id, false, {id: favorite3.id, form: "formtag"}%>
+									    </div>
+									       <%= link_to item_path(favorite3.id) do %>
+
+									          <%= attachment_image_tag favorite3.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+
+									          <div class="text-size">
+									          	<%=link_to favorite3.item.name, item_path(favorite3.id) %>
+									          </div>
+
+
+						                               <br>
+											   <%= link_to favorite3.item.artist.name, item_path(favorite3.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= favorite3.item.price %>円</div>
+
+												  <div>在庫あり</div>
+												   <%= form_for @cart_item, url: cart_items_path do |f| %>
+
+												    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+
+				        							<%= f.hidden_field :user_id, :value => current_user.id %>
+				        							<%= f.hidden_field :item_id, :value => favorite3.item_id %>
+
+	                                                 <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1 %>
+
+
+	                                                 <% end %>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+
+					    <td>
+
+
+										<% if favorite4 != nil%>
+
+										<div class="checkbox-size">
+										<%= check_box_tag 'favorites[]', favorite4.id, false, {id: favorite4.id, form: "formtag"}%>
+									    </div>
+									       <%= link_to item_path(favorite4.id) do %>
+									          <%= attachment_image_tag favorite4.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+										   <div class="text-size">
+									           <%=link_to favorite4.item.name, item_path(favorite4.id) %>
+									       </div>
+
+
+						                               <br>
+											   <%= link_to favorite4.item.artist.name, item_path(favorite4.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= favorite4.item.price %>円</div>
+
+												  <div>在庫あり</div>
+												   <%= form_for @cart_item, url: cart_items_path do |f| %>
+
+												      <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+
+				        							<%= f.hidden_field :user_id, :value => current_user.id %>
+				        							<%= f.hidden_field :item_id, :value => favorite4.item_id %>
+
+	                                                 <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1 %>
+
+
+	                                                 <% end %>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
 				</tr>
 	    </tbody>
 	<% end %>
 </table>
 
-    <%= paginate @favorites %>
+                                              <br><br>
+
+										    <div class="favorites-page"><%= paginate @favorites %></div>
+
+										    <br>
+
+										<div class="favorites-border"></div>
+
+
+										 <br><br>
 
 
 
+										 <%= form_tag(destroy_all_path, method: :delete, id:"formtag") do %>
+
+										<div class="change-position">
+										<%= submit_tag "チェックしたアイテムを削除" %>
+										</div>
+
+										<% end %>
+
+											<br><br>
 
 
- <%= form_tag(destroy_all_path, method: :delete, id:"formtag") do %>
-
-<div class="change-position">
-<%= submit_tag "チェックしたアイテムを削除" %>
-</div>
-
-<% end %>
-
-	  <br><br>
-									<div class="border"></div>
-
-									<br><br>
-
-
-												<div class="position-fix">
-												 <%= link_to "マイページへ", user_path(current_user.id), class: 'btn btn-default btn-lg sasasa' %>
-												 <%= link_to "商品一覧へ", items_path, class: 'btn btn-default btn-lg' %>
-												</div>
-
+												 <div class="next-page">
+												 <%= link_to "< マイページへ　　　　　", user_path(current_user.id) %>
+												 <%= link_to "     商品一覧へ >", items_path %>
+												  </div>
 

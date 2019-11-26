@@ -1,12 +1,16 @@
 <%= render 'admin/sidemenu' %>
 
 <div class="container">
-	<h2><%= @user.last_name %>様</h2>
-	<h5 class="edit_user"><%= link_to "顧客情報の編集", edit_admin_user_path(@user), class: "glyphicon glyphicon-pencil" %></h5>
-	<div class="border-admin"></div>
 	<div class="row">
-		<div class="col-xs-6">
-			<table class="table table-striped table-bordered user_show_table">
+		<div class="col-xs-9">
+			<div>
+				<h2 class="admin-index-title" ><%= @user.last_name %>様</h2>
+				<h5 class="edit_user"><%= link_to "顧客情報の編集", edit_admin_user_path(@user), class: "glyphicon glyphicon-pencil" %></h5>
+			</div>
+			<div class="border"></div>
+			</div>
+			<div class="col-xs-6 col-xs-offset-1">
+			<table class="col-xs-9 table table-striped table-bordered user_show_table">
 				<tbody>
 					<tr>
 						<div class="field">
@@ -44,9 +48,9 @@
 					</tr>
 				</tbody>
 			</table>
+			</div>
 			<%= link_to(admin_order_path(@user.id)) do %>
-			<div class="col-xs-6 col-xs-offset-3 admin-usershow-box">受注履歴へ</div>
+			<div class="col-xs-2 col-xs-offset-6 admin-usershow-box">受注履歴へ</div>
 			<% end %>
-		</div>
 	</div>
 </div>

@@ -17,6 +17,12 @@
 	float: left;
 }
 
+.favorite-item-show{
+	position: relative;
+	font-size: 30px;
+	margin-left: 370px;
+}
+
 .user-item-detail{
 	margin-top: 20px;
 }
@@ -125,6 +131,12 @@
 	margin-left: 15px;
 }
 
+.no-stock-text{
+	color: #B22222;
+	font-size: 22px;
+	margin-left: 35px;
+}
+
 .user-item-price-text-before{
 	margin-left: 40px;
 	font-size: 25px;
@@ -147,21 +159,20 @@
 	width: 700px;
 }
 
-.sample01 {
-    width: 557px;
-    padding: 10px;
-    margin-bottom: 30px;
-    overflow: hidden;
-    zoom: 1;
+.item-index-tr{
+  vertical-align: initial;
 }
 
-.sample01 p {
-    overflow: hidden;
-    zoom: 1;
-    text-align: left;
+.item-index-td{
+  padding-top: 50px;
+  height: 470px;
+  border-bottom: solid 1px #dadada;
 }
 
-.sampleImg {
-    float: left;
-    margin: 0 10px 5px 0;
+.text-size {
+     font-size: 20px;
+}
+
+.page-top {
+	width: 700px;
 }
