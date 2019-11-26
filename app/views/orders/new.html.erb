@@ -55,7 +55,7 @@
 			<div class="col-xs-11 col-xs-offset-1 credit">
 					<table class="address-table">
 						<tr>
-							<td><label><%= radio_button_tag("add_address", 1) %>登録先の住所と別の住所を使う</td></label>
+							<td width="25%"><label><%= radio_button_tag("add_address", 1) %>登録先の住所と別の住所を使う</td></label>
 						</tr>
 						<tr>
 							<td width="10%"><%= i.label :name, "・宛名　　　　：" %></td>
@@ -110,46 +110,52 @@
 
 	<h2 class="new-2title">合計金額</h2>
 	<div class="border"></div>
-	<% @cart_items.each do |cart_item| %>
-	<div class="new-order-index-box col-xs-6 col-xs-offset-1">
-					<table class="order-cart-item-table">
-						<tr>
-							<td>
-								<div class="order-samuneiru-in-box">
-								<%= link_to(item_path(cart_item)) do %>
-								<%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
-								<% end %>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-name">
-									<div class="order-box-name-text"><%= cart_item.item.name %></div>
-								</div>
-								<div class="order-box-artist">
-									<div class="order-box-artist-text"><%= cart_item.item.artist.name %></div>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-artist">
-									<div class="order-box-price">単価<%= cart_item.item.include_tax_price %>円(税込)</div>
-								</div>
-								<div class="order-box-artist">
-									<div class="order-box-quantity">数量　<b><%= cart_item.quantity %></b>点</div>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-artist">
-									<div class="order-box-totalprice"><%= cart_item.item.include_tax_price*cart_item.quantity %>円(税込)</div>
-								</div>
-							</td>
-						</tr>
-					</table>
+	<div class="row">
+		<% @cart_items.each do |cart_item| %>
+		<div class="new-order-index-box col-xs-8 col-xs-offset-1">
+						<table class="order-cart-item-table">
+							<tr>
+								<td>
+									<div class="order-samuneiru-in-box">
+									<%= link_to(item_path(cart_item)) do %>
+									<%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
+									<% end %>
+									</div>
+								</td>
+								<td width="20%">
+									<div class="order-box-name">
+										<%= link_to(item_path(cart_item)) do %>
+										<div class="order-box-name-text"><%= cart_item.item.name %></div>
+										<% end %>
+									</div>
+									<div class="order-box-artist">
+										<div class="order-box-artist-text"><%= cart_item.item.artist.name %></div>
+									</div>
+								</td>
+								<td>
+									<div class="order-box-artist">
+										<div class="order-box-price">単価<%= cart_item.item.include_tax_price %>円(税込)</div>
+									</div>
+									<div class="order-box-artist">
+										<div class="order-box-quantity">数量　<b><%= cart_item.quantity %></b>点</div>
+									</div>
+								</td>
+								<td>
+									<div class="order-box-artist">
+										<div class="order-box-totalprice"><%= cart_item.item.include_tax_price*cart_item.quantity %>円(税込)</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+		</div>
+		<% end %>
+		<% end %>
 	</div>
-	<% end %>
-	<% end %>
-	<div class="delivery-fee col-xs-3 col-xs-offset-5">送料：５００円（税込）</div>
-						<div class="order-sum-box">
-							<div class="col-xs-4 ">
+	<div class="row">
+	<div class="delivery-fee col-xs-3 col-xs-offset-6">送料：５００円（税込）</div>
+	</div>
+						<div class="col-xs-offset-1 order-sum-box">
+							<div class="col-xs-4 col-xs-offset-3">
 								<div class="total-item-box">
 									<span class="total-item-text">計 <%= @total_quantity %>点</span>
 								</div>
@@ -181,10 +187,10 @@
 	<% end %>
 	<div class="row">
 		<%= link_to(cart_items_path) do %>
-		<div class="col-xs-2 col-xs-offset-3 box1">カートへ戻る</div>
+		<div class="col-xs-2 col-xs-offset-1 box1"><カートへ戻る</div>
 		<% end %>
 		<%= link_to(items_path) do %>
-		<div class="col-xs-2 col-xs-offset-2 box1">商品一覧へ</div>
+		<div class="col-xs-2 col-xs-offset-6 box1">商品一覧へ></div>
 		<% end %>
 	</div>
 </div>

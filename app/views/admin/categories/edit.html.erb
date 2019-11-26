@@ -9,7 +9,7 @@
 			<div class="blank"></div>
 
 
-
+			<div class="col-xs-6 col-xs-offset-3 label-artist-category-box">
 			  <%= form_for @category, url: admin_category_path do |f| %>
 
 			  <%= f.label :ジャンル %>
@@ -17,9 +17,10 @@
 
 			  <%= f.submit '保存する', class: "btn btn-primary" %>
 
-			  <%= link_to '削除する', admin_category_path, method: :delete , class: 'btn btn-primary' %>
+			  <%= link_to '削除する', admin_category_path, method: :delete ,"data-confirm" => "本当に消しますか？", class: 'btn btn-danger' %>
 
 			  <% end %>
+			</div>
 		</div>
 	</div>
 </div>

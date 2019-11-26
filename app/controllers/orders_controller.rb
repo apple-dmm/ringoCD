@@ -21,8 +21,6 @@ class OrdersController < ApplicationController
   @total_quantity = @cart_items.sum(:quantity)
   end
 
-
-
   def confirm
   end
 
