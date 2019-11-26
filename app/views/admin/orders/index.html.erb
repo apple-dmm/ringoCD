@@ -47,13 +47,31 @@
 						</div>
 
 						<div class="col-xs-4 col-xs-offset-1">
-						<span class="admin-order-total-price">合計金額: <%= order.total %>(送料<%= order.delivery_fee %>円)</span>
+						<span class="admin-order-total-price">合計金額: <%= order.total %>円</span>
 						</div>
 
 						<div class="col-xs-2">
-						<div class="admin-order-delivery-status-box">
-						<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+							<% if order.delivery_status == "未受付" %>
+							<div class="admin-order-delivery-status-box-0">
+								<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+							</div>
+							<% elsif order.delivery_status == "受付済" %>
+							<div class="admin-order-delivery-status-box-1">
+								<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+							</div>
+							<% elsif order.delivery_status == "出荷準備中" %>
+							<div class="admin-order-delivery-status-box-2">
+								<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+							</div>
+							<% elsif order.delivery_status == "出荷済" %>
+							<div class="admin-order-delivery-status-box-3">
+								<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
+							</div>
+							<% else %>
+							<div class="admin-order-delivery-status-box-4">
+								<span class="admin-order-delivery-status"><%= order.delivery_status %></span>
 						</div>
+						<% end %>
 						</div>
 
 						</div>
@@ -69,7 +87,8 @@
 								</div>
 								<div class="admin-order-address">
 									<span class="admin-order-order-address">〒 <%= order.postal_code %><br>
-										住所:<%= order.order_address %></span>
+										住所:<%= order.order_address %><br><br>
+										送料:<%= order.delivery_fee %>円</span>
 								</div>
 							</div>
 						</div>
@@ -108,4 +127,7 @@
 						</div>
 						</div>
 						<% end %>
+							<div class="back-to-item-index">
+							 <%= link_to "< 商品一覧へ", admin_items_path %>
+							</div>
 	</div>

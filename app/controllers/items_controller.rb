@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
     @favorite = Favorite.new
     @user = current_user
 
-    @item.price = @item.price*1.1
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
 
@@ -14,13 +13,41 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
     @reviews = Review.where(item_id: @item.id)
 
+    @arrivals = Arrival.where(item_id: @item.id)
+    @item_orders = ItemOrder.where(item_id: @item.id)
+    @total_arrival = 0
+    @total_order = 0
+      @arrivals.each do |arrival|
+        @total_arrival = @total_arrival + arrival.arrival_quantity
+      end
+      @item_orders.each do |item_order|
+        @total_order = @total_order + item_order.quantity
+      end
+    if @total_arrival - @total_order >= 1
+      @item.update_attributes(status: 0)
+    end
+
   else
     @item = Item.find(params[:id])
 
-    @item.price = @item.price*1.1
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
     @reviews = Review.where(item_id: @item.id)
+
+    @arrivals = Arrival.where(item_id: @item.id)
+    @item_orders = ItemOrder.where(item_id: @item.id)
+    @total_arrival = 0
+    @total_order = 0
+      @arrivals.each do |arrival|
+        @total_arrival = @total_arrival + arrival.arrival_quantity
+      end
+      @item_orders.each do |item_order|
+        @total_order = @total_order + item_order.quantity
+      end
+    if @total_arrival - @total_order >= 1
+      @item.update_attributes(status: 0)
+    end
+
   end
   end
 
