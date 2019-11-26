@@ -1,12 +1,12 @@
 <div class="container">
 	<h2 class="new-title">購入者情報</h2>
 	<div class="border"></div>
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-1">
-			<%= form_for (@order) do |f| %>
-			<%= f.hidden_field :total, :value => @total_price+500  %>
-			<table class="new-table">
+	<%= form_for (@order) do |f| %>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-1">
+				<%= f.hidden_field :total, :value => @total_price+500  %>
 
+				<table class="new-table">
 					<tr>
 						<td width="50%">名前（姓・名）：</td>
 						<td width="25%"><%= @user.last_name %></td>
@@ -15,47 +15,52 @@
 					<tr>
 						<td width="60%">郵便番号　　　：<br><small>（ハイフンを除く７桁）</small></td>
 						<td width="25%"><%= @user.postal_code %></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td width="60%">住所　　　　　：</td>
 						<td width="25%"><%= @user.residence %></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td width="60%">電話番号　　　：</td>
 						<td width="25%"><%= @user.phone_number %></td>
+						<td></td>
 					</tr>
-			</table>
-		</div>
-	</div>
-	<div class="border"></div>
-
-		<h2 class="new-2title">お支払い方法の選択</h2>
-		<div class="border"></div>
-		<div class="row">
-			<div class="col-xs-6 col-xs-offset-1 credit">
-				<div class="credit">
-					<label><%= f.radio_button :payment, "クレジット",:onchange => 'entryChange1(this)' %>クレジットカードでのお支払い</label>
-				</div>
-				<div class="bank-payment">
-					<label><%= f.radio_button :payment, "銀行振込" ,:onchange => 'entryChange1(this)' %>銀行でのお支払い</label>
-					<h6 class="bank_num">代金のお支払い後に商品が発送されます。なお、お支払いの際に必要となるお支払い番号は、<br>出荷準備に入り次第発行されます。</h6>
-				</div>
-				<div class="daibiki">
-					<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)',:required=>'required' %>代引きでのお支払い</label>
-					<h6 class="daibiki_num">代引き手数料がかかります。</h6>
-				</div>
+				</table>
 			</div>
 		</div>
 		<div class="border"></div>
 
-		<h2 class="new-2title">お届け先住所変更</h2>
-		<div class="border"></div>
-		<%= f.fields_for :address do |i| %>
-		<div class="row">
-			<div class="col-xs-11 col-xs-offset-1 credit">
+			<h2 class="new-2title">お支払い方法の選択</h2>
+			<div class="border"></div>
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-1 credit">
+					<div class="credit">
+						<label><%= f.radio_button :payment, "クレジット",:onchange => 'entryChange1(this)' %>クレジットカードでのお支払い</label>
+					</div>
+					<div class="bank-payment">
+						<label><%= f.radio_button :payment, "銀行振込" ,:onchange => 'entryChange1(this)' %>銀行でのお支払い</label>
+						<h6 class="bank_num">代金のお支払い後に商品が発送されます。なお、お支払いの際に必要となるお支払い番号は、<br>出荷準備に入り次第発行されます。</h6>
+					</div>
+					<div class="daibiki">
+						<label><%= f.radio_button :payment, "代引",:onchange => 'entryChange1(this)',:required=>'required' %>代引きでのお支払い</label>
+						<h6 class="daibiki_num">代引き手数料がかかります。</h6>
+					</div>
+				</div>
+			</div>
+			<div class="border"></div>
+
+			<h2 class="new-2title">お届け先住所変更</h2>
+			<div class="border"></div>
+			<%= f.fields_for :address do |i| %>
+				<div class="row">
+					<div class="col-xs-11 col-xs-offset-1 credit">
 					<table class="address-table">
 						<tr>
-							<td><label><%= radio_button_tag("add_address", 1) %>登録先の住所と別の住所を使う</td></label>
+							<td><label><%= radio_button_tag("add_address", "other") %>登録先の住所と別の住所を使う</td></label>
+							<td></td>
+							<td></td>
 						</tr>
 						<tr>
 							<td width="10%"><%= i.label :name, "・宛名　　　　：" %></td>
@@ -73,139 +78,139 @@
 							<td></td>
 						</tr>
 					</table>
-				<h5><b>＊以前登録した住所を使う。</b></h5>
-				<div class="registrated-address">
-					<table>
-						<tr>
-							<td><label><%= radio_button_tag("add_address", 0) %></label></td>
-							<td><%= @user.last_name %></td>
-							<td>様</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>〒<%= @user.postal_code %></td>
-							<td><%= @user.residence %></td>
-						</tr>
-
-						<% @addresses.each do |address| %>
-						<div class="order-address-box">
+					<h5><b>＊以前登録した住所を使う。</b></h5>
+					<div class="registrated-address">
+						<table>
 							<tr>
-								<td><input type="radio" name="address" value= "@address.id"></td>
-								<td><%= address.name %></td>
+								<td><label><%= radio_button_tag("add_address", "me") %></label></td>
+								<td><%= @user.last_name %></td>
 								<td>様</td>
 							</tr>
 							<tr>
 								<td></td>
-								<td>〒<%= address.postal_code %></td>
-								<td><%= address.address %></td>
+								<td>〒<%= @user.postal_code %></td>
+								<td><%= @user.residence %></td>
 							</tr>
-						</div>
-						<% end %>
-					</table>
+
+							<% @addresses.each do |address| %>
+								<div class="order-address-box">
+									<tr>
+										<td><%= radio_button_tag("add_address", address.id) %></td>
+										<td><%= address.name %></td>
+										<td>様</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>〒<%= address.postal_code %></td>
+										<td><%= address.address %></td>
+									</tr>
+								</div>
+							<% end %>
+						</table>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="border"></div>
+				<div class="border"></div>
 
-
-	<h2 class="new-2title">合計金額</h2>
-	<div class="border"></div>
-	<% @cart_items.each do |cart_item| %>
-	<div class="new-order-index-box col-xs-6 col-xs-offset-1">
-					<table class="order-cart-item-table">
-						<tr>
-							<td>
-								<div class="order-samuneiru-in-box">
-								<%= link_to(item_path(cart_item)) do %>
-								<%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
-								<% end %>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-name">
-									<div class="order-box-name-text"><%= cart_item.item.name %></div>
-								</div>
-								<div class="order-box-artist">
-									<div class="order-box-artist-text"><%= cart_item.item.artist.name %></div>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-artist">
-									<div class="order-box-price">単価<%= cart_item.item.include_tax_price %>円(税込)</div>
-								</div>
-								<div class="order-box-artist">
-									<div class="order-box-quantity">数量　<b><%= cart_item.quantity %></b>点</div>
-								</div>
-							</td>
-							<td>
-								<div class="order-box-artist">
-									<div class="order-box-totalprice"><%= cart_item.item.include_tax_price*cart_item.quantity %>円(税込)</div>
-								</div>
-							</td>
-						</tr>
-					</table>
-	</div>
-	<% end %>
-	<% end %>
-	<div class="delivery-fee col-xs-3 col-xs-offset-5">送料：５００円（税込）</div>
-						<div class="order-sum-box">
-							<div class="col-xs-4 ">
-								<div class="total-item-box">
-									<span class="total-item-text">計 <%= @total_quantity %>点</span>
-								</div>
-							</div>
-
-							<div class="col-xs-5">
-								<div class="total-price-box">
-									<span class="total-price-text">税込合計金額　<%= @total_price+500 %>円</span>
-								</div>
-							</div>
+				<h2 class="new-2title">合計金額</h2>
+				<div class="border"></div>
+				<% @cart_items.each do |cart_item| %>
+					<div class="new-order-index-box col-xs-6 col-xs-offset-1">
+						<table class="order-cart-item-table">
+							<tr>
+								<td>
+									<div class="order-samuneiru-in-box">
+										<%= link_to(item_path(cart_item)) do %>
+											<%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpg', fallback: "no_image.jpg" %>
+										<% end %>
+									</div>
+								</td>
+								<td>
+									<div class="order-box-name">
+										<div class="order-box-name-text"><%= cart_item.item.name %></div>
+									</div>
+									<div class="order-box-artist">
+										<div class="order-box-artist-text"><%= cart_item.item.artist.name %></div>
+									</div>
+								</td>
+								<td>
+									<div class="order-box-artist">
+										<div class="order-box-price">単価<%= cart_item.item.include_tax_price %>円(税込)</div>
+									</div>
+									<div class="order-box-artist">
+										<div class="order-box-quantity">数量　<b><%= cart_item.quantity %></b>点</div>
+									</div>
+								</td>
+								<td>
+									<div class="order-box-artist">
+										<div class="order-box-totalprice"><%= cart_item.item.include_tax_price*cart_item.quantity %>円(税込)</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<% end %>
+			<% end %>
+			<div class="delivery-fee col-xs-3 col-xs-offset-5">送料：５００円（税込）</div>
+				<div class="order-sum-box">
+					<div class="col-xs-4 ">
+						<div class="total-item-box">
+							<span class="total-item-text">計 <%= @total_quantity %>点</span>
 						</div>
+					</div>
 
+					<div class="col-xs-5">
+						<div class="total-price-box">
+							<span class="total-price-text">税込合計金額　<%= @total_price+500 %>円</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="border"></div>
 				<div class="row">
 					<div id="first-button">
-						<%= f.hidden_field :delivery_fee, :value => 500  %>
 
-					<div class="col-xs-4 col-xs-offset-4">
-					<%= f.submit '購入する', class:'btn btn-success col-xs-12', name:"order_button" %>
+						<div class="col-xs-4 col-xs-offset-4">
+							<%= f.submit '購入する', class:'btn btn-success col-xs-12', name:"order_button" %>
+						</div>
 					</div>
-					</div>
-					<%# PAY.JPのスクリプト data-keyの公開鍵は環境変数化すること %>
+			<%# PAY.JPのスクリプト data-keyの公開鍵は環境変数化すること %>
 					<div id="second-button">
-					<div class="col-xs-4 col-xs-offset-4">
-						<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_12b31b41415eafe2d52b011f">
-						</script>
-					</div>
+						<div class="text-center col-xs-4 col-xs-offset-4 ">
+							<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_12b31b41415eafe2d52b011f" data-text="購入する" >
+							</script>
+						</div>
 					</div>
 				</div>
-	<% end %>
-	<div class="row">
-		<%= link_to(cart_items_path) do %>
-		<div class="col-xs-2 col-xs-offset-3 box1">カートへ戻る</div>
+			</div>
 		<% end %>
-		<%= link_to(items_path) do %>
-		<div class="col-xs-2 col-xs-offset-2 box1">商品一覧へ</div>
-		<% end %>
+		<div class="row">
+			<%= link_to(cart_items_path) do %>
+				<div class="col-xs-2 col-xs-offset-3 box1">カートへ戻る</div>
+				<div class="col-xs-2 col-xs-offset-2 box1">商品一覧へ</div>
+			<% end %>
+		</div>
 	</div>
+</div>
 </div>
 
 <script>
 function entryChange1(radio){
-	if ( radio.value == "クレジット" ) {
-		/* クレジットカードでのお支払い
-		*/
-		$('#first-button').hide();
-		$('#second-button').show();
-	} else if ( radio.value == "銀行振込"){
-		/* 銀行でのお支払い
-		*/
-		$('#first-button').show();
-		$('#second-button').hide();
-	}else if (radio.value == "代引"){
-		/* 代引きでのお支払い
-		*/
-		$('#first-button').show();
-		$('#second-button').hide();
-	}
+  if ( radio.value == "クレジット" ) {
+    /* クレジットカードでのお支払い
+    */
+    $('#first-button').hide();
+    $('#second-button').show();
+  } else if ( radio.value == "銀行振込"){
+    /* 銀行でのお支払い
+    */
+    $('#first-button').show();
+    $('#second-button').hide();
+  }else if (radio.value == "代引"){
+    /* 代引きでのお支払い
+    */
+    $('#first-button').show();
+    $('#second-button').hide();
+  }
 }
 </script>

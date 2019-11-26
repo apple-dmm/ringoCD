@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1">
 				<%= form_for (@arrival), url: admin_arrivals_path do |f| %>
-				<table border="1" frame="box" class="table table-striped arrival-list">
+				<table class="table table-striped arrival-list" border="2">
 					<tr>
 						<th width="15%"><label class="item-id">ID</label></th>
 						<th width="15%"><%= @item.id %></th>
@@ -18,7 +18,7 @@
 
 					<tr class="must-field">
 						<th  width="25%"><label">入荷数</label></th>
-						<th colspan="3"><%= f.number_field :arrival_quantity, min:"1", class:"number_field" %> 個</th>
+						<th colspan="3"><%= f.number_field :arrival_quantity, min:"-100", class:"number_field" %> 個</th>
 					</tr>
 					<tr class="must-field">
 						<th  width="25%"><label>入荷日</label></th>
@@ -42,7 +42,7 @@
 					<%= f.submit "入荷する", class:"col-xs-4 col-xs-offset-4 btn btn-primary" %>
 				</div>
 
-				<table border="1" frame="box" class="table table-striped arrival-list">
+				<table class="table table-striped arrival-list" border="2">
 					<tr>
 						<th  width="25%"><label class="item-status">ステータス</label></th>
 						<td><%= @item.status %></td>
