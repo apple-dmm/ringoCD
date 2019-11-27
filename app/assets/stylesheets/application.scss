@@ -223,24 +223,24 @@ i{
 }
 
 .pic1{
-	background-image: url("ric.jpeg");
-	background-position: center 50%;
+	background-image: image-url("ric.jpeg");
+	background-position: bottom;
 }
 .pic2{
-	background-image: url("gene.jpeg");
-	background-position: center 50%;
+	background-image: image-url("gene.jpeg");
+	background-position: center 67%;
 }
 .pic3{
-	background-image: url("kinoko.jpeg");
-	background-position: center 55%;
+	background-image: image-url("ara.jpeg");
+	background-position: center 17%;
 }
 .pic4{
-	background-image: url("back.jpeg");
+	background-image: image-url("the.jpeg");
 	background-position: center 45%;
 }
 .pic5{
-	background-image: url("alxd.jpg");
-	background-position: center 17%;
+	background-image: image-url("kinoko.jpg");
+	background-position: center 25%;
 }
 
 /*ここからフッダー*/
@@ -414,6 +414,12 @@ ul {
 /*   index    */
 
 .admin-index-title{
+	margin-left: 50px;
+}
+
+
+/* edit */
+.admin-user-edit-title{
 	margin-left: 50px;
 }
 
@@ -700,6 +706,10 @@ ul {
 	font-size: 18px;
 }
 
+.admin-contact-show-title{
+	margin-left:50px;
+}
+
 .admin-contact-user-id-box{
 	width:60px;
 	height: 35px;
@@ -857,12 +867,8 @@ ul {
 }
 
 .back-to-contact-index{
-	border: solid 1px;
-	color: black;
-	width: 150px;
 	height: 45px;
 	margin-top: 30px;
-	line-height: 45px;
 }
 
 /*admin order index,show画面*/
@@ -1021,3 +1027,4 @@ ul {
 .admin-order-item-total-text{
 	font-size: 17px;
 }
+
