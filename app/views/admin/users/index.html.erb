@@ -7,17 +7,10 @@
 			<div class="border"></div>
 			<div class="search-box col-xs-10 col-xs-offset-1">
 
-				<%= search_form_for @q, url: admin_users_path, html: {class: 'user_sereach'} do |f| %>
-				<%= f.condition_fields do |c| %>
-				<%= c.hidden_field :p, value: "cont_all" %>
-
-				<%= c.value_fields do |v| %>
-				<%= v.search_field :value, class:"search_field", placeholder: '検索ワードを入力' %>
+				<%= search_form_for @search, url: admin_users_path do |f| %>
+  				<%= f.search_field :last_name_or_email_cont, class:"search_field", placeholder: '検索ワードを入力' %>
+  				<%= f.submit '検索' %>
 				<% end %>
-				<% end %>
-
-				<span class="actions"><%= f.submit "検索", class:"btn btn-success" %></span>
-			 	<% end %>
 
 
 
