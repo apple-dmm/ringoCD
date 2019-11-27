@@ -19,7 +19,11 @@
 				<% end %>
 				<% end %>
 
-				<span class="actions"><%= f.submit "検索", class:"btn btn-success" %></span>
+				<span class="actions">
+					<%= f.button :type => "submit", class:'btn btn-primary' do %>
+					<i class="fas fa-search"></i>
+					<% end %>
+				</span>
 			 	<% end %>
 
 

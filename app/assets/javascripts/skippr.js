@@ -1,5 +1,5 @@
 
-(function () {    
+(function () {
 
     var Skippr = (function () {
 
@@ -7,7 +7,7 @@
 
         	var _ = this;
             var timer = false;
-            
+
             _.settings = $.extend($.fn.skippr.defaults, options);
             _.$element = $(element);
             _.$parent = _.$element.parent();
@@ -15,7 +15,7 @@
 			_.count = _.$photos.length;
             _.countString = String(_.count);
 			_.init();
-    
+
         }
 
         Skippr.prototype.init = function() {
@@ -39,7 +39,7 @@
         Skippr.prototype.setup = function() {
 
         	var _ = this;
-                
+
             if (_.settings.childrenElementType == 'img') {
                 var makeDivs = [];
 
@@ -80,9 +80,9 @@
             var _ = this;
 
             if( _.settings.transition == 'slide') {
-                
+
                 $(window).resize(function() {
-        
+
                     var currentItem = _.$element.find(".skippr-nav-element-active").attr('data-slider');
 
                     _.setupSlider();
@@ -102,7 +102,7 @@
                     if(_.settings.autoPlay === true ) {
                         clearInterval(timer);
                         _.autoPlay();
-                    }    
+                    }
 
                 });
             }
@@ -117,7 +117,7 @@
                 previousStyles = '';
 
             if ( _.settings.hidePrevious == true ) {
-                previousStyles = 'style="display:none;"'; 
+                previousStyles = 'style="display:none;"';
             }
 
             previous = '<nav class="skippr-nav-item skippr-arrow skippr-previous" data-slider="' + startingPrevious + '" ' + previousStyles + '></nav>';
@@ -136,10 +136,10 @@
             if (_.settings.navType == "block") {
                 var styleClass = "skippr-nav-element-block";
             } else if(_.settings.navType == "bubble") {
-               var styleClass = "skippr-nav-element-bubble"; 
+               var styleClass = "skippr-nav-element-bubble";
             }
 
-        	for (var i = 0; i < _.count; i++) { 
+        	for (var i = 0; i < _.count; i++) {
         		//cycle through slideshow divs and display correct number of bubbles.
         		var insert;
 
@@ -150,10 +150,10 @@
         			insert = "<div class='skippr-nav-element skippr-nav-item " + styleClass + "' data-slider='" + (i + 1) + "'></div>";
         		}
         		//insert bubbles into an array.
-        		navElements.push(insert); 
+        		navElements.push(insert);
         	};
         	//join array elements into a single string.
-        	navElements = navElements.join(""); 
+        	navElements = navElements.join("");
         	// append html to bubbles container div.
         	container = '<nav class="skippr-nav-container">' + navElements + '</nav>';
 
@@ -162,16 +162,16 @@
         };
 
         Skippr.prototype.arrowClick = function() {
-            
+
             var _ = this,
                 $arrows = _.$element.find(".skippr-arrow");
-            
+
             $arrows.click(function(){
-               
+
                 if ( !$(this).hasClass('disabled') ) {
-                    _.change($(this));  
+                    _.change($(this));
                 }
-                
+
             });
 
         };
@@ -204,7 +204,7 @@
                 if (_.settings.transition == 'fade') {
 
                     _.$photos.eq(item - 1).css('z-index', '10').siblings('div').css('z-index', '9');
-                    
+
                     _.$photos.eq(item - 1).fadeIn(_.settings.speed, function() {
                         _.$element.find(".visible").fadeOut('fast',function(){
                             $(this).removeClass('visible');
@@ -214,7 +214,7 @@
                 }
 
                 if (_.settings.transition == 'slide') {
-                  
+
                     _.$photos.each(function(){
 
                         var amountLeft = parseFloat($(this).css('left')),
@@ -222,15 +222,15 @@
                             moveAmount;
 
                         if (item > currentItem) {
-                            moveAmount = amountLeft - (parentWidth * (item - currentItem)); 
+                            moveAmount = amountLeft - (parentWidth * (item - currentItem));
                         }
 
                         if (item < currentItem) {
-                            moveAmount = amountLeft + (parentWidth * (currentItem - item));                           
+                            moveAmount = amountLeft + (parentWidth * (currentItem - item));
                         }
 
                         allNavItems.addClass('disabled');
-                        
+
                         $(this).velocity({'left': moveAmount + 'px'}, _.settings.speed, _.settings.easing, function(){
 
                             allNavItems.removeClass('disabled');
@@ -248,25 +248,25 @@
                           .addClass('skippr-nav-element-active')
                           .siblings()
                           .removeClass('skippr-nav-element-active');
-                
+
                 var nextDataAddString = Number(item) + 1,
                     previousDataAddString = Number(item) - 1;
 
-                if ( item == _.count ){ 
+                if ( item == _.count ){
                     _.$element.find(".skippr-next").attr('data-slider', '1' );
                 } else {
                      _.$element.find(".skippr-next").attr('data-slider', nextDataAddString );
                 }
-                
+
                 if (item == 1) {
                      _.$element.find(".skippr-previous").attr('data-slider', _.countString );
                 }  else {
-                    _.$element.find(".skippr-previous").attr('data-slider', previousDataAddString ); 
+                    _.$element.find(".skippr-previous").attr('data-slider', previousDataAddString );
                 }
 
                 if( _.settings.hidePrevious == true ) {
                     _.hidePrevious();
-                }    
+                }
             }
 
         };
@@ -280,13 +280,13 @@
                     activeSlide = activeElement.attr('data-slider');
 
                 if( activeSlide == _.count ) {
-                  var elementToInsert =  _.$element.find(".skippr-nav-element").eq(0); 
+                  var elementToInsert =  _.$element.find(".skippr-nav-element").eq(0);
                 } else {
                     var elementToInsert = activeElement.next();
                 }
 
                 _.change(elementToInsert);
-                    
+
             },_.settings.autoPlayDuration);
 
         };
@@ -302,11 +302,11 @@
             }, function() {
                 if (!timer) {
                     _.autoPlay();
-                    _.logs("resetting timer on un-hover");    
+                    _.logs("resetting timer on un-hover");
                 }
             });
 
-            // Checks if this tab is not being viewed, and pauses autoPlay timer if not. 
+            // Checks if this tab is not being viewed, and pauses autoPlay timer if not.
             $(window).on("blur focus", function(e) {
                 var prevType = $(this).data("prevType");
 
@@ -315,11 +315,11 @@
                         case "blur":
                             clearInterval(timer);
                             timer = false;
-                            _.logs('clearing timer on window blur'); 
+                            _.logs('clearing timer on window blur');
                             break;
                         case "focus":
                             if (!timer) {
-                                _.autoPlay();    
+                                _.autoPlay();
                                 _.logs('resetting timer on window focus');
                             }
                             break;
@@ -378,12 +378,12 @@
                         }
 
                     });
-                    
+
                 }, function(){
                     $(document).off('keydown');
                 });
             }
-            
+
         }
 
         Skippr.prototype.hidePrevious = function() {
@@ -438,7 +438,7 @@
         keyboardOnAlways: true,
         hidePrevious: false,
         logs: false
-       
+
     };
 
 }).call(this);

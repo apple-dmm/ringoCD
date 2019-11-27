@@ -176,3 +176,43 @@
 .page-top {
 	width: 700px;
 }
+
+
+/*トップ画左レイヤー*/
+
+.box-left {
+	width: 200px;
+    height: 600px;
+    opacity: 0.7;
+    color: #000000;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0 !important;
+}
+
+/*トップ画右レイヤー*/
+
+.box-right {
+	width: 200px;
+    height: 600px;
+    opacity: 0.7;
+    color: #000000;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/*虫眼鏡アイコン*/
+
+.fa-search {
+	color: white;
+}
