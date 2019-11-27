@@ -1,9 +1,8 @@
 class Admin::UsersController < ApplicationController
   def index
     if admin_signed_in?
-  	@q = User.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @user_result = @q.result(distinct: true).page(params[:page]).per(30)
+  	@search = User.ransack(params[:q])
+    @user_result = @search.result
   else
     redirect_to root_path
   end
@@ -34,6 +33,6 @@ class Admin::UsersController < ApplicationController
   private
   #cocoon用記述。_destroyがないと削除できない。
   def user_params
-    params.require(:user).permit(:name, :postal_code, :phone_number, :encrypted_password)
+    params.require(:user).permit(:email,:name, :postal_code, :phone_number, :encrypted_password)
   end
 end
