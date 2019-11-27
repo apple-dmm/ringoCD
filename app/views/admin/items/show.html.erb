@@ -13,9 +13,15 @@
 						<div class="col-xs-10 col-xs-offset-1">
 							<div class="before-songlist">
 							<div class="show-head">
+							<% if @total_arrival-@total_order >= 1 %>
 							<div class="sales-status-box">
 								<span class="sales-status"><%= @item.status %></span>
 							</div>
+							<% else %>
+							<div class="sales-status-box-1">
+								<span class="sales-status"><%= @item.status %></span>
+							</div>
+							<% end %>
 
 							<div class="admin-item-edit">
 								<div class="admin-iteminfo-edit">

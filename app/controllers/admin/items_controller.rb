@@ -5,23 +5,6 @@ class Admin::ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
     @item_result = @q.result(distinct: true).page(params[:page]).per(30)
-
-    @total_arrival = 0
-    @total_order = 0
-    @items = Item.all
-      @items.each do |item|
-        @arrivals = Arrival.where(item_id: item.id)
-        @item_orders = ItemOrder.where(item_id: item.id)
-          @item_orders.each do |item_order|
-            @total_order = @total_order + item_order.quantity
-          end
-          @arrivals.each do |arrival|
-            @total_arrival = @total_arrival + arrival.arrival_quantity
-          end
-      if @total_arrival - @total_order >= 1
-        item.update_attributes(status: 0)
-      end
-    end
   else
     redirect_to root_path
   end
@@ -45,6 +28,8 @@ class Admin::ItemsController < ApplicationController
       end
     if @total_arrival - @total_order >= 1
       @item.update_attributes(status: 0)
+    else
+      @item.update_attributes(status: 1)
     end
 
   else
