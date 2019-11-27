@@ -38,9 +38,9 @@ class OrdersController < ApplicationController
       if params['add_address'] == "other"
         @user = Address.create(
         user_id: current_user.id,
-        last_name: params[:order][:address][:name],
+        name: params[:order][:address][:name],
         postal_code: params[:order][:address][:postal_code],
-        address: params[:order][:address][:address]
+        address: params[:order][:address][:order_address]
         )
         @order.order_address = params[:order][:address][:order_address]
         @order.postal_code = params[:order][:address][:postal_code]

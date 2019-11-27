@@ -16,7 +16,9 @@
 		<% end %>
 
 		<span class="actions">
-			<%= f.submit "検索", class:"btn btn-success" %>
+			<%= f.button :type => "submit", class:'btn btn-primary' do %>
+		 	<i class="fas fa-search"></i>
+		 	<% end %>
 		</span>
 
 		<% end %>
@@ -26,11 +28,22 @@
 
 
         <div class="theTarget">
-            <div class="pic1"></div>
-            <div class="pic2"></div>
-            <div class="pic3"></div>
-            <div class="pic4"></div>
-            <div class="pic5"></div>
+            <div class="pic1">
+            	<div class="box-left"></div><div class="box-right"></div>
+            </div>
+            <div class="pic2">
+            	<div class="box-left"></div><div class="box-right"></div>
+            </div>
+            <div class="pic3">
+            	<div class="box-left"></div><div class="box-right"></div>
+            </div>
+            <div class="pic4">
+            	<div class="box-left"></div><div class="box-right"></div>
+            </div>
+            <div class="pic5">
+            	<div class="box-left"></div><div class="box-right"></div>
+            </div>
+
         </div>
         <br><br><br>
 
@@ -39,6 +52,8 @@
   <div class="container">
    <div class="row">
      <div class="col-xs-8 col-xs-offset-1">
+
+
 
 <table>
     <% @items.each_slice(4) do |item1, item2, item3, item4| %>
@@ -82,7 +97,7 @@
 
 									    <% if item2 != nil %>
 
-									   
+
 										  <%= link_to item_path(item2.id) do %>
 										    <%= attachment_image_tag item2, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
 
