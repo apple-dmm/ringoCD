@@ -135,11 +135,41 @@
 	color:#4682B4;
 	padding-top:30px;
 }
-.title{
-    color:#4682B4;
-    font-size:25px;
-    margin-top:10px;
+.header-title-index{
+	position: absolute;
+    color:	#B22222;
+    font-family: 'HanziPen TC','HanziPen SC','klee',sans-serif;
+    font-size:100px;
+    margin-top: 60px;
+    margin-left: 70px;
+    z-index: 9;
 }
+
+.logo-ringo-index{
+	margin-top: 100px;
+	position: absolute;
+	font-size:40px;
+	z-index: 9;
+	margin-left: 5px;
+}
+
+.logo-ringo{
+	margin-top: 20px;
+	position: absolute;
+	font-size:25px;
+	margin-left: 5px;
+}
+
+.header-title{
+	position: absolute;
+    color:	#B22222;
+    font-family: 'HanziPen TC','HanziPen SC','klee',sans-serif;
+    font-size:50px;
+    margin-top: 20px;
+    margin-left: 50px;
+    z-index: 9;
+}
+
 .navbar-right{
 	margin-right:20px;
 	padding-top:20px;
@@ -148,7 +178,7 @@
 .navbar-left{
 	margin-left:20px;
 }
-header{
+.header{
 	height: 90px;
 	margin-bottom:20px;
 	display:block;
@@ -160,7 +190,7 @@ header{
 }
 
 i{
-	color:#4682B4;
+	color:#B22222;
 }
 .favorite{
 	padding-left:10px;
@@ -188,27 +218,28 @@ i{
 
 
 .theTarget{
-	height: 600px !important;
+	height: 400px !important;
+	width: 800px;
 }
 
 .pic1{
-	background-image: image-url("ric.jpeg");
+	background-image: url("ric.jpeg");
 	background-position: center 50%;
 }
 .pic2{
-	background-image: image-url("gene.jpeg");
+	background-image: url("gene.jpeg");
 	background-position: center 50%;
 }
 .pic3{
-	background-image: image-url("kinoko.jpeg");
+	background-image: url("kinoko.jpeg");
 	background-position: center 55%;
 }
 .pic4{
-	background-image: image-url("back.jpeg");
+	background-image: url("back.jpeg");
 	background-position: center 45%;
 }
 .pic5{
-	background-image: image-url("alxd.jpg");
+	background-image: url("alxd.jpg");
 	background-position: center 17%;
 }
 
@@ -306,17 +337,12 @@ ul {
 	margin-bottom: 500px;
 }
 
-.attribution{
-	$is: 1,6,7,8,9,10,11,12;
-
-	@each $i in $is{
-	option:nth-of-type(#{$i}) {display:none}
-	}
-}
-
-
 .search_field{
 	width: 400px;
+}
+
+.sales_status-text{
+	color: #B22222;
 }
 
 
@@ -456,6 +482,18 @@ ul {
 	text-align: center;
 	line-height: 35px;
 	background-color: gray;
+	float: left;
+}
+
+.sales-status-box-1{
+	margin-top: 20px;
+	margin-left:50px;
+	border: solid 2px #B22222;
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 35px;
+	background-color: #B22222;
 	float: left;
 }
 

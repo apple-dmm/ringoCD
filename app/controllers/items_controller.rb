@@ -25,6 +25,8 @@ class ItemsController < ApplicationController
       end
     if @total_arrival - @total_order >= 1
       @item.update_attributes(status: 0)
+    else
+      @item.update_attributes(status: 1)
     end
 
   else
@@ -46,6 +48,8 @@ class ItemsController < ApplicationController
       end
     if @total_arrival - @total_order >= 1
       @item.update_attributes(status: 0)
+    else
+      @item.update_attributes(status: 1)
     end
 
   end

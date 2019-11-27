@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   belongs_to :label
 
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    self.favorites.where(user_id: user.id).exists?
   end
 
   attachment :image
@@ -30,4 +30,30 @@ class Item < ApplicationRecord
   def include_tax_price
     (price * 1.1).round(0) 
   end
+
+  def sales_status_change_to_1
+    update_attributes(status: 1)
+  end
+
+  def sales_status_change_to_0
+    update_attributes(status: 0)
+  end
+
+  def total_arrival_calculate
+    total_arrival = 0
+    self.arrivals.each do |arrival|
+      total_arrival += arrival.arrival_quantity
+    end
+    return total_arrival
+  end
+
+    def total_item_order_calculate
+    total_item_order = 0
+    self.item_orders.each do |item_order|
+      total_item_order += item_order.quantity
+    end
+    return total_item_order
+  end
+
+
 end
