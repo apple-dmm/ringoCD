@@ -1,48 +1,50 @@
 <%= render 'admin/sidemenu' %>
 
 <div class="container">
-	<h2><%= @user.last_name %>様</h2>
-	<div class="border-admin"></div>
 	<div class="row">
-		<div class="col-xs-6">
-			<%= form_for (@user) do |f| %>
-				<table class="table table-striped table-bordered user_show_table" >
+		<div class="col-xs-9">
+			<h2 class="admin-user-edit-title"><%= @user.last_name %>様</h2>
+			<div class="border"></div>
+			<div class="col-xs-8 col-xs-offset-1">
+				<table class="col-xs-6 table table-striped table-bordered user_show_table" >
+					<%= form_for (@user) do |f| %>
 					<tbody>
 						<tr>
 							<div class="field">
-								<th><label class="item-name">名前（漢字）</label></th>
-								<th><%= f.text_field :last_name %>  <%= f.text_field :first_name %></th>
+								<td ><label class="item-name">名前（漢字）</label></td>
+								<td ><%= f.text_field :last_name %>  <%= f.text_field :first_name %></td>
 							</div>
 						</tr>
 						<tr>
 							<div class="field">
-								<th><label class="item-price">名前（カナ）</label></th>
-								<th><%= f.text_field :last_furigana %>  <%= f.text_field :first_furigana %></th>
+								<td><label class="item-price">名前（カナ）</label></td>
+								<td><%= f.text_field :last_furigana %>  <%= f.text_field :first_furigana %></td>
 							</div>
 						</tr>
 						<tr>
 							<div class="field">
-								<th><label class="item-name">郵便番号<br><small>(ハイフンを除く７桁)</small></label></th>
-								<th><%= f.text_field :postal_code %></th>
+								<td><label class="item-name">郵便番号<br><small>(ハイフンを除く７桁)</small></label></td>
+								<td><%= f.text_field :postal_code %></td>
 							</div>
 						</tr>
 						<tr>
-							<th>住所</th>
-							<th><%= f.text_field :residence,class:"col-xs-10" %></th>
+							<td>住所</td>
+							<td><%= f.text_field :residence,class:"col-xs-10" %></td>
 						</tr>
 						<tr>
-							<th>電話番号</th>
-							<th><%= f.text_field :phone_number,class:"col-xs-10" %></th>
+							<td>電話番号</td>
+							<td><%= f.text_field :phone_number,class:"col-xs-10" %></td>
 						</tr>
 						<tr>
-							<th>メールアドレス</th>
-							<th><%= f.text_field :email,class:"col-xs-10" %></th>
+							<td>メールアドレス</td>
+							<td><%= f.text_field :email,class:"col-xs-10" %></td>
 						</tr>
 					</tbody>
 				</table>
-				<%= link_to "削除する" ,admin_user_path(params[:id]), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-primary col-xs-4 col-xs-offset-1" %>
-				<%= f.submit '保存する', class:'btn btn-success col-xs-4 col-xs-offset-2' %>
-			<% end %>
+				<%= f.submit '保存する', class:'btn btn-primary col-xs-4 col-xs-offset-1' %>
+				<%= link_to "削除する" ,admin_user_path(params[:id]), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger col-xs-4 col-xs-offset-1" %>
+				<% end %>
+		 	</div>
 		</div>
-	</div>
+	<div>
 </div>

@@ -392,6 +392,12 @@ ul {
 }
 
 
+/* edit */
+.admin-user-edit-title{
+	margin-left: 50px;
+}
+
+
 
 
 /*   show  */
@@ -662,6 +668,10 @@ ul {
 	font-size: 18px;
 }
 
+.admin-contact-show-title{
+	margin-left:50px;
+}
+
 .admin-contact-user-id-box{
 	width:60px;
 	height: 35px;
@@ -819,12 +829,8 @@ ul {
 }
 
 .back-to-contact-index{
-	border: solid 1px;
-	color: black;
-	width: 150px;
 	height: 45px;
 	margin-top: 30px;
-	line-height: 45px;
 }
 
 /*admin order index,show画面*/
