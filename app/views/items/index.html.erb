@@ -2,26 +2,15 @@
 　　<div class="search-box-user-index col-xs-8 col-xs-offset-3">
 
 
-			<%= search_form_for @q, html: {class: 'attribution'} do |f| %>
-		<%= f.condition_fields do |c| %>
-		<%= c.attribute_fields do |a| %>
+	<%= search_form_for @search, url: admin_items_path do |f| %>
+  				<%= f.search_field :artist_name_or_name_cont, class:"search_field", placeholder: '歌手・商品名を入力' %>
 
-		<% end %>
-
-		<%= c.hidden_field :p, value: "cont_all" %>
-
-		<%= c.value_fields do |v| %>
-		<%= v.search_field :value, placeholder: '検索ワードを入力', class:"search-box-length" %>
-		<% end %>
-		<% end %>
-
-		<span class="actions">
-			<%= f.button :type => "submit", class:'btn btn-primary' do %>
-		 	<i class="fas fa-search"></i>
-		 	<% end %>
-		</span>
-
-		<% end %>
+				<span class="actions">
+					<%= f.button :type => "submit", class:'btn btn-primary' do %>
+					<i class="fas fa-search"></i>
+					<% end %>
+				</span>
+				<% end %>
 </div>
 
 <br><br><br>

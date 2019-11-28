@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   def index
     if admin_signed_in?
   	@search = User.ransack(params[:q])
-    @user_result = @search.result
+    @user_result = @search.result.page(params[:page]).per(30)
   else
     redirect_to root_path
   end

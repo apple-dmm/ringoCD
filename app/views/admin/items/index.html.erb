@@ -5,27 +5,17 @@
 			<h3 class="registration-items">登録済商品一覧</h3>
 			<div class="border"></div>
 
-			<div class="search-box col-xs-12">
+			<div class="search-box col-xs-10 col-xs-offset-1">
 
-			<%= search_form_for @q, url: admin_items_path, html: {class: 'attribution'} do |f| %>
-			<%= f.condition_fields do |c| %>
-			<%= c.attribute_fields do |a| %>
-			<%= a.attribute_select associations: [:artist, :category, :label] %>
-			<% end %>
+			<%= search_form_for @search, url: admin_items_path do |f| %>
+  				<%= f.search_field :artist_name_or_label_name_or_category_name_cont, class:"admin-search_field", placeholder: '歌手・レーベル・ジャンルを入力' %>
 
-			<%= c.hidden_field :p, value: "cont_all" %>
-
-			<%= c.value_fields do |v| %>
-			<%= v.search_field :value, class:"search_field", placeholder: '検索ワードを入力' %>
-			<% end %>
-			<% end %>
-
-			<span class="actions">
-				<%= f.button :type => "submit", class:'btn btn-primary' do %>
-				<i class="fas fa-search"></i>
+				<span class="actions">
+					<%= f.button :type => "submit", class:'btn btn-primary' do %>
+					<i class="fas fa-search"></i>
+					<% end %>
+				</span>
 				<% end %>
-			</span>
-		 	<% end %>
 
 			<% if @item_result.any? %>
 					<table class="table table-hover">
@@ -35,11 +25,11 @@
 				 			<th></th>
 				 			<th>商品名</th>
 				 			<th>歌手名</th>
-				 			<th>価格<br>(税抜)</th>
+				 			<th>価格（税抜）</th>
 				 			<th>ジャンル</th>
-				 			<th width="150px">レーベル</th>
+				 			<th>レーベル</th>
 				 			<th>在庫数</th>
-				 			<th>販売<br>ステータス</th>
+				 			<th>販売ステータス</th>
 				 		</tr>
 				 	</thead>
 				 	<% @item_result.each do |item| %>
@@ -49,7 +39,7 @@
 				 			<td><%= attachment_image_tag item, :image, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %></td>
 				 			<td><%= link_to item.name, admin_item_path(item.id) %></td>
 				 			<td><%= item.artist.name %></td>
-				 			<td><%= item.price %>円</td>
+				 			<td><%= item.price %></td>
 				 			<td><%= item.category.name %></td>
 				 			<td><%= item.label.name %></td>
 				 			<td>
