@@ -59,9 +59,11 @@
 									<span class="admin-item-price-text"><%= @item.price %> 円<span class="admin-item-price-tax">（税抜）</span></span>
 								</div>
 
-								<div class="stock-quantity-detail">
-									<span class="stock-quantity-detail-text">在庫数：<%= @total_arrival-@total_order %>点</span>
-								</div>
+                       			 <% if @item.total_arrival_calculate - @item.total_item_order_calculate >= 1 %>
+                            		<span class="admin-show-stock-quantity">在庫数: <%= @item.total_arrival_calculate - @item.total_item_order_calculate %>点</span>
+                            	<% else %>
+		                            <span class="admin-show-no-stock-text">【入荷待ち】</span>
+		                         <% end %>
 							</div>
 							</div>
 

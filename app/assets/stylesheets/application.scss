@@ -333,6 +333,7 @@ ul {
 .admin-search_field{
 	width:500px;
 	margin-bottom: 30px;
+	margin-left: 130px;
 }
 
 .registration-items{
@@ -371,7 +372,6 @@ ul {
 
 .search-box{
 	margin-top: 35px;
-	margin-bottom: 500px;
 }
 
 .search_field{
@@ -620,13 +620,18 @@ ul {
 	font-size: 15px;
 }
 
-.stock-quantity-detail{
-	margin-top: 35px;
-}
 
-.stock-quantity-detail-text{
+.admin-show-stock-quantity{
 	font-size: 20px;
 	margin-left: 25px;
+	line-height: 99px;
+}
+
+.admin-show-no-stock-text{
+	font-size: 20px;
+	margin-left: 25px;
+	color: #B22222;
+	line-height: 99px;
 }
 
 .border-admin-item-show{

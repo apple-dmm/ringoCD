@@ -99,7 +99,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.artist_id = @artist.id
     @item.label_id = @label.id
-    @item.category_id = @category.id
+    @item.category_id = @category.id1
     if @item.save
       redirect_to new_admin_item_path
     else
@@ -133,9 +133,8 @@ class Admin::ItemsController < ApplicationController
   private
   #cocoon用記述。_destroyがないと削除できない。
   def item_params
-    params.require(:item).permit(:name, :price, :release, :image, :sales_status,
+    params.require(:item).permit(:name, :price, :release, :image, :sales_status, :artist_id, :label_id, :category_id,
       disks_attributes: [:id, :disk_num, :_destroy,
-        artist_attributes: [:id, :name,
-        songs_attributes: [:id, :name, :setlist, :_destroy]]])
+        songs_attributes: [:id, :name, :setlist, :_destroy]])
   end
 end
