@@ -24,7 +24,7 @@ class Admin::ArrivalsController < ApplicationController
 
   def index
     if admin_signed_in?
-    @arrivals = Arrival.page(params[:page]).per(20)
+    @arrivals = Arrival.page(params[:page]).per(20).order(arrival_date:"DESC")
     else
     redirect_to root_path
     end
