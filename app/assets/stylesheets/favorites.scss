@@ -9,27 +9,20 @@
 }
 
 .favorite-count {
-	width: 54%;
-     margin: 0 auto;
+    margin-left: 25px;
+    margin-bottom: 30px;
 }
 
 .favorites-border{
     width: 1000px;
     height: 2px;
     background-color:#dadada;
-    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
 .quantity-number-field{
 	width: 37px;
 }
-
-.next-page {
-    width: 360px;
-    margin: 0 auto;
-    margin-left: 360px;
-}
-
 
 .change-position {
     margin-left: 385px;
@@ -43,6 +36,8 @@
 
 .text-size {
      font-size: 20px;
+     margin-top: 10px;
+     margin-bottom: 15px;
 }
 
 .checkbox-size {
@@ -54,5 +49,38 @@
 .favorite-index-tr{
   vertical-align: initial;
   padding: initial;
-  height: 550px;
+  height: 470px;
 }
+
+.favorite-item-price-box{
+  margin-top: 3px;
+  margin-bottom: 7px;
+}
+
+.favorite-tax-text{
+  font-size: 13px;
+}
+
+.favorite-no-stock-box{
+  margin-top: 5px;
+}
+
+.favorite-no-stock-text{
+  color: #B22222;
+  font-size: 17px;
+  margin-left: 50px;
+}
+
+.favorite-jump-to-page {
+  margin-top: 50px;
+}
+
+.favorite-next-to-page {
+  margin-left: 370px;
+}
+
+.favorite-back-to-page {
+  margin-left: 200px;
+}
+
+
