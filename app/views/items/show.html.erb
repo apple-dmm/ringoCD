@@ -180,6 +180,8 @@
 					<span class="item-show-review-title-text"><%= @reviews.count %>件のカスタマーレビュー</span>
 				</div>
 
+
+					<%= paginate @review, class: "paginate" %>
 					<% @reviews.each do |review| %>
 
 					<table class="table table-striped table-bordered">
@@ -211,6 +213,7 @@
 						</tbody>
 					</table>
 					<% end %>
+					<%= paginate @review, class: "paginate" %>
 
 					</div>
 				</div>

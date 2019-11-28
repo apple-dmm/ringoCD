@@ -56,9 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def index
-  	@q = Item.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @items = @q.result(distinct: true).page(params[:page]).per(30)
     @all_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(4).pluck(:item_id))
 
   	@search = Item.includes(:artist).ransack(params[:q])

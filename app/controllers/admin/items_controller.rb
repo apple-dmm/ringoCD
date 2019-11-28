@@ -15,7 +15,8 @@ class Admin::ItemsController < ApplicationController
     @disks = Disk.where(item_id: @item.id)
     songs = Song.joins(:@disk).where(disk_id: {item_id: @item.id})
 
-    @reviews = Review.where(item_id: @item.id)
+    @reviews = Review.where(item_id: @item.id).page(params[:page]).per(5)
+    @review = Review.page(params[:page]).per(5)
 
     @arrivals = Arrival.where(item_id: @item.id)
     @item_orders = ItemOrder.where(item_id: @item.id)
