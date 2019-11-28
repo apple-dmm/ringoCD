@@ -12,6 +12,8 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
     @user = User.find(current_user.id)
     @reviews = Review.where(item_id: @item.id)
+    @reviews = Review.page(params[:page]).per(5)
+    @review = Review.all
 
     @arrivals = Arrival.where(item_id: @item.id)
     @item_orders = ItemOrder.where(item_id: @item.id)

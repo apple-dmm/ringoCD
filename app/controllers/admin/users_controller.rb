@@ -16,6 +16,15 @@ class Admin::UsersController < ApplicationController
   end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path
+    else
+      render 'indsex'
+    end
+  end
+
   def edit
     if admin_signed_in?
   	@user = User.find(params[:id])
