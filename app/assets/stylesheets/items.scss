@@ -195,8 +195,9 @@
 
 .item-index-td{
   padding-top: 50px;
-  height: 470px;
+  height: 300px;
   border-bottom: solid 1px #dadada;
+  width: 300px;
 }
 
 .text-size {
@@ -249,6 +250,47 @@
 
 /*ランキング*/
 
+.ranking-text{
+	margin-left: 16px;
+	line-height: 43px;
+}
+
 .ranking {
+	border-left: solid 8px #4682B4;
+	width: 400px;
+	height: 45px;
+	background-color: #EEEEEE;
 	font-size: 20px,
+}
+
+.index-index-text{
+	margin-left: 16px;
+	line-height: 43px;
+}
+
+.index-index {
+	margin-top: 40px;
+	border-left: solid 8px #4682B4;
+	width: 400px;
+	height: 45px;
+	background-color: #EEEEEE;
+	font-size: 20px,
+}
+
+.index-artist-box{
+	margin-bottom: 5px;
+}
+
+.index-item-price-box{
+	margin-top: 3px;
+	margin-bottom: 8px;
+}
+
+.index-tax-text{
+	font-size: 13px;
+}
+
+.index-no-stock-text{
+	color: #B22222;
+	margin-left: 5px;
 }

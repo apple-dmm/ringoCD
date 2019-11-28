@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   resources :contacts, only: [:create, :new]
   resources :users, only: [:edit, :update, :show]
   resources :favorites, only: [:index]
-  delete 'favorites/destroy_all' => 'favorites/destroy_all', as: 'destroy_all'
+  delete 'favorites/destroy_all' => 'favorites#destroy_all', as: 'destroy_all'
   resources :items, only: [:index, :show] do
   resources :favorites, only: [:create, :destroy]
 end
+  get 'items/index/result' => 'items#index_result', as: 'index_result'
 end
