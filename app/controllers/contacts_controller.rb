@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   def create
   	@contact = Contact.new(contact_params)
   	if @contact.save
-  		redirect_to user_path(current_user.id)
+  		redirect_to mypage_path(current_user.id)
   	else
   		render 'new'
   	end
