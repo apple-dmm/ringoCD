@@ -1,56 +1,57 @@
 <h2 class="text">アカウントの作成</h2>
-<div class="border"></div>
+<div class="border-signin"></div>
 <div class="vacuum"></div>
 
 
 
 <div class="container">
  <div class="row">
+   <div class="col-xs-8 col-xs-offset-2">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-<%# autofocus="true"とは?
-Web画面上で自動的にフォーカスを入れるという設定,
-trueにすると生成されるinputタグにautofocus="autofocus"が追加される%>
+    <%# autofocus="true"とは?
+    Web画面上で自動的にフォーカスを入れるという設定,
+    trueにすると生成されるinputタグにautofocus="autofocus"が追加される%>
   <div class="col-xs-3 col-xs-offset-3">
         <%= f.label :名前（姓）, class: "float-left" %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-3">
         <%= f.label :名前（名）, class: "float-left" %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-3 col-xs-offset-3">
         <%= f.label :名前（セイ）, class: "float-left" %><br />
-        <%= f.text_field :last_furigana, class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :last_furigana, class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-3">
         <%= f.label :名前（メイ）, class: "float-left" %><br />
-        <%= f.text_field :first_furigana, class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :first_furigana, class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
         <%= f.label :郵便番号（ハイフンを除いた７桁の数字） %><br />
-        <%= f.text_field :postal_code, class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :postal_code, class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
         <%= f.label :住所 %><br />
-        <%= f.text_field :residence, class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :residence, class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
         <%= f.label :電話番号 %><br />
-        <%= f.text_field :phone_number, class: "col-auto form-control form-control-lg w-100" %>
+        <%= f.text_field :phone_number, class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
     <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-lg w-100" %>
+    <%= f.email_field :email, autocomplete: "email", class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
@@ -58,23 +59,30 @@ trueにすると生成されるinputタグにautofocus="autofocus"が追加さ�
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "col-auto form-control form-control-lg w-100" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="col-xs-6 col-xs-offset-3">
     <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-auto form-control form-control-lg w-100" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-auto form-control form-control-lg w-100" %>
   </div>
 
   <div class="actions col-xs-2 col-xs-offset-4">
+
+    <div class="create-btn">
     <div class="space"></div>
-   <%= f.submit "アカウントを作成", class: "btn btn-success mx-auto btn-lg" %>
+   <%= f.submit "アカウントを作成", class:"btn btn-success btn-lg" %>
+  </div>
   </div>
 
 
-
-  <div class="col-xs-6 col-xs-offset-4">アカウントをお持ちの方は<%= link_to "こちら", new_user_session_path %>
+<div class="link-to-login">
+  <div class="col-xs-6 col-xs-offset-4">
+    <div class="signin-button-bottom-space">アカウントをお持ちの方は<%= link_to "こちら", new_user_session_path %>
   </div>
+ </div>
+</div>
+
 
   </div>
  </div>
