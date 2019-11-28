@@ -56,9 +56,8 @@ class ItemsController < ApplicationController
   end
 
   def index
-  	@q = Item.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @items = @q.result(distinct: true).page(params[:page]).per(30)
+  	@search = Item.includes(:artist).ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(30)
   end
 
 
