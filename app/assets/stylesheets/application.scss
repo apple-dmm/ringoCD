@@ -128,12 +128,13 @@
 
 .signup{
 	color:#4682B4;
-	padding-top:30px;
-	margin-right:20px;
+	margin-left: 450px;
+	line-height: 60px;
 }
 .signin{
 	color:#4682B4;
-	padding-top:30px;
+	margin-left: 50px;
+	line-height: 60px;
 }
 .header-title-index{
 	position: absolute;
@@ -154,10 +155,10 @@
 }
 
 .logo-ringo{
-	margin-top: 20px;
+	margin-top: 41px;
 	position: absolute;
 	font-size:25px;
-	margin-left: 5px;
+	margin-left: 55px;
 }
 
 .header-title{
@@ -165,8 +166,8 @@
     color:	#B22222;
     font-family: 'HanziPen TC','HanziPen SC','klee',sans-serif;
     font-size:50px;
-    margin-top: 20px;
-    margin-left: 50px;
+    margin-top: 27px;
+    margin-left: 93px;
     z-index: 9;
 }
 
@@ -209,11 +210,22 @@ i{
 	float: right;
 	text-decoration:underline;
 }
+
+.admin_user-box{
+	margin-left: 400px;
+	margin-top: 15px;
+}
+
 .admin_user{
 	float:left;
 }
+
+.admin_signout-box{
+	margin-top: 40px;
+}
 .admin_signout{
 	float:right;
+	line-height: 45px;
 }
 
 
@@ -248,7 +260,8 @@ i{
 
 .footer_text{
     bottom: 0;
-    padding:100px 0;
+    padding-top:70px;
+    padding-bottom: 30px;
     width:100%;
 }
 
@@ -297,6 +310,11 @@ ul {
 
 
 /*商品登録タイトル*/
+
+.admin-search_field{
+	width:500px;
+	margin-bottom: 30px;
+}
 
 .registration-items{
 	text-align: center;

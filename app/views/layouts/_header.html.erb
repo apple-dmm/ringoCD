@@ -1,17 +1,20 @@
 <script src="https://kit.fontawesome.com/b1ddc8e955.js" crossorigin="anonymous"></script>
-
     <nav class='nav navbar-nav navbar-left' >
-      <% if controller_name == 'items' && action_name == 'index' %>
+      <% if params[:controller] == 'items' && params[:action] == 'index' %>
         <%= link_to(root_path) do %>
          <span class="logo-ringo-index"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-4 header-title-index">りんごCD</span>
         <% end %>
-        <% elsif controller_name == '/admin/items' && action_name == 'index' %>
-        <%= link_to(root_path) do %>
-          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-4 header-title">りんごCD</span>
+        <% elsif params[:controller] == 'admin/items' && params[:action] == 'index' %>
+        <%= link_to(admin_items_path) do %>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
+        <% end %>
+        <% elsif params[:controller] == 'admin/items' || 'admin/contacts' || 'admin/reviews' || 'admin/labels' || 'admin/categories' || 'admin/artists' || 'admin/orders' || 'admin/arrivals' || 'admin/users' %>
+          <%= link_to(admin_items_path) do %>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
         <% end %>
         <% else %>
            <%= link_to(root_path) do %>
-          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-4 header-title">りんごCD</span>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
         <% end %>
       <% end %>
     </nav>
@@ -25,7 +28,9 @@
         <!-- アドミンでログインした場合 -->
         <% if admin_signed_in? %>
         <div class="admin_user-box">
-        <span class="admin_user"> ショップ管理画面<br>管理者　様</span>
+        <span class="admin_user"> ショップ管理画面<br>　　　管理者　様</span>
+        </div>
+        <div class="admin-signout-box">
         <%= link_to(destroy_admin_session_path, method: :delete) do %>
         <span class="admin_signout"> サインアウト</span>
         <% end %>
