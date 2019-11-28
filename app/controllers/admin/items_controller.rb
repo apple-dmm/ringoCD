@@ -2,9 +2,8 @@ class Admin::ItemsController < ApplicationController
 
   def index
     if admin_signed_in?
-    @q = Item.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @item_result = @q.result(distinct: true).page(params[:page]).per(30)
+    @search = Item.includes(:artist,:category,:label).ransack(params[:q])
+    @item_result = @search.result.page(params[:page]).per(30)
   else
     redirect_to root_path
   end
@@ -132,6 +131,7 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price, :release, :image, :sales_status,
       disks_attributes: [:id, :disk_num, :_destroy,
-        songs_attributes: [:id, :name, :setlist, :_destroy]])
+        artist_attributes: [:id, :name,
+        songs_attributes: [:id, :name, :setlist, :_destroy]]])
   end
 end

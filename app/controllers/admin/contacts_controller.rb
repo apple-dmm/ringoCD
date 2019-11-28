@@ -22,9 +22,8 @@ class Admin::ContactsController < ApplicationController
 
   def index
     if admin_signed_in?
-  	@q = Contact.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @contacts = @q.result(distinct: true).page(params[:page]).per(30)
+    @search = Contact.includes(:user).ransack(params[:q])
+    @contacts = @search.result.page(params[:page]).per(30)
   else
     redirect_to root_path
   end

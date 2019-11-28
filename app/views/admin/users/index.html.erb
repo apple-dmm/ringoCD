@@ -8,7 +8,7 @@
 			<div class="search-box col-xs-10 col-xs-offset-1">
 
 				<%= search_form_for @search, url: admin_users_path do |f| %>
-  				<%= f.search_field :last_name_or_email_cont, class:"search_field", placeholder: '検索ワードを入力' %>
+  				<%= f.search_field :last_name_or_email_cont, class:"admin-search_field", placeholder: '氏名またはメールアドレスを入力' %>
 
 				<span class="actions">
 					<%= f.button :type => "submit", class:'btn btn-primary' do %>

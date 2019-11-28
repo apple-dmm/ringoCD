@@ -3,21 +3,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-9">
-			<h2 class="admin-contact-title">問合せ一覧</h2>
+			<h2 class="admin-contact-show-title">問合せ一覧</h2>
 			<div class="border"></div>
 			<div class="search-box col-xs-10 col-xs-offset-1">
-
-				<%= search_form_for @q, url: admin_contacts_path, html: {class: 'contact_sereach'} do |f| %>
-				<%= f.condition_fields do |c| %>
-				<%= c.attribute_fields do |a| %>
-				<%= a.attribute_select associations:[:user] %>
-				<% end %>
-				<%= c.hidden_field :p, value: "cont_all" %>
-
-				<%= c.value_fields do |v| %>
-				<%= v.search_field :value, class:"search_field", placeholder: '検索ワードを入力' %>
-				<% end %>
-				<% end %>
+				<%= search_form_for @search, url: admin_contacts_path do |f| %>
+  				<%= f.search_field :title_or_user_last_name_or_user_email_cont, class:"admin-search_field", placeholder: '顧客名・メールアドレス・件名を入力' %>
 
 				<span class="actions">
 					<%= f.button :type => "submit", class:'btn btn-primary' do %>
@@ -28,7 +18,6 @@
 
 
 			 	<% if @contacts.any? %>
-				<h5 class="search-result">検索結果<%= @contacts.count %>件</h5>
 
 
 				<table class='col-xs-12 table table-hover table-inverse'>
