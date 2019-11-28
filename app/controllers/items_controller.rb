@@ -12,6 +12,8 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
     @user = User.find(current_user.id)
     @reviews = Review.where(item_id: @item.id)
+    @reviews = Review.page(params[:page]).per(5)
+    @review = Review.all
 
     @arrivals = Arrival.where(item_id: @item.id)
     @item_orders = ItemOrder.where(item_id: @item.id)
@@ -56,9 +58,6 @@ class ItemsController < ApplicationController
   end
 
   def index
-  	@q = Item.ransack(params[:q])
-    @q.build_condition if @q.conditions.empty?
-    @items = @q.result(distinct: true).page(params[:page]).per(30)
     @all_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(4).pluck(:item_id))
 
   	@search = Item.includes(:artist).ransack(params[:q])
