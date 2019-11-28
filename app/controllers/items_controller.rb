@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   def index
   	@q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
-    @items = @q.result(distinct: true).page(params[:page]).per(30)
+    @items = @q.result(distinct: true).page(params[:page]).per(20)
     @all_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(4).pluck(:item_id))
 
   	@search = Item.includes(:artist).ransack(params[:q])
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   def index_result
     @q = Item.ransack(params[:q])
     @q.build_condition if @q.conditions.empty?
-    @items = @q.result(distinct: true).page(params[:page]).per(30)
+    @items = @q.result(distinct: true).page(params[:page]).per(20)
 
     @search = Item.includes(:artist).ransack(params[:q])
     @items = @search.result.page(params[:page]).per(30)
