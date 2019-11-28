@@ -90,7 +90,7 @@
 	margin-top: 5px;
 	margin-left:10px;
 	border: solid 2px #A9A9A9;
-	width: 60px;
+	width: 90px;
 	height: 20px;
 	text-align: center;
 	line-height: 17px;
@@ -128,7 +128,7 @@
 }
 
 .user-cart-in{
-	margin-left: 15px;
+	margin-left: 7px;
 }
 
 .no-stock-text{
@@ -147,6 +147,27 @@
 	margin-top: 13px;
 	margin-left:100px;
 	height: 80px;
+}
+
+.border-item-show-review{
+    height: 2px;
+    background-color:#dadada;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.item-show-review-title{
+	margin-bottom: 35px;
+}
+
+.item-show-review-user{
+	margin-left: 250px;
+}
+
+.admin-item-show-review-edit{
+	margin-left: 50px;
 }
 
 .back-to-item-index{

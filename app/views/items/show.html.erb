@@ -57,7 +57,7 @@
 								</div>
 								<div class="user-stock-quantity-box">
 									<% if @total_arrival-@total_order >= 1 %>
-									<span class="user-stock-quantity">在庫有</span>
+									<span class="user-stock-quantity">在庫残り<%= @item.total_arrival_calculate - @item.total_item_order_calculate %>点</span>
 									<% else %>
 									<span class="stock-quantity">在庫無</span>
 									<% end %>
@@ -78,7 +78,7 @@
 										<div class="user-item-quantity-position">
 										<span class="user-item-quantity-text">数量</span>
 									<%= f.number_field :quantity, min:"1", max:@total_arrival-@total_order, class:"user-number-field" %>
-									<%= f.submit "カートに入れる", class:"user-cart-in" %>
+									<%= f.submit "カートに入れる", class:"btn btn-primary user-cart-in" %>
 										</div>
 									</div>
 									<% end %>
@@ -90,9 +90,6 @@
 							</div>
 							</div>
 							</div>
-							<% @reviews.each do |review| %>
-
-							<% end %>
 						</div>
 					</div>
 				</div>
@@ -132,7 +129,7 @@
 								</div>
 								<div class="user-stock-quantity-box">
 									<% if @total_arrival-@total_order >= 1 %>
-									<span class="user-stock-quantity">在庫有</span>
+									<span class="user-stock-quantity">残り<%= @item.total_arrival_calculate - @item.total_item_order_calculate %>点</span>
 									<% else %>
 									<span class="stock-quantity">在庫無</span>
 									<% end %>
@@ -153,7 +150,7 @@
 
 				<div class="item-detail-content">
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1">
+						<div class="col-xs-8 col-xs-offset-2">
 
 							<h4 class="songlist-index">収録曲一覧</h4>
 							<% @disks.each do |disk| %>
@@ -169,11 +166,57 @@
 								<% end %>
 							</table>
 							 <% end %>
-							 <div class="back-to-item-index">
-							 <%= link_to "< 商品一覧へ", root_path %>
-							</div>
+
 						</div>
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+
+				<div class="border-item-show-review"></div>
+
+				<div class="item-show-review-title">
+					<span class="item-show-review-title-text"><%= @reviews.count %>件のカスタマーレビュー</span>
+				</div>
+
+					<% @reviews.each do |review| %>
+
+					<table class="table table-striped table-bordered">
+						<caption>投稿日: <%= review.created_at.strftime("%Y年%m月%d日") %><span class="item-show-review-user">ユーザ名: <%= review.user.last_name %>  <%= review.user.first_name %></span></caption>
+					<tbody>
+						<tr>
+							<th width="150">評価</th>
+							<td><span id="star<%= review.id %>"></span></td>
+						<script>
+				          $('#star<%= review.id %>').raty({
+				            size: 36,
+				            starOff:  '<%= asset_path('star-off.png') %>',
+				            starOn : '<%= asset_path('star-on.png') %>',
+				            starHalf: '<%= asset_path('star-half.png') %>',
+				            half: true,
+				            readOnly: true,
+				            score: <%= review.rate %>,
+				          });
+				          </script>
+						</tr>
+						<tr>
+							<th>タイトル</th>
+							<td><%= review.title %></td>
+						</tr>
+						<tr>
+							<th>レビュー内容</td>
+							<td><%= review.body %></td>
+						</tr>
+						</tbody>
+					</table>
+					<% end %>
+
+					</div>
+				</div>
+
+			<div class="back-to-item-index">
+			 <%= link_to "< 商品一覧へ", root_path %>
+			</div>
+		</div>
 	</div>
-</div>
