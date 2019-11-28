@@ -1,0 +1,187 @@
+<div class="search-box-user-index col-xs-8 col-xs-offset-3">
+
+
+	<%= search_form_for @search, url: index_result_path do |f| %>
+  		<%= f.search_field :artist_name_or_name_cont, class:"search_field", placeholder: '歌手・商品名を入力' %>
+
+    	<span class="actions">
+    		<%= f.button :type => "submit", class:'btn btn-primary' do %>
+    		<i class="fas fa-search"></i>
+    		<% end %>
+    	</span>
+    	<% end %>
+</div>
+
+  <div class="container">
+   <div class="row">
+     <div class="col-xs-12">
+
+
+<table>
+    <% @items.each_slice(4) do |item1, item2, item3, item4| %>
+
+		<tbody>
+				<tr class="item-index-tr">
+						<td class="item-index-td">
+
+										<% if item1 != nil%>
+
+									       <%= link_to item_path(item1.id) do %>
+									          <%= attachment_image_tag item1, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+
+
+
+			                            <p>
+										    <div class="text-size">
+									           <%=link_to item1.name, item_path(item1.id) %>
+									        </div>
+
+						                               <br>
+											   <%= link_to item1.artist.name, item_path(item1.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item1.price %>円</div>
+
+												  <div>在庫あり</div>
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+
+
+					    <td class="item-index-td">
+
+
+									    <% if item2 != nil %>
+
+
+										  <%= link_to item_path(item2.id) do %>
+										    <%= attachment_image_tag item2, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+
+					                 <% end %>
+				                  </div>
+
+
+                                      <p>
+										      <div class="text-size">
+										          <%=link_to item2.name, item_path(item2.id) %>
+										      </div>
+
+		                                               <br>
+		                                             <%= link_to item2.artist.name, item_path(item2.id) %>
+							                          <br><br>
+
+
+					                                     <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item2.price %>円</div>
+
+
+	                                                          <% end %>
+
+
+					                  </p>
+				        </td>
+
+				        <td class="item-index-td">
+
+										<% if item3 != nil%>
+
+									       <%= link_to item_path(item3.id) do %>
+
+									          <%= attachment_image_tag item3, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+
+									          <div class="text-size">
+									          	<%=link_to item3.name, item_path(item3.id) %>
+									          </div>
+
+
+						                               <br>
+											   <%= link_to item3.artist.name, item_path(item3.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item3.price %>円</div>
+
+												  <div>在庫あり</div>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+
+					    <td class="item-index-td">
+
+
+										<% if item4 != nil%>
+
+
+									       <%= link_to item_path(item4.id) do %>
+									          <%= attachment_image_tag item4, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+					                    <% end %>
+					                     </div>
+
+
+			                            <p>
+										   <div class="text-size">
+									           <%=link_to item4.name, item_path(item4.id) %>
+									       </div>
+
+
+						                               <br>
+											   <%= link_to item4.artist.name, item_path(item4.id) %>
+											           <br><br>
+
+											      <div>価格(税込)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= item4.price %>円</div>
+
+												  <div>在庫あり</div>
+
+
+                                                    <% end %>
+
+					                    </p>
+		                       </div>
+		                    </div>
+
+					    </td>
+				</tr>
+
+	    </tbody>
+
+	<% end %>
+
+</table>
+
+
+
+	  <br><br>
+
+
+                  <div class="page-top col-xs-8 col-xs-offset-2">
+
+					<%= paginate @items, class: "paginate" %>
+					<p id="pageTop"><a href="#">ページトップへ</a></p>
+						<script type='text/javascript'>
+							$(function(){
+							$('a[href^="#"]').click(function() {
+								var speed = 400;
+								var href= $(this).attr("href");
+  								var target = $(href == "#" || href == "" ? 'html' : href);
+  								var position = target.offset().top;
+  								$('body,html').animate({scrollTop:position}, speed, 'swing');
+  								return false;
+  							});
+							});
+						</script>
+				</div>

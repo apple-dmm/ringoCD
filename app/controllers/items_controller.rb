@@ -62,6 +62,15 @@ class ItemsController < ApplicationController
     @items = @search.result.page(params[:page]).per(30)
   end
 
+  def index_result
+    @q = Item.ransack(params[:q])
+    @q.build_condition if @q.conditions.empty?
+    @items = @q.result(distinct: true).page(params[:page]).per(30)
+
+    @search = Item.includes(:artist).ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(30)
+  end
+
   private
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :user_id, :item_id)
