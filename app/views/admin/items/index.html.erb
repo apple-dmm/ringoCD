@@ -1,2 +1,68 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<%= render 'admin/sidemenu' %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h3 class="registration-items">登録済商品一覧</h3>
+			<div class="border"></div>
+
+			<div class="search-box col-xs-12">
+
+			<%= search_form_for @search, url: admin_items_path do |f| %>
+  				<%= f.search_field :artist_name_or_label_name_or_category_name_cont, class:"admin-search_field", placeholder: '歌手・レーベル・ジャンルを入力' %>
+
+				<span class="actions">
+					<%= f.button :type => "submit", class:'btn btn-primary' do %>
+					<i class="fas fa-search"></i>
+					<% end %>
+				</span>
+				<% end %>
+
+			<% if @item_result.any? %>
+					<table class="table table-hover">
+				 		<thead class="thead-light">
+				 		<tr>
+				 			<th>ID</th>
+				 			<th></th>
+				 			<th>商品名</th>
+				 			<th>歌手名</th>
+				 			<th>価格(税抜)</th>
+				 			<th>ジャンル</th>
+				 			<th>レーベル</th>
+				 			<th>在庫数</th>
+				 			<th>販売ステータス</th>
+				 		</tr>
+				 	</thead>
+				 	<% @item_result.each do |item| %>
+				 	<tbody>
+				 		<tr>
+				 			<td><%= item.id %></td>
+				 			<td><%= attachment_image_tag item, :image, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %></td>
+				 			<td><%= link_to item.name, admin_item_path(item.id) %></td>
+				 			<td><%= item.artist.name %></td>
+				 			<td><%= item.price %>円</td>
+				 			<td><%= item.category.name %></td>
+				 			<td><%= item.label.name %></td>
+				 			<td>
+				 			 <%= item.total_arrival_calculate - item.total_item_order_calculate %></td>
+				 			 <td>
+				 			 <% if item.total_arrival_calculate - item.total_item_order_calculate >=1 %>
+				 			 <% item.sales_status_change_to_0 %>
+				 			 <%= item.status %>
+				 			 <% else %>
+				 			 <% item.sales_status_change_to_1 %>
+				 			 <span class="sales_status-text">
+				 			 <%= item.status %>
+				 			</span>
+				 			 <% end %>
+				 			</td>
+				 		</tr>
+				 		<% end %>
+				 	</tbody>
+				 </table>
+				<% else %>
+			 <h6>検索する商品がありません。キーワードを変えてください。</h6>
+			 <% end %>
+		</div>
+		</div>
+	</div>
+</div>

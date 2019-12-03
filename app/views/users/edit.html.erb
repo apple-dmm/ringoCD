@@ -1,2 +1,71 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+	<div class="row end_user">
+	<h2 class="user-title">アカウント情報の編集</h2>
+		<div class="border"></div>
+		<%= form_for(@user) do |f| %>
+			<div class="user-edit">
+
+				<div class="col-xs-3 col-xs-offset-3">
+       				<%= f.label :名前（姓）, class: "float-left" %><br>
+					<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3">
+					<%= f.label :名前（名）, class: "float-left" %><br>
+					<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3 col-xs-offset-3">
+       				<%= f.label :名前（セイ）, class: "float-left" %><br>
+       				<%= f.text_field :last_furigana, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-3">
+       				<%= f.label :名前（メイ）, class: "float-left" %><br>
+       				<%= f.text_field :first_furigana, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :郵便番号（ハイフンを除いた７桁の数字） %><br>
+       				<%= f.text_field :postal_code, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :住所 %><br>
+       				<%= f.text_field :residence, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :電話番号 %><br>
+       				<%= f.text_field :phone_number, class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+				<div class="col-xs-6 col-xs-offset-3">
+       				<%= f.label :メールアドレス %><br>
+       				<%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+
+				<div class="user-address-list col-xs-6 col-xs-offset-3">
+       				<h3>登録住所一覧</h3>
+       			</div>
+
+       			<div class="col-xs-6 col-xs-offset-3">
+					<%= render 'form', address: @address,f:f %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row end_user text-center">
+			<div class="space"></div>
+				<%= f.submit "保存する", class: "btn btn-success mx-auto btn-lg" %>
+		</div>
+	    <% end %>
+
+
+ 		<div class="row end_user">
+ 			<div class="col-xs-8 col-xs-offset-2">
+		          <%= link_to "< マイページへ", mypage_path %>
+  			</div>
+ 		</div>
+</div>

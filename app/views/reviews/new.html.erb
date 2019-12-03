@@ -1,2 +1,50 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="container">
+	<h2 class="index-title">商品レビュー投稿</h2>
+	<div class="border"></div>
+	<div calss="row">
+		<div class="col-xs-6 col-xs-offset-3">
+		<%= form_for(@review, url: reviews_create_path(params[:id])) do |f| %>
+			<table class="table table-striped table-bordered create-review-table">
+				<tbody>
+					<tr>
+						<div>
+							<%= f.hidden_field :item_id,:value => params[:id] %>
+							<td class="review-valuation"><%= f.label :rate, '評価 ' %></td>
+							<td class=""><span id="star"></span></td>
+						</div>
+					</tr>
+					<tr>
+						<div class="">
+							<td class="review-title"><%= f.label :title, 'タイトル ' %></td>
+							<td class=""><%= f.text_field :title,class:"col-xs-6" %></td>
+						</div>
+					</tr>
+					<tr>
+						<div class="">
+							<td rowspan="2" class="review-table-height"><%= f.label :body, '内容 ' %></td>
+							<td class="review-table-height"><%= f.text_area :body,class:"col-xs-8 review-height" %></td>
+						</div>
+					</tr>
+					<tr>
+						<td style="border-top-style: hidden;" class="contact-info"><small>＊全角２００文字以内</small></td>
+					</tr>
+				</tbody>
+			</table>
+			<%= f.submit '投稿する', class:'btn btn-primary col-xs-4 col-xs-offset-4' %>
+		<% end %>
+		</div>
+		<%= link_to(orders_path(current_user)) do %>
+		<div class="col-xs-2 col-xs-offset-3 index-box1"><購入履歴へ戻る</div>
+		<% end %>
+	</div>
+	<script>
+  $('#star').raty({
+    size     : 60,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>
+</div>

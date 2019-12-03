@@ -1,3 +1,86 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.favorites-title {
+    width: 900px;
+    margin: 0 auto;
+    font-size: 30px;
+}
+
+.favorite-count {
+    margin-left: 25px;
+    margin-bottom: 30px;
+}
+
+.favorites-border{
+    width: 1000px;
+    height: 2px;
+    background-color:#dadada;
+    margin-bottom: 40px;
+}
+
+.quantity-number-field{
+	width: 37px;
+}
+
+.change-position {
+    margin-left: 385px;
+  }
+
+.favorites-page {
+     width: 82%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.text-size {
+     font-size: 20px;
+     margin-top: 10px;
+     margin-bottom: 15px;
+}
+
+.checkbox-size {
+    transform: scale(1.5);
+    margin-left: 55px;
+    margin-bottom: 20px;
+}
+
+.favorite-index-tr{
+  vertical-align: initial;
+  padding: initial;
+  height: 470px;
+}
+
+.favorite-item-price-box{
+  margin-top: 3px;
+  margin-bottom: 7px;
+}
+
+.favorite-tax-text{
+  font-size: 13px;
+}
+
+.favorite-no-stock-box{
+  margin-top: 5px;
+}
+
+.favorite-no-stock-text{
+  color: #B22222;
+  font-size: 17px;
+  margin-left: 50px;
+}
+
+.favorite-jump-to-page {
+  margin-top: 50px;
+}
+
+.favorite-next-to-page {
+  margin-left: 370px;
+}
+
+.favorite-back-to-page {
+  margin-left: 200px;
+}
+
+

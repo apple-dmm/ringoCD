@@ -1,3 +1,5 @@
 class Address < ApplicationRecord
-	belongs_to :end_user
+	belongs_to :user
+	has_many :orders
+	accepts_nested_attributes_for :orders
 end

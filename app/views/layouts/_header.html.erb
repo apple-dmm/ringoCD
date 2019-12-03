@@ -1,0 +1,74 @@
+<script src="https://kit.fontawesome.com/b1ddc8e955.js" crossorigin="anonymous"></script>
+    <nav class='nav navbar-nav navbar-left' >
+      <% if params[:controller] == 'items' && params[:action] == 'index' %>
+        <%= link_to(root_path) do %>
+         <span class="logo-ringo-index"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-4 header-title-index">りんごCD</span>
+        <% end %>
+        <% elsif params[:controller] == 'admin/items' && params[:action] == 'index' %>
+        <%= link_to(admin_items_path) do %>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
+        <% end %>
+        <% elsif params[:controller] == 'admin/items' || 'admin/contacts' || 'admin/reviews' || 'admin/labels' || 'admin/categories' || 'admin/artists' || 'admin/orders' || 'admin/arrivals' || 'admin/users' %>
+          <%= link_to(admin_items_path) do %>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
+        <% end %>
+        <% else %>
+           <%= link_to(root_path) do %>
+          <span class="logo-ringo"><i class="fas fa-apple-alt fa-2x"></i></span><span class="col-xs-2 header-title">りんごCD</span>
+        <% end %>
+      <% end %>
+    </nav>
+
+      <div class="container">
+      <div class="row">
+      <div class="header">
+
+    <nav>
+     <ul class="nav navbar-nav navbar-right col-xs-7">
+        <!-- アドミンでログインした場合 -->
+        <% if admin_signed_in? %>
+        <div class="admin_user-box">
+        <span class="admin_user"> ショップ管理画面<br>　　　管理者　様</span>
+        </div>
+        <div class="admin-signout-box">
+        <%= link_to(destroy_admin_session_path, method: :delete) do %>
+        <span class="admin_signout"> サインアウト</span>
+        <% end %>
+        </div>
+        <!-- エンドユーザーでログインした場合 -->
+        <% elsif user_signed_in?%>
+        <span class="current_user"><%= current_user.last_name %>さん</span>
+        <br>
+        <div class="header-menu">
+        <%= link_to(mypage_path(current_user.id)) do %>
+        <span class="home"> マイページ</span>
+        <% end %>
+        <% link_to favorites_path do %>
+        <span class="favorite"> お気に入り</span>
+        <% end %>
+        <%= link_to(cart_items_path) do %>
+        <span class="cart"> カート <i class="fas fa-shopping-cart"></i></span>
+        <% end %>
+        <%= link_to(new_contact_path) do %>
+        <span class="contact"> お問い合わせ</span>
+        <% end %>
+        <%= link_to(destroy_user_session_path, method: :delete) do %>
+        <span class="signout"> サインアウト</span>
+      </div>
+        <% end %>
+        <!-- 非ログイン時 -->
+      <% else %>
+      <%= link_to(new_user_registration_path) do %>
+        <span class="signup"> 新規登録</span>
+      <% end %>
+      <%= link_to(new_user_session_path) do %>
+        <span class="signin"> ログイン</span>
+      <% end %>
+    <% end %>
+     </ul>
+    </nav>
+  </div>
+</div>
+</div>
+</div>
+</div>

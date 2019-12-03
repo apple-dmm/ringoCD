@@ -1,2 +1,98 @@
-<h1>Admin::Contacts#show</h1>
-<p>Find me in app/views/admin/contacts/show.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+				<h2 class="admin-contact-show-title">お問い合わせ詳細</h2>
+					<div class="border"></div>
+
+					<div class="row">
+						<div class="col-xs-1 col-xs-offset-2">
+							<div class="admin-contact-user-id-position">
+								<span class="admin-contact-user-id-text">ID</span>
+							<div class="admin-contact-user-id-box">
+								<span class="admin-contact-user-id"><%= @contact.user_id %></span>
+							</div>
+							</div>
+						</div>
+
+						<div class="col-xs-3">
+							<div class="admin-contact-user-name-position">
+								<span class="admin-contact-user-name-text">顧客名</span>
+							</div>
+							<div class="admin-contact-user-name-box">
+								<span class="admin-contact-user-name"><%= @contact.user.last_name %><%= @contact.user.first_name %></span>
+							</div>
+						</div>
+
+						<div class="col-xs-4">
+							<div class="admin-contact-user-email-position">
+								<span class="admin-contact-user-email-text">登録済のメールアドレス</span>
+							<div class="admin-contact-user-email-box">
+								<span class="admin-contact-user-email"><%= @contact.user.email %></span>
+							</div>
+						</div>
+						</div>
+
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-2">
+							<div class="admin-contact-title-position">
+								<span class="admin-contact-title-text">件名</span>
+							<div class="admin-contact-title-box">
+								<span class="admin-contact-title"><%= @contact.title %></span>
+							</div>
+							</div>
+						</div>
+
+						<div class="col-xs-4">
+							<div class="admin-contact-time-position">
+								<span class="admin-contact-time-text">お問い合わせ日時</span>
+							<div class="admin-contact-time-box">
+								<span class="admin-contact-time"><%= @contact.created_at.strftime("%Y年%m月%d日") %></span>
+							</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="admin-contact-body-position">
+						<span class="admin-contact-body-text">問い合わせ内容</span>
+					<div class="admin-contact-body-box">
+						<span class="admin-contact-body"><%= @contact.body %></span>
+					</div>
+					</div>
+
+					<div class="border-between-contact-reply"></div>
+
+
+					<%= form_for (@reply), url:admin_contacts_path do |f| %>
+
+					<%= f.hidden_field :contact_id, :value => @contact.id %>
+
+					<div class="row">
+						<div class="col-xs-8 col-xs-offset-2">
+							<div class="reply-title-position">
+								<label class="reply-title-text">返信件名</label>
+								<div class="reply-title-box"><%= f.text_field :title, class:"reply-title-box" %>
+								</div>
+							</div>
+							<div class="reply-body-position">
+								<label class="reply-body-text">返信内容</label>
+								<div class="reply-body-box"><%= f.text_area :body, class:"reply-body-box" %>
+								</div>
+							</div>
+						</div>
+					</div>
+	</div>
+
+					<%= f.submit '送信', class:'btn btn-primary col-xs-2 col-xs-offset-5' %>
+					<% end %>
+		</div>
+		<div class="row">
+			<%= link_to admin_contacts_path do %>
+			<div class="col-xs-4 col-xs-offset-4 back-to-contact-index"><問い合わせ一覧へ</div>
+			<% end %>
+		</div>
+</div>
+
+

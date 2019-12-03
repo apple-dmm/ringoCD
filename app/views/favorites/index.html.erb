@@ -1,2 +1,188 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+ <div class="container">
+   <div class="row">
+
+     <div class="col-xs-10 col-xs-offset-1">
+		<div class="favorites-title">お気に入り</div>
+		<div class="favorites-border"></div>
+
+		<div class="row">
+			<div class="col-xs-5">
+			<div class="favorite-count">
+				【お気に入りアイテム: <%= @favorites.count %>件】
+			</div>
+			</div>
+		</div>
+
+	<table>
+   		<% @favorites.each_slice(4) do |favorite1, favorite2, favorite3, favorite4| %>
+		<tbody>
+			<tr class="favorite-index-tr">
+				<td>
+				<% if favorite1 != nil%>
+				<div class="checkbox-size">
+					<%= check_box_tag 'favorites[]', favorite1.id, false, {id: favorite1.id, form: "formtag"}%>
+			    </div>
+
+			    <%= link_to item_path(favorite1.item.id) do %>
+			    <%= attachment_image_tag favorite1.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+	            <% end %>
+
+				<div class="text-size">
+			        <%=link_to favorite1.item.name, item_path(favorite1.item.id) %>
+			    </div>
+
+				<%= favorite1.item.artist.name %>
+
+				<div class="favorite-item-price-box">価格<span class="favorite-tax-text">(税込)</span>&nbsp;&nbsp;&nbsp;: <%= favorite1.item.include_tax_price %>円</div>
+
+				<% if favorite1.item.total_arrival_calculate - favorite1.item.total_item_order_calculate >= 1 %>
+					<span class="favorite-user-stock-quantity">残り<%= favorite1.item.total_arrival_calculate - favorite1.item.total_item_order_calculate %>点</span>
+						<%= form_for @cart_item, url: cart_items_path do |f| %>
+					    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :item_id, :value => favorite1.item_id %>
+		                <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1, max: favorite1.item.total_arrival_calculate - favorite1.item.total_item_order_calculate %>
+		                <% end %>
+				<% else %>
+					<span class="favorite-stock-quantity">在庫無</span><br>
+					<div class="favorite-no-stock-box">
+					<span class="favorite-no-stock-text">【入荷待ち】</span>
+					</div>
+				<% end %>
+
+        		<% end %>
+				</td>
+
+
+				<td>
+				<% if favorite2 != nil%>
+				<div class="checkbox-size">
+					<%= check_box_tag 'favorites[]', favorite2.id, false, {id: favorite2.id, form: "formtag"}%>
+			    </div>
+
+			    <%= link_to item_path(favorite2.item.id) do %>
+			    <%= attachment_image_tag favorite2.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+	            <% end %>
+
+				<div class="text-size">
+			        <%=link_to favorite2.item.name, item_path(favorite2.item.id) %>
+			    </div>
+
+				<%= favorite2.item.artist.name %>
+
+				<div class="favorite-item-price-box">価格<span class="favorite-tax-text">(税込)</span>&nbsp;&nbsp;&nbsp;: <%= favorite2.item.include_tax_price %>円</div>
+
+				<% if favorite2.item.total_arrival_calculate - favorite2.item.total_item_order_calculate >= 1 %>
+					<span class="favorite-user-stock-quantity">残り<%= favorite2.item.total_arrival_calculate - favorite2.item.total_item_order_calculate %>点</span>
+						<%= form_for @cart_item, url: cart_items_path do |f| %>
+					    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :item_id, :value => favorite2.item_id %>
+		                <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1, max: favorite2.item.total_arrival_calculate - favorite2.item.total_item_order_calculate %>
+		                <% end %>
+				<% else %>
+					<span class="favorite-stock-quantity">在庫無</span>
+					<div class="favorite-no-stock-box">
+					<span class="favorite-no-stock-text">【入荷待ち】</span>
+					</div>
+				<% end %>
+
+        		<% end %>
+				</td>
+
+
+				<td>
+				<% if favorite3 != nil%>
+				<div class="checkbox-size">
+					<%= check_box_tag 'favorites[]', favorite3.id, false, {id: favorite3.id, form: "formtag"}%>
+			    </div>
+
+			    <%= link_to item_path(favorite3.item.id) do %>
+			    <%= attachment_image_tag favorite3.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+	            <% end %>
+
+				<div class="text-size">
+			        <%=link_to favorite3.item.name, item_path(favorite3.item.id) %>
+			    </div>
+
+				<%= favorite3.item.artist.name %>
+
+				<div class="favorite-item-price-box">価格<span class="favorite-tax-text">(税込)</span>&nbsp;&nbsp;&nbsp;: <%= favorite3.item.include_tax_price %>円</div>
+
+				<% if favorite3.item.total_arrival_calculate - favorite3.item.total_item_order_calculate >= 1 %>
+					<span class="favorite-user-stock-quantity">残り<%= favorite3.item.total_arrival_calculate - favorite3.item.total_item_order_calculate %>点</span>
+						<%= form_for @cart_item, url: cart_items_path do |f| %>
+					    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :item_id, :value => favorite3.item_id %>
+		                <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1, max: favorite3.item.total_arrival_calculate - favorite3.item.total_item_order_calculate %>
+		                <% end %>
+				<% else %>
+					<span class="favorite-stock-quantity">在庫無</span>
+					<div class="favorite-no-stock-box">
+					<span class="favorite-no-stock-text">【入荷待ち】</span>
+					</div>
+				<% end %>
+
+        		<% end %>
+				</td>
+
+				<td>
+				<% if favorite4 != nil%>
+				<div class="checkbox-size">
+					<%= check_box_tag 'favorites[]', favorite4.id, false, {id: favorite4.id, form: "formtag"}%>
+			    </div>
+
+			    <%= link_to item_path(favorite4.item.id) do %>
+			    <%= attachment_image_tag favorite4.item, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+	            <% end %>
+
+				<div class="text-size">
+			        <%=link_to favorite4.item.name, item_path(favorite4.item.id) %>
+			    </div>
+
+				<%= favorite4.item.artist.name %>
+
+				<div class="favorite-item-price-box">価格<span class="favorite-tax-text">(税込)</span>&nbsp;&nbsp;&nbsp;: <%= favorite4.item.include_tax_price %>円</div>
+
+				<% if favorite4.item.total_arrival_calculate - favorite4.item.total_item_order_calculate >= 1 %>
+					<span class="favorite-user-stock-quantity">残り<%= favorite4.item.total_arrival_calculate - favorite4.item.total_item_order_calculate %>点</span>
+						<%= form_for @cart_item, url: cart_items_path do |f| %>
+					    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :item_id, :value => favorite4.item_id %>
+		                <%= f.number_field :quantity, class:"quantity-number-field", value:1, min:1, max: favorite4.item.total_arrival_calculate - favorite4.item.total_item_order_calculate %>
+		                <% end %>
+				<% else %>
+					<span class="favorite-stock-quantity">在庫無</span>
+					<div class="favorite-no-stock-box">
+					<span class="favorite-no-stock-text">【入荷待ち】</span>
+					</div>
+				<% end %>
+
+        		<% end %>
+				</td>
+				</tr>
+	    </tbody>
+		<% end %>
+	</table>
+
+	    <div class="favorites-page"><%= paginate @favorites %></div>
+			<div class="favorites-border"></div>
+			<%= form_tag(destroy_all_path, method: :delete, id:"formtag") do %>
+
+				<div class="change-position">
+				<%= submit_tag "チェックしたアイテムを削除" %>
+				</div>
+
+			<% end %>
+
+			 	<div class="favorite-jump-to-page">
+			 		<span class="favorite-back-to-page">
+					 <%= link_to "< 　マイページへ", user_path(current_user.id) %></span>
+					<span class="favorite-next-to-page">
+					 <%= link_to "商品一覧へ 　>", items_path %></span>
+				</div>
+			</div>
+		</div>
+	</div>

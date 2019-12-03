@@ -1,0 +1,97 @@
+<%= render 'admin/sidemenu' %>
+<div class="col-xs-9">
+	<h3 class="registration-items">入荷情報入力</h3>
+	<div class="border"></div>
+
+	<div class="arrival-item">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<%= form_for (@arrival), url: admin_arrivals_path do |f| %>
+				<table class="table table-striped arrival-list" border="2">
+					<tr>
+						<th width="15%"><label class="item-id">ID</label></th>
+						<th width="15%"><%= @item.id %></th>
+						<%= f.hidden_field :item_id, :value => @item.id %>
+						<th width="25%"><label class="item-name">商品名</label></th>
+						<th width="45%"><%= @item.name %></th>
+					</tr>
+
+					<tr class="must-field">
+						<th  width="25%"><label">入荷数</label></th>
+						<th colspan="3"><%= f.number_field :arrival_quantity, min:"-100", class:"number_field" %> 個</th>
+					</tr>
+					<tr class="must-field">
+						<th  width="25%"><label>入荷日</label></th>
+						<th colspan="3">
+						<div class="input-group date" id="date" date-target-input="nearest">
+							<%= f.text_field :arrival_date, class:"form-control datetimepicker-input", data: {toggle: "datetimepicker", target: ".datetimepicker-input"}, placeholder: "YYYY/MM/DD" %>
+						</div>
+							<script type="text/javascript">
+								$(function () {
+									$(".datetimepicker-input").datetimepicker({
+									format:'YYYY/MM/DD'
+									});
+								});
+							</script>
+						</th>
+						</div>
+					</tr>
+				</table>
+
+				<div class="row">
+					<%= f.submit "入荷する", class:"col-xs-4 col-xs-offset-4 btn btn-primary" %>
+				</div>
+
+				<table class="table table-striped arrival-list" border="2">
+					<tr>
+						<th  width="25%"><label class="item-status">ステータス</label></th>
+						<td><%= @item.status %></td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="item-price">価格</label></th>
+						<td><%= @item.price %>　円</td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="item-image">サムネイル</label></th>
+						<td><%= attachment_image_tag @item, :image, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %></td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="item-name">アーティスト名</label></th>
+						<td><%= @item.artist.name %></td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="item-release">発売日</label></th>
+						<td><%= @item.release.strftime("%Y年%m月%d日") %></td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="label">レーベル</label></th>
+						<td><%= @item.label.name %></td>
+					</tr>
+					<tr>
+						<th  width="25%"><label class="category">ジャンル</label></th>
+						<td><%= @item.category.name %></td>
+					</tr>
+				</table>
+
+				<div class="nested-fields well well-compact">
+					<h4 class="songlist-index">収録曲一覧</h4>
+					<% @disks.each do |disk| %>
+					<table class="table table-hover">
+						<caption>Disk<%= disk.disk_num %></caption>
+						<% disk.songs.each do |song| %>
+							<tr>
+								<td><%= song.setlist %></td>
+								<td><%= song.name %></td>
+							</tr>
+						<% end %>
+					<% end %>
+					</table>
+				</div>
+				<% end %>
+			</div>
+			<%= link_to '商品一覧へ', root_path, class: "btn btn-default btn-lg back-btn" %>
+		</div>
+	</div>
+</div>
+
+

@@ -10,21 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_091223) do
+ActiveRecord::Schema.define(version: 2019_11_21_143512) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
     t.string "postal_code"
     t.string "address"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "admins", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "arrivals", force: :cascade do |t|
@@ -42,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "item_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -55,16 +62,29 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "disks", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "disk_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "item_id"
+    t.integer "item_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["item_id"], name: "index_favorites_on_item_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "item_orders", force: :cascade do |t|
@@ -74,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "items", force: :cascade do |t|
@@ -82,8 +103,8 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
     t.integer "category_id"
     t.string "name"
     t.datetime "release"
-    t.integer "sales_status", default: 0
-    t.integer "status", default: 0
+    t.integer "sales_status", default: 1
+    t.integer "status", default: 1
     t.integer "price"
     t.string "image_id"
     t.datetime "deleted_at"
@@ -102,16 +123,21 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "postal_code"
-    t.string "address"
-    t.integer "payment", default: 0
+    t.string "order_address"
+    t.integer "payment"
     t.integer "status", default: 0
     t.integer "total"
     t.integer "delivery_status", default: 0
     t.integer "delivery_fee"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "card_num"
+    t.string "card_name"
+    t.integer "securitycode"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -120,22 +146,24 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "item_id"
-    t.integer "valuation"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.float "rate"
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "item_id"
+    t.integer "disk_id"
     t.string "name"
     t.integer "setlist"
-    t.integer "disk_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -146,9 +174,21 @@ ActiveRecord::Schema.define(version: 2019_11_12_091223) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_furigana"
+    t.string "first_furigana"
+    t.string "postal_code"
+    t.string "residence"
+    t.string "phone_number"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

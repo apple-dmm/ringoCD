@@ -1,0 +1,137 @@
+<div class="search-box-user-index col-xs-8 col-xs-offset-3">
+
+
+	<%= search_form_for @search, url: index_result_path do |f| %>
+  		<%= f.search_field :artist_name_or_name_cont, class:"search_field", placeholder: '歌手・商品名を入力' %>
+
+    	<span class="actions">
+    		<%= f.button :type => "submit", class:'btn btn-primary' do %>
+    		<i class="fas fa-search"></i>
+    		<% end %>
+    	</span>
+    	<% end %>
+</div>
+
+  <div class="container">
+   <div class="row">
+     <div class="col-xs-12">
+
+
+<table>
+    <div class="index-index-result">
+        <span class="index-index-text">"<%= params[:q][:artist_name_or_name_cont] %>"の検索結果　<%= @items.count %>件</span></div>
+
+    <% @items.each_slice(4) do |item1, item2, item3, item4| %>
+
+		<tbody>
+				<tr class="item-index-tr">
+						<td class="item-index-td">
+
+						<% if item1 != nil%>
+					       <%= link_to item_path(item1.id) do %>
+					          <%= attachment_image_tag item1, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+	                    <% end %>
+						    <div class="text-size">
+					           <%=link_to item1.name, item_path(item1.id) %>
+					        </div>
+                            <div class="index-artist-box">
+                                <%= item1.artist.name %>
+                            </div>
+                             <div class="index-item-price-box">価格<span class="index-tax-text">(税込) </span>:　<%= item1.include_tax_price %>円</div>
+
+                        <% if item1.total_arrival_calculate - item1.total_item_order_calculate >= 1 %>
+                            <span class="index-user-stock-quantity">在庫数: 残り<%= item1.total_arrival_calculate - item1.total_item_order_calculate %>点</span>
+                            <% else %>
+                            <span class="index-stock-quantity">在庫無</span>
+                            <span class="index-no-stock-text">【入荷待ち】</span>
+                            <% end %>
+                         <% end %>
+	                   </td>
+
+                       <td class="item-index-td">
+                        <% if item2 != nil%>
+                           <%= link_to item_path(item2.id) do %>
+                              <%= attachment_image_tag item2, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+                        <% end %>
+                            <div class="text-size">
+                               <%=link_to item2.name, item_path(item2.id) %>
+                            </div>
+                            <div class="index-artist-box">
+                                <%= item2.artist.name %>
+                            </div>
+                             <div class="index-item-price-box">価格<span class="index-tax-text">(税込) </span>:　<%= item2.include_tax_price %>円</div>
+
+                        <% if item2.total_arrival_calculate - item2.total_item_order_calculate >= 1 %>
+                            <span class="index-user-stock-quantity">在庫数: 残り<%= item2.total_arrival_calculate - item2.total_item_order_calculate %>点</span>
+                            <% else %>
+                            <span class="index-stock-quantity">在庫無</span>
+                            <span class="index-no-stock-text">【入荷待ち】</span>
+                            <% end %>
+                         <% end %>
+                       </td>
+
+                       <td class="item-index-td">
+                        <% if item3 != nil%>
+                           <%= link_to item_path(item3.id) do %>
+                              <%= attachment_image_tag item3, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+                        <% end %>
+                            <div class="text-size">
+                               <%=link_to item3.name, item_path(item3.id) %>
+                            </div>
+                            <div class="index-artist-box">
+                                <%= item3.artist.name %>
+                            </div>
+                             <div class="index-item-price-box">価格<span class="index-tax-text">(税込) </span>:　<%= item3.include_tax_price %>円</div>
+
+                        <% if item3.total_arrival_calculate - item3.total_item_order_calculate >= 1 %>
+                            <span class="index-user-stock-quantity">在庫数: 残り<%= item3.total_arrival_calculate - item3.total_item_order_calculate %>点</span>
+                            <% else %>
+                            <span class="index-stock-quantity">在庫無</span>
+                            <span class="index-no-stock-text">【入荷待ち】</span>
+                            <% end %>
+                         <% end %>
+                       </td>
+
+                       <td class="item-index-td">
+                        <% if item4 != nil%>
+                           <%= link_to item_path(item4.id) do %>
+                              <%= attachment_image_tag item1, :image, :fill, 230, 230, format: 'jpg', fallback: "no_image.jpg" %>
+                        <% end %>
+                            <div class="text-size">
+                               <%=link_to item4.name, item_path(item4.id) %>
+                            </div>
+                            <div class="index-artist-box">
+                                <%= item4.artist.name %>
+                            </div>
+                             <div class="index-item-price-box">価格<span class="index-tax-text">(税込) </span>:　<%= item4.include_tax_price %>円</div>
+
+                        <% if item4.total_arrival_calculate - item4.total_item_order_calculate >= 1 %>
+                            <span class="index-user-stock-quantity">在庫数: 残り<%= item4.total_arrival_calculate - item4.total_item_order_calculate %>点</span>
+                            <% else %>
+                            <span class="index-stock-quantity">在庫無</span>
+                            <span class="index-no-stock-text">【入荷待ち】</span>
+                            <% end %>
+                         <% end %>
+                       </td>
+		          </tr>
+            </tbody>
+        <% end %>
+    </table>
+
+  <div class="page-top col-xs-8 col-xs-offset-2">
+
+	<%= paginate @items, class: "paginate" %>
+	<p id="pageTop"><a href="#">ページトップへ</a></p>
+		<script type='text/javascript'>
+			$(function(){
+			$('a[href^="#"]').click(function() {
+				var speed = 400;
+				var href= $(this).attr("href");
+					var target = $(href == "#" || href == "" ? 'html' : href);
+					var position = target.offset().top;
+					$('body,html').animate({scrollTop:position}, speed, 'swing');
+					return false;
+				});
+			});
+		</script>
+</div>

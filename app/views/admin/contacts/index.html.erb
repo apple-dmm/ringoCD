@@ -1,2 +1,57 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<%= render 'admin/sidemenu' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h2 class="admin-contact-show-title">問合せ一覧</h2>
+			<div class="border"></div>
+			<div class="search-box col-xs-10 col-xs-offset-1">
+				<%= search_form_for @search, url: admin_contacts_path do |f| %>
+  				<%= f.search_field :title_or_user_last_name_or_user_email_cont, class:"admin-search_field", placeholder: '顧客名・メールアドレス・件名を入力' %>
+
+				<span class="actions">
+					<%= f.button :type => "submit", class:'btn btn-primary' do %>
+					<i class="fas fa-search"></i>
+					<% end %>
+				</span>
+			 	<% end %>
+
+
+			 	<% if @contacts.any? %>
+
+
+				<table class='col-xs-12 table table-hover table-inverse'>
+  					<thead>
+    					<tr>
+      						<th><b>ID</b></th>
+      						<th><b>顧客名</b></th>
+      						<th><b>メールアドレス</b></th>
+      						<th><b>件名</b></th>
+      						<th><b>問合せ日時</b></th>
+      						<th><b></b></th>
+    					</tr>
+  					</thead>
+  					<% @contacts.each do |contact| %>
+  					<tbody>
+    					<tr>
+      						<td><%= contact.user.id %></td>
+      						<td><%= contact.user.last_name + contact.user.first_name %></td>
+      						<td><%= contact.user.email %></td>
+      						<td><%= contact.title %></td>
+      						<td><%= contact.created_at.strftime("%Y年%m月%d日") %></td>
+      						<td><%= link_to "返信", admin_contact_path(contact.id) %>
+    					</tr>
+    					<% end %>
+  					</tbody>
+				</table>
+				<% else %>
+			 		<h6>該当する問い合わせがありません。キーワードを変えてください。</h6>
+			 	<% end %>
+			</div>
+   <div class="row">
+	<div class="col-xs-6 col-xs-offset-3">
+	 <p id="pageTop"><a href="#">ページのトップへ戻る</a></p>
+	</div>
+   </div>
+</div>
+

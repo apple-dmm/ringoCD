@@ -1,3 +1,79 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p><%= @params %>
+<div class="container">
+  <div class="row end_user">
+  <h2 class="user-title">アカウント情報の確認</h2>
+    <div class="border"></div>
+
+    <div class="user-info">
+
+      <div class="col-xs-3 col-xs-offset-3">
+        <label class="float-left">名前（姓）</label>
+        <input type="text" class="col-auto form-control" value="<%= @user.last_name %>" readonly>
+      </div>
+
+      <div class="col-xs-3">
+        <label class="float-left control-label" for="InputText">名前（名）</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.first_name %>" readonly>
+      </div>
+
+      <div class="col-xs-3 col-xs-offset-3">
+        <label class="float-left control-label" for="InputText">名前（セイ）</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.last_furigana %>" readonly>
+      </div>
+
+      <div class="col-xs-3">
+        <label class="float-left control-label" for="InputText">名前（メイ）</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.first_furigana %>" readonly>
+      </div>
+
+      <div class="col-xs-6 col-xs-offset-3">
+        <label class="control-label" for="InputText">郵便番号</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.postal_code[0,3] %>-<%= @user.postal_code[4,7] %>" readonly>
+      </div>
+
+      <div class="col-xs-6 col-xs-offset-3">
+        <label class="control-label" for="InputText">住所</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.residence %>" readonly>
+      </div>
+
+      <div class="col-xs-6 col-xs-offset-3">
+        <label class="control-label" for="InputText">電話番号</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.phone_number %>" readonly>
+      </div>
+
+      <div class="col-xs-6 col-xs-offset-3">
+        <label class="control-label" for="InputText">メールアドレス</label>
+        <input type="text" class="col-auto form-control" id="InputText" value="<%= @user.email %>" readonly>
+      </div>
+    </div>
+
+    <div class="user-address-list col-xs-6 col-xs-offset-3">
+      <h3>登録住所一覧</h3>
+      <% if @addresses.present? %>
+        <% @addresses.each do |address| %>
+          <table class="address-form" width="100%">
+            <tr>
+              <td><%= address.name %>  様</td>
+            </tr>
+            <tr>
+              <td><%= address.postal_code[0,3] %>-<%= address.postal_code[4,7] %>  <%= address.address %></td>
+            </tr>
+          </table>
+        <% end %>
+      <% else %>
+        <h6>ご登録の送付先はありません。編集ページからご登録ください。</h6>
+     <% end %>
+   </div>
+ </div>
+
+    <div class="row text-center">
+      <div class="space"></div>
+        <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-success mx-auto btn-lg" %>
+    </div>
+
+
+    <div class="row end_user">
+      <div class="col-xs-8 col-xs-offset-2">
+          <%= link_to "< マイページへ", mypage_path %>
+        </div>
+    </div>
+</div>

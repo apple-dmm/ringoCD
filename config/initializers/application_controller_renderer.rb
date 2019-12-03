@@ -1,8 +1,1 @@
-# Be sure to restart your server when you modify this file.
-
-# ActiveSupport::Reloader.to_prepare do
-#   ApplicationController.renderer.defaults.merge!(
-#     http_host: 'example.org',
-#     https: false
-#   )
-# end
+Refile.secret_key = '571136d84f6c95d0d793366de5e6734d238178d9afdf5705fcbe4e92a703f2bb698536cc190f06560cc1b6b9c8193bf3625b5dec912805782589fad3627774e5'

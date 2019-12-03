@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     	t.integer :category_id
     	t.string :name
     	t.datetime :release
-    	t.integer :sales_status, :status, default: 0
+    	t.integer :sales_status, :status, default: 1
     	t.integer :price
     	t.string :image_id
     	t.datetime :deleted_at
