@@ -82,3 +82,7 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'cocoon'
 
 gem 'payjp'
+
+group :production do
+  gem 'mysql2'
+end
